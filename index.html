@@ -358,6 +358,88 @@
     color:var(--muted);
     font-size:13px;
   }
+  /* ==============================
+   CORREÇÃO DEFINITIVA – MENOS BRANCO
+   ============================== */
+
+/* FUNDO GERAL MAIS ESCURO */
+body{
+  background:
+    linear-gradient(180deg,#fff1e6 0%, #f3f4f6 40%, #eef0f4 100%) !important;
+}
+
+/* FAIXAS DE SEÇÃO – LARANJA REAL */
+.section{
+  background: linear-gradient(180deg,#fff7f0,#fff) !important;
+  border: 2px solid rgba(255,106,0,.35) !important;
+}
+
+.sectionTop{
+  background: linear-gradient(90deg,#ff6a00,#ff8b2b);
+  margin:-14px -14px 14px -14px;
+  padding:14px;
+  border-radius:22px 22px 0 0;
+  color:#fff;
+}
+
+.sectionTop h3,
+.sectionTop .count{
+  color:#fff !important;
+}
+
+/* CATEGORIAS – BLOCO COLORIDO */
+.catsWrap{
+  background: linear-gradient(180deg,#ffe6d5,#fff) !important;
+  border:2px solid rgba(255,106,0,.35) !important;
+}
+
+.catBtn{
+  background: linear-gradient(180deg,#fff0e6,#fff) !important;
+  border:2px solid rgba(255,106,0,.35) !important;
+}
+
+.catBtn.active{
+  background: linear-gradient(180deg,#ff6a00,#ff8b2b) !important;
+  color:#fff !important;
+}
+
+.catBtn.active strong,
+.catBtn.active small{
+  color:#fff !important;
+}
+
+/* CARROSSEL – FAIXA FORTE */
+.carousel{
+  background: linear-gradient(135deg,#ff6a00,#ff8b2b) !important;
+  border: none !important;
+}
+
+.slide{
+  background: linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.88)) !important;
+}
+
+/* CARDS DE PRODUTO – FUNDO COM COR */
+.card{
+  background: linear-gradient(180deg,#fff7f0,#fff) !important;
+  border:2px solid rgba(255,106,0,.35) !important;
+}
+
+.img{
+  background: linear-gradient(135deg,#ffe0cc,#ffd1b3) !important;
+}
+
+/* BOTÕES – MAIS PRESENÇA */
+.btnMini.primary,
+.btn.primary{
+  background: linear-gradient(135deg,#ff6a00,#ff8b2b) !important;
+  box-shadow: 0 12px 28px rgba(255,106,0,.45) !important;
+}
+
+/* FOOTER – NÃO BRANCO */
+footer{
+  background: linear-gradient(180deg,#fff1e6,#ffe6d5) !important;
+  border-top:2px solid rgba(255,106,0,.35) !important;
+}
 </style>
 </head>
 
@@ -1022,6 +1104,7 @@ ${p.featured ? `<span class="chip gray">⭐ Destaque</span>` : ``}
 </body>
 
 </html>
+
 
 
 
