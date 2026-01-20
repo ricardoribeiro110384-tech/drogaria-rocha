@@ -52,7 +52,7 @@
       display:flex;
       align-items:center;
       gap:12px;
-      padding:12px 0 14px;
+      padding:12px 0 10px;
     }
     .brand{
       display:flex; align-items:center; gap:10px;
@@ -65,18 +65,21 @@
       overflow:hidden;
     }
     .logo img{width:100%;height:100%;object-fit:contain;padding:6px}
+
+    /* Texto ao lado da logo (PRETO, como você pediu) */
     .brand-text h1{
       margin:0;
       font-size:17px;
       font-weight:900;
-      color:#fff;
+      color:#000;
       letter-spacing:-.2px;
       line-height:1.1;
     }
     .brand-text p{
       margin:3px 0 0;
       font-size:12px;
-      color:rgba(255,255,255,.82);
+      color:#000;
+      opacity:.9;
       line-height:1.1;
     }
 
@@ -98,6 +101,7 @@
       border-radius:999px;
       background:#fff;
     }
+
     .actions{
       display:flex; gap:10px; align-items:center;
     }
@@ -123,6 +127,22 @@
       .actions{width:100%; justify-content:flex-end}
     }
 
+    /* “Vendo preços para: PI” */
+    .regionBar{
+      margin:0 0 12px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:12px;
+      padding:10px 12px;
+      color:rgba(255,255,255,.92);
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:800;
+    }
+    .regionBar b{color:#fff}
+    .regionBar .caret{opacity:.9}
+
     /* BLOCKS */
     .block{
       background:var(--card);
@@ -134,49 +154,72 @@
 
     /* CAROUSEL */
     .carousel{overflow:hidden; position:relative}
+
     .slides{display:flex; transition:transform .35s ease; will-change:transform}
+
+    /* Banner FULL (imagem ocupa o card todo) */
+    .carousel{ padding:0 !important; }
     .slide{
       min-width:100%;
-      padding:16px;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:12px;
-      align-items:center;
+      padding:0 !important;
+      display:block !important;
     }
-    .slide h2{
-      margin:0 0 6px;
-      font-size:22px;
-      font-weight:1000;
-      letter-spacing:-.4px;
-    }
-    .slide p{margin:0;color:var(--muted);font-size:14px}
-    .heroImg{
-      height:160px;
-      border:1px solid var(--line);
-      border-radius:12px;
+
+    .bannerFull{
+      position:relative;
+      display:block;
+      width:100%;
+      height:320px;
       overflow:hidden;
-      background:#f8fafc;
     }
-    .heroImg img{width:100%;height:100%;object-fit:cover}
-    .heroImg .ph{width:100%;height:100%;display:grid;place-items:center;color:var(--muted);font-weight:900}
-    .slide .ctaRow{
-      margin-top:12px;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
+    .bannerFull img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
     }
-    .ctaBtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 14px;
-      border-radius:10px;
+    .bannerFull .ph{
+      width:100%;
+      height:100%;
+      display:grid;
+      place-items:center;
+      background:#f3f4f6;
+      color:#111827;
       font-weight:1000;
+    }
+    .bannerOverlay{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      gap:8px;
+      padding:18px;
+      background:linear-gradient(180deg, transparent 35%, rgba(0,0,0,.55) 100%);
+    }
+    .bannerTitle{
+      color:#fff;
+      font-weight:1100;
+      font-size:22px;
+      letter-spacing:-.3px;
+      line-height:1.1;
+    }
+    .bannerSub{
+      color:rgba(255,255,255,.90);
+      font-weight:800;
+      font-size:14px;
+      max-width:65ch;
+    }
+    .bannerCta{
+      align-self:flex-start;
+      margin-top:6px;
       background:var(--brand);
       color:#fff;
-      border:none;
+      font-weight:1100;
+      padding:10px 14px;
+      border-radius:10px;
     }
+
     .navBtn{
       position:absolute; top:50%; transform:translateY(-50%);
       width:40px;height:40px;border-radius:12px;
@@ -189,6 +232,7 @@
     }
     .navBtn.left{left:10px}
     .navBtn.right{right:10px}
+
     .dots{
       position:absolute; left:50%; transform:translateX(-50%);
       bottom:10px;
@@ -201,13 +245,14 @@
     }
     .dot{width:8px;height:8px;border-radius:999px;background:#cbd5e1;cursor:pointer}
     .dot.on{background:var(--brand)}
+
     @media(max-width:880px){
-      .slide{grid-template-columns:1fr}
-      .heroImg{height:180px}
+      .bannerFull{ height:260px; }
+      .bannerTitle{ font-size:18px; }
     }
 
     /* CATEGORIES */
-    .catsWrap{padding:12px}
+    .catsWrap{padding:0}
     .catsTop{
       display:flex; align-items:flex-end; justify-content:space-between;
       gap:10px;
@@ -251,7 +296,7 @@
     }
 
     /* SECTION */
-    .section{padding:12px}
+    .section{padding:0}
     .sectionTop{
       display:flex;align-items:center;justify-content:space-between;
       gap:10px;
@@ -273,6 +318,12 @@
     @media(max-width:1100px){ .grid{grid-template-columns:repeat(4,1fr)} }
     @media(max-width:900px){ .grid{grid-template-columns:repeat(3,1fr)} }
     @media(max-width:650px){ .grid{grid-template-columns:repeat(2,1fr)} }
+
+    /* força 2 colunas no mobile pequeno (igual seu print) */
+    @media(max-width:520px){
+      .grid{ grid-template-columns:repeat(2,1fr) !important; }
+      .porLine .value{ font-size:26px !important; }
+    }
 
     /* CARD (Ultrafarma-like) */
     .card{
@@ -356,19 +407,21 @@
     }
 
     .buyBar{margin-top:auto}
+    /* Botão comprar maior (igual print) */
     .buyBtn{
       display:block;
       width:100%;
-      background:#2c7a7b;
+      background:#3aa0ad;
       color:#fff;
       font-weight:1100;
       letter-spacing:.6px;
       text-transform:uppercase;
       text-align:center;
-      padding:14px 12px;
+      padding:16px 12px;
       border-radius:10px;
       border:none;
     }
+    .buyBtn:active{transform:scale(.99)}
 
     footer{
       margin-top:16px;
@@ -402,6 +455,15 @@
 
     <div class="actions">
       <a class="btn primary" id="wppTop" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="regionBar">
+      <span class="pin">📍</span>
+      <span>Vendo preços para:</span>
+      <b>PI</b>
+      <span class="caret">▼</span>
     </div>
   </div>
 </header>
@@ -469,7 +531,6 @@
 
   /* ====== CSV helpers ====== */
   function detectDelimiter(text){
-    // pega a primeira linha não vazia
     const line = text.split("\n").find(l => l.trim().length);
     if(!line) return ",";
     const commas = (line.match(/,/g)||[]).length;
@@ -518,7 +579,7 @@
       .trim()
       .toLowerCase()
       .replace(/\s+/g,"_")
-      .normalize("NFD").replace(/[\u0300-\u036f]/g,""); // remove acentos
+      .normalize("NFD").replace(/[\u0300-\u036f]/g,"");
   }
 
   function toNumber(v){
@@ -570,7 +631,7 @@
     box.innerHTML = "";
 
     CATEGORY_ORDER.forEach(cat => {
-      if(cat !== "TODAS" && !availableSet.has(cat)) return; // não mostra vazia
+      if(cat !== "TODAS" && !availableSet.has(cat)) return;
       const label = cat === "TODAS" ? "Todas" : cat.replace(/_/g, " ");
       const icon = cat === "TODAS" ? "≡" : "✓";
 
@@ -589,10 +650,10 @@
         activeCat = cat;
         setParamCat(cat);
         applyFilters();
-        // marca ativo
+
         document.querySelectorAll(".catBtn").forEach(b => b.classList.remove("active"));
         el.classList.add("active");
-        // rolar para produtos
+
         document.getElementById("offersSection").scrollIntoView({behavior:"smooth", block:"start"});
       };
       box.appendChild(el);
@@ -680,21 +741,21 @@
     banners.forEach((b, idx) => {
       const slide = document.createElement("div");
       slide.className = "slide";
-      slide.innerHTML = `
-        <div>
-          <h2>${safeText(b.titulo || "Ofertas")}</h2>
-          <p>${safeText(b.subtitulo || "")}</p>
-          <div class="ctaRow">
-            <a class="ctaBtn" href="${safeText(b.link || "#offersSection")}">${safeText(b.cta || "Ver ofertas")}</a>
-          </div>
-        </div>
 
-        <div class="heroImg">
+      slide.innerHTML = `
+        <a class="bannerFull" href="${safeText(b.link || "#offersSection")}">
           ${b.imagem
             ? `<img src="${safeText(b.imagem)}" alt="${safeText(b.titulo||'Banner')}">`
             : `<div class="ph">Drogaria Rocha</div>`}
-        </div>
+
+          <div class="bannerOverlay">
+            <div class="bannerTitle">${safeText(b.titulo || "Ofertas")}</div>
+            ${b.subtitulo ? `<div class="bannerSub">${safeText(b.subtitulo)}</div>` : ``}
+            <div class="bannerCta">${safeText(b.cta || "Ver ofertas")}</div>
+          </div>
+        </a>
       `;
+
       slides.appendChild(slide);
 
       const dot = document.createElement("div");
@@ -754,7 +815,6 @@
     allProducts = pr.map(row => {
       const o = {};
       headers.forEach((h, i) => o[h] = row[i] ?? "");
-      // normaliza nomes esperados
       return {
         nome: o.nome || o.produto || "",
         categoria: (o.categoria || "").toUpperCase(),
@@ -767,9 +827,8 @@
       };
     }).filter(p => p.nome && p.categoria);
 
-    // conjunto de categorias existentes
     const available = new Set(allProducts.map(p => p.categoria));
-    // pega cat da url
+
     const catParam = (getParam("cat") || "").toUpperCase();
     if(catParam && available.has(catParam)) activeCat = catParam;
 
@@ -797,13 +856,11 @@
 
     renderBanners();
 
-    // busca
     document.getElementById("search").addEventListener("input", () => applyFilters());
 
     applyFilters();
   }
 
-  // nav buttons
   document.getElementById("prevBtn").onclick = () => { goToSlide(slideIndex - 1); startAuto(); };
   document.getElementById("nextBtn").onclick = () => { goToSlide(slideIndex + 1); startAuto(); };
 
@@ -815,3 +872,4 @@
 
 </body>
 </html>
+```0
