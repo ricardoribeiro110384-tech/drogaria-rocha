@@ -779,10 +779,9 @@
     return [...withDisc, ...rest].slice(0, 20);
   }
   function pickHighlights(list){
-    return [...list]
-      .sort((a,b)=>(b.featured-a.featured) || (calcDiscount(b)-calcDiscount(a)) || (a.price-b.price))
-      .filter(p=>p.featured || hasOldPrice(p))
-      .slice(0, 20);
+  return [...list]
+    .filter(p => p.featured)
+    .slice(0, 20);
   }
   function pickBestSellers(list){
     const withSold = list.filter(p => typeof p.sold === "number");
@@ -1053,4 +1052,5 @@
   boot();
 </script>
 </body>
+
 </html>
