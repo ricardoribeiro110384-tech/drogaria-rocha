@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <title>Drogaria Rocha | Farmácia Online</title>
+  <meta name="description" content="Drogaria Rocha: medicamentos, vitaminas, higiene, beleza, infantil e dermocosméticos. Peça no WhatsApp."/>
+  <meta name="theme-color" content="#ff6a00"/>
+
+  <style>
+    :root{
+      --brand:#ff6a00;
+      --brand2:#ff8b2b;
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --soft:#f1f5f9;
+      --shadow:0 14px 32px rgba(2,6,23,.10);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(900px 450px at 10% -10%, rgba(255,106,0,.18), transparent 62%),
+        radial-gradient(800px 420px at 95% 0%, rgba(255,139,43,.10), transparent 62%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block}
+
+    .wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+
+    /* ===== HEADER ===== */
+    header{
+      background:rgba(255,255,255,.86);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:0;
+      z-index:60;
+    }
+    .top{
+      display:grid;
+      grid-template-columns: 300px 1fr 280px;
+      gap:12px;
+      align-items:center;
+      padding:14px 0;
+    }
+    @media(max-width:980px){
+      .top{grid-template-columns:1fr;gap:10px}
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      min-width:260px;
+    }
+    .logo{
+      width:52px;height:52px;border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .logo img{width:100%;height:100%;object-fit:contain;padding:6px}
+    .brand h1{margin:0;font-size:18px;font-weight:1000;line-height:1.1}
+    .brand p{margin:3px 0 0;color:var(--muted);font-size:13px;line-height:1.2}
+
+    .searchBar{
+      display:flex;align-items:center;gap:10px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:10px 12px;
+      box-shadow: var(--shadow);
+    }
+    .searchBar input{
+      border:0;outline:none;background:transparent;
+      width:100%;font-size:14px;color:var(--text);
+    }
+    .kbd{
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--line);
+      background:var(--soft);
+      padding:6px 10px;border-radius:999px;
+      white-space:nowrap;
+    }
+
+    .actions{
+      display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:900;
+      cursor:pointer;
+      user-select:none;
+      box-shadow: var(--shadow);
+    }
+    .btn.primary{
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      color:#fff;
+      border-color: rgba(255,106,0,.35);
+    }
+
+    /* ===== HERO STRIP ===== */
+    .strip{
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(90deg, rgba(255,106,0,.08), rgba(255,255,255,.85), rgba(255,106,0,.06));
+    }
+    .stripRow{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:10px;padding:10px 0;
+    }
+    @media(max-width:980px){ .stripRow{grid-template-columns:repeat(2,1fr)} }
+    .benefit{
+      background:#fff;border:1px solid var(--line);
+      border-radius:16px;padding:10px;
+      display:flex;gap:10px;align-items:flex-start;
+      box-shadow: 0 10px 24px rgba(2,6,23,.06);
+    }
+    .benefit .i{
+      width:34px;height:34px;border-radius:14px;
+      display:grid;place-items:center;
+      background:rgba(255,106,0,.10);
+      border:1px solid rgba(255,106,0,.18);
+    }
+    .benefit b{display:block;font-size:12px}
+    .benefit span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+
+    main{padding:16px 0 34px}
+
+    /* ===== CAROUSEL ===== */
+    .carousel{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      min-height:240px;
+    }
+    .slides{
+      display:flex;
+      transition: transform .35s ease;
+      will-change: transform;
+      touch-action: pan-y;
+    }
+    .slide{
+      min-width:100%;
+      padding:20px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:center;
+      background:linear-gradient(90deg,#fff,rgba(255,106,0,.08));
+      min-height:240px;
+    }
+    @media(max-width:900px){
+      .slide{grid-template-columns:1fr;min-height:280px}
+    }
+    .slide h2{margin:0 0 8px;font-size:30px;letter-spacing:-.6px;font-weight:1000}
+    .slide p{margin:0;color:var(--muted);max-width:70ch}
+    .heroImg{
+      height:190px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:var(--soft);
+      overflow:hidden;
+    }
+    .heroImg img{width:100%;height:100%;object-fit:cover}
+    .heroImg .ph{
+      width:100%;height:100%;display:grid;place-items:center;
+      color:rgba(255,106,0,.85);font-weight:1000;
+      letter-spacing:.4px;
+    }
+
+    .navBtn{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:42px;height:42px;border-radius:16px;
+      background:#fff;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      display:grid;place-items:center;
+      cursor:pointer;user-select:none;
+    }
+    .navBtn.left{left:12px}
+    .navBtn.right{right:12px}
+
+    .dots{
+      position:absolute;left:50%;transform:translateX(-50%);
+      bottom:10px;
+      display:flex;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      background:rgba(255,255,255,.85);
+      border:1px solid var(--line);
+      box-shadow: 0 10px 22px rgba(2,6,23,.08);
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background:#cbd5e1;border:1px solid #cbd5e1;
+      cursor:pointer;
+    }
+    .dot.on{background:var(--brand);border-color:var(--brand)}
+
+    /* ===== CATEGORIES ===== */
+    .catsWrap{
+      margin-top:14px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow: var(--shadow);
+      padding:14px;
+    }
+    .catsTop{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:10px;
+      margin-bottom:10px;
+    }
+    .catsTop h3{margin:0;font-size:16px}
+    .hint{font-size:13px;color:var(--muted)}
+    .cats{
+      display:grid;
+      grid-template-columns: repeat(6,1fr);
+      gap:10px;
+    }
+    @media(max-width:980px){ .cats{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:560px){ .cats{grid-template-columns:repeat(2,1fr)} }
+    .catBtn{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:12px;
+      background:linear-gradient(180deg,#fff, #fff7f1);
+      cursor:pointer;
+      box-shadow: 0 10px 24px rgba(2,6,23,.06);
+      display:flex;flex-direction:column;gap:6px;
+      user-select:none;
+    }
+    .catBtn .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .catBtn .ico{
+      width:32px;height:32px;border-radius:14px;
+      display:grid;place-items:center;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .catBtn strong{font-size:13px}
+    .catBtn small{font-weight:900;color:var(--muted)}
+    .catBtn.active{
+      border-color: rgba(255,106,0,.45);
+      background:linear-gradient(180deg, rgba(255,106,0,.12), #fff);
+      color:var(--text);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section{
+      margin-top:14px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow: var(--shadow);
+      padding:14px;
+    }
+    .sectionTop{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:10px;
+      margin-bottom:10px;
+    }
+    .sectionTop h3{margin:0;font-size:16px}
+    .count{font-size:13px;color:var(--muted)}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+    }
+    @media(max-width:1100px){ .grid{grid-template-columns:repeat(4,1fr)} }
+    @media(max-width:900px){ .grid{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:650px){ .grid{grid-template-columns:repeat(2,1fr)} }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow: 0 12px 26px rgba(2,6,23,.08);
+      background:#fff;
+      display:flex;flex-direction:column;
+      min-height:340px;
+    }
+    .img{
+      height:165px;
+      background:var(--soft);
+      position:relative;
+      overflow:hidden;
+    }
+    .img img{width:100%;height:100%;object-fit:cover}
+    .img .ph{
+      width:100%;height:100%;display:grid;place-items:center;
+      color:rgba(255,106,0,.70);font-weight:1000;
+      letter-spacing:.4px;
+    }
+    .tag{
+      position:absolute;left:10px;top:10px;
+      padding:7px 10px;border-radius:999px;
+      font-size:11px;font-weight:1000;
+      background:#0f172a;color:#fff;
+    }
+    .off{
+      position:absolute;right:10px;top:10px;
+      padding:7px 10px;border-radius:999px;
+      font-size:11px;font-weight:1000;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      color:#fff;
+    }
+    .economy{
+      position:absolute;right:10px;bottom:10px;
+      padding:7px 10px;border-radius:999px;
+      font-size:11px;font-weight:1000;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      color:var(--text);
+    }
+    .content{padding:12px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .title{font-weight:1000;font-size:14px;line-height:1.2;min-height:34px}
+    .meta{display:flex;flex-wrap:wrap;gap:6px}
+    .chip{
+      font-size:11px;
+      font-weight:900;
+      padding:6px 8px;border-radius:999px;
+      background:var(--soft);
+      border:1px solid var(--line);
+      color:var(--text);
+    }
+    .priceRow{display:flex;align-items:baseline;gap:8px}
+    .price{font-weight:1100;font-size:18px;color:var(--brand)}
+    .old{color:var(--muted);text-decoration:line-through;font-size:12px}
+    .ctaRow{display:flex;gap:8px;margin-top:auto}
+    .btnMini{
+      flex:1;
+      padding:10px 12px;border-radius:16px;
+      font-weight:1000;font-size:13px;
+      border:1px solid var(--line);
+      background:#fff;
+      cursor:pointer;
+      display:flex;align-items:center;justify-content:center;gap:8px;
+    }
+    .btnMini.primary{
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      border-color: rgba(255,106,0,.25);
+      color:#fff;
+    }
+
+    /* ===== FOOTER ===== */
+    footer{
+      margin-top:18px;
+      border-top:1px solid var(--line);
+      background:#fff;
+      padding:22px 0 28px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* ===== LOADER ===== */
+    .skeleton{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:#fff;
+      overflow:hidden;
+      min-height:340px;
+      position:relative;
+    }
+    .shimmer:before{
+      content:"";
+      position:absolute;inset:-40%;
+      background: linear-gradient(90deg, transparent 0%, rgba(15,23,42,.06) 50%, transparent 100%);
+      transform: translateX(-40%);
+      animation: shimmer 1.2s infinite;
+    }
+    @keyframes shimmer{
+      0%{transform:translateX(-45%)}
+      100%{transform:translateX(45%)}
+    }
+    .sk-img{height:165px;background:var(--soft)}
+    .sk-body{padding:12px}
+    .sk-line{height:12px;border-radius:999px;background:#eef2f7;margin:8px 0}
+    .w85{width:85%}.w60{width:60%}
+
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap top">
+    <div class="brand">
+      <div class="logo">
+        <img src="logo.png" alt="Drogaria Rocha">
+      </div>
+      <div>
+        <h1>Drogaria Rocha</h1>
+        <p>Fortalecendo sua saúde e sua beleza</p>
+      </div>
+    </div>
+
+    <div class="searchBar">
+      <input id="search" placeholder="Buscar: dipirona, vitamina C, fralda..." autocomplete="off">
+      <span class="kbd">Enter</span>
+    </div>
+
+    <div class="actions">
+      <a class="btn" id="phoneBtn" href="#" rel="noopener">📞 (89) 9 8148-5863</a>
+      <a class="btn primary" id="wppBtn" href="#" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap stripRow">
+      <div class="benefit"><div class="i">🚚</div><div><b>Delivery</b><span>Peça no WhatsApp</span></div></div>
+      <div class="benefit"><div class="i">⏱️</div><div><b>Rápido</b><span>Atendimento ágil</span></div></div>
+      <div class="benefit"><div class="i">🏪</div><div><b>Retire</b><span>Combine no WhatsApp</span></div></div>
+      <div class="benefit"><div class="i">💳</div><div><b>Pagamento</b><span>Pix e cartão</span></div></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- CAROUSEL -->
+  <section class="carousel" aria-label="Banners">
+    <div class="navBtn left" id="prev" aria-label="Anterior">‹</div>
+    <div class="navBtn right" id="next" aria-label="Próximo">›</div>
+    <div class="slides" id="slides"></div>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="catsWrap" aria-label="Categorias">
+    <div class="catsTop">
+      <h3>Categorias</h3>
+      <div class="hint" id="status">Carregando planilha…</div>
+    </div>
+    <div class="cats" id="cats"></div>
+  </section>
+
+  <!-- SECTIONS -->
+  <section class="section" id="offersSection">
+    <div class="sectionTop">
+      <h3>Ofertas do dia</h3>
+      <div class="count"><span id="count1">0</span> itens</div>
+    </div>
+    <div class="grid" id="grid1"></div>
+  </section>
+
+  <section class="section">
+    <div class="sectionTop">
+      <h3>Destaques</h3>
+      <div class="count"><span id="count2">0</span> itens</div>
+    </div>
+    <div class="grid" id="grid2"></div>
+  </section>
+
+  <section class="section">
+    <div class="sectionTop">
+      <h3>Mais vendidos</h3>
+      <div class="count"><span id="count3">0</span> itens</div>
+    </div>
+    <div class="grid" id="grid3"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Drogaria Rocha</b> — Preços e disponibilidade podem variar. Confirme no WhatsApp.<br>
+    Medicamentos podem exigir orientação e/ou retenção de receita conforme legislação.
+  </div>
+</footer>
+
+<script>
+  // =========================
+  // CONFIG (SEUS LINKS)
+  // =========================
+  const SHEET_PRODUCTS_CSV = "https://docs.google.com/spreadsheets/d/11yg8gqQw_Np_4xm1DuqsD8x9Z4W3YxC-F2NVv_dljAk/export?format=csv&gid=0";
+  const SHEET_BANNERS_CSV  = "https://docs.google.com/spreadsheets/d/11yg8gqQw_Np_4xm1DuqsD8x9Z4W3YxC-F2NVv_dljAk/export?format=csv&gid=629527432";
+
+  const WHATSAPP_NUMBER = "5589981485863";
+  const DISPLAY_PHONE = "(89) 9 8148-5863";
+  const DEFAULT_WPP_MESSAGE = "Oi! Vim pelo site da Drogaria Rocha. Quero pedir: ";
+
+  // =========================
+  // HELPERS
+  // =========================
+  const money = (v) => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+  const norm = (v) => String(v ?? "").trim();
+
+  function toNumber(v){
+    if(v == null) return null;
+    const s = String(v).trim();
+    if(!s) return null;
+    const cleaned = s.replace(/\./g,"").replace(",",".");
+    const n = Number(cleaned);
+    return Number.isFinite(n) ? n : null;
+  }
+  function hasOldPrice(p){
+    return typeof p.oldPrice === "number" && typeof p.price === "number" && p.oldPrice > p.price;
+  }
+  function calcDiscount(p){
+    if(!hasOldPrice(p)) return 0;
+    return Math.round((1 - (p.price / p.oldPrice)) * 100);
+  }
+  function calcEconomy(p){
+    if(!hasOldPrice(p)) return 0;
+    return (p.oldPrice - p.price);
+  }
+  function wppLink(p){
+    const msg = (p.message && p.message.length) ? p.message : (DEFAULT_WPP_MESSAGE + p.name);
+    return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+  }
+  function stripBOM(s){ return s && s.charCodeAt(0) === 0xFEFF ? s.slice(1) : s; }
+
+  // Robust CSV parser: detects delimiter ("," or ";") + supports quotes
+  function sniffDelimiter(headerLine){
+    const count = (delim)=>{
+      let c=0, q=false;
+      for(let i=0;i<headerLine.length;i++){
+        const ch=headerLine[i];
+        if(ch === '"') q=!q;
+        else if(ch === delim && !q) c++;
+      }
+      return c;
+    };
+    return (count(";") > count(",")) ? ";" : ",";
+  }
+  function parseCSV(text){
+    text = stripBOM(text || "");
+    const firstLine = (text.split(/\r?\n/)[0] || "");
+    const delim = sniffDelimiter(firstLine);
+
+    const rows = [];
+    let row = [];
+    let cur = "";
+    let inQuotes = false;
+
+    for(let i=0;i<text.length;i++){
+      const ch = text[i];
+      const next = text[i+1];
+
+      if(ch === '"' && inQuotes && next === '"'){ cur += '"'; i++; continue; }
+      if(ch === '"'){ inQuotes = !inQuotes; continue; }
+
+      if(ch === delim && !inQuotes){ row.push(cur); cur=""; continue; }
+
+      if((ch === "\n" || ch === "\r") && !inQuotes){
+        if(ch === "\r" && next === "\n") i++;
+        row.push(cur);
+        const has = row.some(c => String(c).trim().length);
+        if(has) rows.push(row.map(c => String(c).trim()));
+        row=[]; cur=""; continue;
+      }
+      cur += ch;
+    }
+    row.push(cur);
+    const has = row.some(c => String(c).trim().length);
+    if(has) rows.push(row.map(c => String(c).trim()));
+    return rows;
+  }
+
+  function catIcon(name){
+    const s = (name||"").toLowerCase();
+    if(s.includes("med")) return "💊";
+    if(s.includes("vit")) return "🧡";
+    if(s.includes("hig")) return "🧼";
+    if(s.includes("bele")) return "✨";
+    if(s.includes("infan")) return "👶";
+    if(s.includes("dermo")) return "🧴";
+    return "🩺";
+  }
+
+  function escapeHtml(s){
+    return String(s ?? "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  // =========================
+  // DOM refs
+  // =========================
+  const statusEl = document.getElementById("status");
+  const catsEl = document.getElementById("cats");
+  const searchEl = document.getElementById("search");
+
+  // Header links
+  document.getElementById("phoneBtn").textContent = "📞 " + DISPLAY_PHONE;
+  document.getElementById("phoneBtn").href = "https://wa.me/" + WHATSAPP_NUMBER;
+  document.getElementById("wppBtn").href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent("Oi! Vim pelo site da Drogaria Rocha.");
+
+  // =========================
+  // STATE
+  // =========================
+  let PRODUCTS = [];
+  let BANNERS = [];
+  let CAT_COUNTS = new Map();
+  const state = { q:"", cat:"all" };
+
+  function applyQueryParams(){
+    const qs = new URLSearchParams(location.search);
+    const cat = qs.get("cat");
+    if(cat) state.cat = cat;
+  }
+
+  // =========================
+  // SKELETON
+  // =========================
+  function skeletonGrid(elId, n=10){
+    const grid = document.getElementById(elId);
+    grid.innerHTML = "";
+    for(let i=0;i<n;i++){
+      const sk = document.createElement("div");
+      sk.className = "skeleton shimmer";
+      sk.innerHTML = `
+        <div class="sk-img"></div>
+        <div class="sk-body">
+          <div class="sk-line w85"></div>
+          <div class="sk-line w60"></div>
+          <div class="sk-line w85"></div>
+          <div class="sk-line w60"></div>
+        </div>
+      `;
+      grid.appendChild(sk);
+    }
+  }
+
+  // =========================
+  // LOAD
+  // =========================
+  async function loadProducts(){
+    const res = await fetch(SHEET_PRODUCTS_CSV, { cache:"no-store" });
+    const text = await res.text();
+    const rows = parseCSV(text);
+    if(rows.length < 2) return [];
+
+    const header = rows[0].map(h => stripBOM(String(h).toLowerCase().trim()));
+    const idx = (name) => header.indexOf(name);
+
+    const out = [];
+    for(let i=1;i<rows.length;i++){
+      const r = rows[i];
+
+      const name = norm(r[idx("nome")]);
+      if(!name) continue;
+
+      const price = toNumber(r[idx("preco")]);
+      if(price == null || price <= 0) continue;
+
+      const category = norm(r[idx("categoria")]) || "Outros";
+      const oldPrice = toNumber(r[idx("preco_antigo")]); // opcional
+      const tag = norm(r[idx("tag")]) || "Oferta";
+      const image = norm(r[idx("imagem")]);
+      const featured = norm(r[idx("destaque")]).toLowerCase() === "sim";
+      const message = norm(r[idx("mensagem")]);
+      const sold = toNumber(r[idx("vendido")]);
+
+      out.push({
+        id:i,
+        name, category,
+        price, oldPrice,
+        tag, image,
+        featured, message,
+        sold: (sold==null ? undefined : sold)
+      });
+    }
+    return out;
+  }
+
+  async function loadBanners(){
+    const res = await fetch(SHEET_BANNERS_CSV, { cache:"no-store" });
+    const text = await res.text();
+    const rows = parseCSV(text);
+    if(rows.length < 2) return [];
+
+    const header = rows[0].map(h => stripBOM(String(h).toLowerCase().trim()));
+    const idx = (name) => header.indexOf(name);
+
+    const out = [];
+    for(let i=1;i<rows.length;i++){
+      const r = rows[i];
+      const ordem = toNumber(r[idx("ordem")]) ?? 999;
+      const titulo = norm(r[idx("titulo")]);
+      const subtitulo = norm(r[idx("subtitulo")]);
+      const imagem = norm(r[idx("imagem")]);
+      const link = norm(r[idx("link")]);
+      const cta = norm(r[idx("cta")]) || "Ver ofertas";
+      if(!titulo && !imagem) continue;
+      out.push({ ordem, titulo, subtitulo, imagem, link, cta });
+    }
+    return out.sort((a,b)=>a.ordem-b.ordem);
+  }
+
+  // =========================
+  // CATEGORIES
+  // =========================
+  function buildCategoryCounts(){
+    CAT_COUNTS = new Map();
+    for(const p of PRODUCTS){
+      CAT_COUNTS.set(p.category, (CAT_COUNTS.get(p.category)||0)+1);
+    }
+  }
+
+  function setCategory(cat){
+    state.cat = cat;
+    // atualiza URL para permitir compartilhar filtro
+    if(cat === "all") history.replaceState({}, "", location.pathname);
+    else history.replaceState({}, "", "?cat=" + encodeURIComponent(cat));
+
+    // limpa busca ao trocar categoria
+    state.q = "";
+    searchEl.value = "";
+
+    renderCategories();
+    renderAll();
+    document.getElementById("offersSection").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  function renderCategories(){
+    const cats = Array.from(CAT_COUNTS.keys()).sort((a,b)=>a.localeCompare(b));
+    catsEl.innerHTML = "";
+
+    const allBtn = makeCatBtn("all","Todas", PRODUCTS.length);
+    catsEl.appendChild(allBtn);
+
+    cats.forEach(c=>{
+      catsEl.appendChild(makeCatBtn(c,c, CAT_COUNTS.get(c)));
+    });
+
+    // ativa visual
+    [...catsEl.querySelectorAll(".catBtn")].forEach(btn=>{
+      btn.classList.toggle("active", btn.dataset.value === state.cat);
+    });
+  }
+
+  function makeCatBtn(value, label, count){
+    const el = document.createElement("div");
+    el.className = "catBtn";
+    el.dataset.value = value;
+    el.innerHTML = `
+      <div class="row">
+        <div class="ico">${value==="all" ? "🧡" : catIcon(label)}</div>
+        <small>${count}</small>
+      </div>
+      <strong>${escapeHtml(label)}</strong>
+    `;
+    el.addEventListener("click", ()=>setCategory(value));
+    return el;
+  }
+
+  // =========================
+  // SECTIONS / PICKS
+  // =========================
+  function filterBase(list){
+    let out = list;
+    if(state.cat !== "all") out = out.filter(p=>p.category === state.cat);
+    if(state.q){
+      out = out.filter(p => (p.name + " " + p.category + " " + (p.tag||""))
+        .toLowerCase()
+        .includes(state.q));
+    }
+    return out;
+  }
+
+  function pickOffers(list){
+    const withDisc = list.filter(p=>hasOldPrice(p)).sort((a,b)=>calcDiscount(b)-calcDiscount(a));
+    const rest = list.filter(p=>!hasOldPrice(p));
+    return [...withDisc, ...rest].slice(0, 20);
+  }
+  function pickHighlights(list){
+    return [...list]
+      .sort((a,b)=>(b.featured-a.featured) || (calcDiscount(b)-calcDiscount(a)) || (a.price-b.price))
+      .filter(p=>p.featured || hasOldPrice(p))
+      .slice(0, 20);
+  }
+  function pickBestSellers(list){
+    const withSold = list.filter(p => typeof p.sold === "number");
+    if(withSold.length) return withSold.sort((a,b)=>b.sold-a.sold).slice(0, 20);
+    return [...list].sort((a,b)=>(b.featured-a.featured) || (calcDiscount(b)-calcDiscount(a)) || (a.price-b.price)).slice(0, 20);
+  }
+
+  function renderGrid(elId, items){
+    const grid = document.getElementById(elId);
+    grid.innerHTML = "";
+
+    if(!items.length){
+      const empty = document.createElement("div");
+      empty.style.gridColumn = "1 / -1";
+      empty.style.padding = "14px";
+      empty.style.border = "1px dashed var(--line)";
+      empty.style.borderRadius = "16px";
+      empty.style.background = "var(--soft)";
+      empty.innerHTML = `<b>Nenhum item encontrado.</b> <span style="color:var(--muted)">Tente outra categoria ou limpe a busca.</span>`;
+      grid.appendChild(empty);
+      return;
+    }
+
+    items.forEach(p=>{
+      const disc = calcDiscount(p);
+      const eco = calcEconomy(p);
+      const showOld = hasOldPrice(p);
+
+      const imgHTML = p.image
+        ? `<img src="${p.image}" alt="${escapeHtml(p.name)}" loading="lazy">`
+        : `<div class="ph">PRODUTO</div>`;
+
+      const card = document.createElement("article");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="img">
+          <div class="tag">${escapeHtml(p.tag || "Oferta")}</div>
+          ${disc ? `<div class="off">-${disc}%</div>` : ``}
+          ${eco ? `<div class="economy">Economize ${money(eco)}</div>` : ``}
+          ${imgHTML}
+        </div>
+        <div class="content">
+          <div class="title">${escapeHtml(p.name)}</div>
+          <div class="meta">
+            <span class="chip">🧡 ${escapeHtml(p.category)}</span>
+            ${p.featured ? `<span class="chip">⭐ Destaque</span>` : ``}
+          </div>
+          <div class="priceRow">
+            <div class="price">${money(p.price)}</div>
+            ${showOld ? `<div class="old">${money(p.oldPrice)}</div>` : ``}
+          </div>
+          <div class="ctaRow">
+            <a class="btnMini primary" href="${wppLink(p)}" rel="noopener">💬 Comprar</a>
+            <a class="btnMini" href="${wppLink(p)}" rel="noopener">📦 Delivery</a>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function renderAll(){
+    const base = filterBase(PRODUCTS);
+    const offers = pickOffers(base);
+    const highs  = pickHighlights(base);
+    const best   = pickBestSellers(base);
+
+    document.getElementById("count1").textContent = offers.length;
+    document.getElementById("count2").textContent = highs.length;
+    document.getElementById("count3").textContent = best.length;
+
+    renderGrid("grid1", offers);
+    renderGrid("grid2", highs);
+    renderGrid("grid3", best);
+
+    // marca categoria ativa
+    [...catsEl.querySelectorAll(".catBtn")].forEach(btn=>{
+      btn.classList.toggle("active", btn.dataset.value === state.cat);
+    });
+  }
+
+  // =========================
+  // CAROUSEL (autoplay + dots + swipe)
+  // =========================
+  let curSlide = 0;
+  let timer = null;
+  let startX = 0;
+  let dx = 0;
+  let dragging = false;
+
+  function normalizeBannerLink(link){
+    if(!link) return "#offersSection";
+    if(link.startsWith("?cat=")) return link;
+    if(link.startsWith("#")) return link;
+    if(link.startsWith("http")) return link;
+    return link;
+  }
+
+  function renderCarousel(){
+    const slidesEl = document.getElementById("slides");
+    const dotsEl = document.getElementById("dots");
+    slidesEl.innerHTML = "";
+    dotsEl.innerHTML = "";
+
+    const data = (BANNERS && BANNERS.length) ? BANNERS : [{
+      ordem:1,
+      titulo:"Ofertas por categoria",
+      subtitulo:"Atualize a planilha e o site muda sozinho.",
+      imagem:"",
+      link:"#offersSection",
+      cta:"Ver ofertas"
+    }];
+
+    data.forEach((b,i)=>{
+      const slide = document.createElement("div");
+      slide.className = "slide";
+      const img = b.imagem
+        ? `<div class="heroImg"><img src="${b.imagem}" alt="${escapeHtml(b.titulo||"Banner")}" loading="lazy"></div>`
+        : `<div class="heroImg"><div class="ph">BANNER</div></div>`;
+
+      slide.innerHTML = `
+        <div>
+          <h2>${escapeHtml(b.titulo || "Drogaria Rocha")}</h2>
+          <p>${escapeHtml(b.subtitulo || "")}</p>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn primary" href="${normalizeBannerLink(b.link)}">${escapeHtml(b.cta || "Ver ofertas")}</a>
+            <a class="btn" href="#offersSection">🛒 Vitrine</a>
+          </div>
+        </div>
+        ${img}
+      `;
+      slidesEl.appendChild(slide);
+
+      const d = document.createElement("div");
+      d.className = "dot" + (i===curSlide ? " on":"");
+      d.addEventListener("click", ()=>goTo(i));
+      dotsEl.appendChild(d);
+    });
+
+    attachSwipe(slidesEl, data.length);
+    updateCarousel(data.length);
+    restartAuto(data.length);
+  }
+
+  function updateCarousel(len){
+    const slidesEl = document.getElementById("slides");
+    slidesEl.style.transition = dragging ? "none" : "transform .35s ease";
+    slidesEl.style.transform = `translateX(calc(${-curSlide*100}% + ${dragging ? dx : 0}px))`;
+
+    const ds = [...document.querySelectorAll(".dot")];
+    ds.forEach((d,i)=>d.classList.toggle("on", i===curSlide));
+  }
+
+  function goTo(i){
+    const len = Math.max(1, (BANNERS && BANNERS.length) ? BANNERS.length : 1);
+    curSlide = (i + len) % len;
+    dragging = false;
+    dx = 0;
+    updateCarousel(len);
+    restartAuto(len);
+  }
+
+  function restartAuto(len){
+    if(timer) clearInterval(timer);
+    timer = setInterval(()=>goTo(curSlide+1), 6000);
+  }
+
+  function attachSwipe(el, len){
+    // avoid multiple bindings
+    el.onpointerdown = null;
+    el.onpointermove = null;
+    el.onpointerup = null;
+    el.onpointercancel = null;
+
+    el.addEventListener("pointerdown",(e)=>{
+      dragging = true;
+      startX = e.clientX;
+      dx = 0;
+      el.setPointerCapture(e.pointerId);
+      updateCarousel(len);
+    });
+    el.addEventListener("pointermove",(e)=>{
+      if(!dragging) return;
+      dx = e.clientX - startX;
+      updateCarousel(len);
+    });
+    const end = ()=>{
+      if(!dragging) return;
+      const threshold = 55;
+      const moved = dx;
+      dragging = false;
+
+      if(moved > threshold) goTo(curSlide-1);
+      else if(moved < -threshold) goTo(curSlide+1);
+      else { dx=0; updateCarousel(len); restartAuto(len); }
+    };
+    el.addEventListener("pointerup", end);
+    el.addEventListener("pointercancel", end);
+  }
+
+  document.getElementById("prev").addEventListener("click", ()=>goTo(curSlide-1));
+  document.getElementById("next").addEventListener("click", ()=>goTo(curSlide+1));
+
+  // internal link ?cat=
+  document.addEventListener("click",(e)=>{
+    const a = e.target.closest("a");
+    if(!a) return;
+    const href = a.getAttribute("href") || "";
+    if(href.startsWith("?cat=")){
+      e.preventDefault();
+      const cat = decodeURIComponent(href.replace("?cat=",""));
+      setCategory(cat);
+    }
+  });
+
+  // Search (enter + live)
+  searchEl.addEventListener("keydown",(e)=>{
+    if(e.key === "Enter"){
+      state.q = searchEl.value.trim().toLowerCase();
+      renderAll();
+      document.getElementById("offersSection").scrollIntoView({behavior:"smooth", block:"start"});
+    }
+  });
+  searchEl.addEventListener("input",()=>{
+    state.q = searchEl.value.trim().toLowerCase();
+    renderAll();
+  });
+
+  // =========================
+  // BOOT
+  // =========================
+  async function boot(){
+    applyQueryParams();
+    statusEl.textContent = "Carregando…";
+
+    // skeleton while loading
+    skeletonGrid("grid1", 10);
+    skeletonGrid("grid2", 10);
+    skeletonGrid("grid3", 10);
+
+    try{
+      const [prods, banners] = await Promise.all([loadProducts(), loadBanners()]);
+      PRODUCTS = prods;
+      BANNERS = banners;
+
+      buildCategoryCounts();
+      renderCategories();
+      renderCarousel();
+
+      // validate state.cat from URL
+      const available = new Set(PRODUCTS.map(p=>p.category));
+      if(state.cat !== "all" && !available.has(state.cat)) state.cat = "all";
+
+      statusEl.textContent = `✅ ${PRODUCTS.length} itens • ${CAT_COUNTS.size} categorias`;
+      renderAll();
+    }catch(err){
+      console.error(err);
+      statusEl.textContent = "Erro ao carregar a planilha. Confirme: planilha pública (Leitor).";
+      PRODUCTS = [];
+      BANNERS = [];
+      buildCategoryCounts();
+      renderCategories();
+      renderCarousel();
+      renderAll();
+    }
+  }
+
+  boot();
+</script>
+</body>
+</html>
