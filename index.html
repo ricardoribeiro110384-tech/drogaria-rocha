@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Drogaria Rocha | Farmácia Online</title>
-  <meta name="description" content="Drogaria Rocha: medicamentos, vitaminas, higiene, beleza e infantil com pedido rápido no WhatsApp."/>
+  <meta name="description" content="Drogaria Rocha: medicamentos, vitaminas, higiene, beleza, infantil e dermocosméticos. Peça rápido no WhatsApp."/>
   <meta name="theme-color" content="#0b2a4a"/>
 
   <style>
@@ -66,20 +66,19 @@
     }
     .logo img{width:100%;height:100%;object-fit:contain;padding:6px}
 
-    /* Texto ao lado da logo (PRETO, como você pediu) */
-    .brand-text h1{
+    /* Texto ao lado da logo (BRANCO) */
+    header .brand-text h1, header .brand h1{
       margin:0;
       font-size:17px;
       font-weight:900;
-      color:#ffffff;
+      color:#fff;
       letter-spacing:-.2px;
       line-height:1.1;
     }
-    .brand-text p{
+    header .brand-text p, header .brand p{
       margin:3px 0 0;
       font-size:12px;
-      color:#ffffff;
-      opacity:.9;
+      color:rgba(255,255,255,.85);
       line-height:1.1;
     }
 
@@ -114,6 +113,7 @@
       color:#fff;
       cursor:pointer;
       white-space:nowrap;
+      user-select:none;
     }
     .btn.primary{
       background:var(--brand);
@@ -152,18 +152,10 @@
       margin-top:14px;
     }
 
-    /* CAROUSEL */
-    .carousel{overflow:hidden; position:relative}
-
+    /* CAROUSEL (Banner full imagem) */
+    .carousel{overflow:hidden; position:relative; padding:0 !important}
     .slides{display:flex; transition:transform .35s ease; will-change:transform}
-
-    /* Banner FULL (imagem ocupa o card todo) */
-    .carousel{ padding:0 !important; }
-    .slide{
-      min-width:100%;
-      padding:0 !important;
-      display:block !important;
-    }
+    .slide{min-width:100%; padding:0 !important; display:block !important}
 
     .bannerFull{
       position:relative;
@@ -183,8 +175,8 @@
       height:100%;
       display:grid;
       place-items:center;
-      background:#f3f4f6;
-      color:#111827;
+      background:#e9eef4;
+      color:#0b2a4a;
       font-weight:1000;
     }
     .bannerOverlay{
@@ -251,7 +243,7 @@
       .bannerTitle{ font-size:18px; }
     }
 
-    /* CATEGORIES */
+    /* Categories grid (atalhos) */
     .catsWrap{padding:0}
     .catsTop{
       display:flex; align-items:flex-end; justify-content:space-between;
@@ -289,477 +281,69 @@
     }
     .catBtn strong{display:block;font-weight:1000;font-size:13px}
     .catBtn small{display:block;color:var(--muted);font-weight:800;margin-top:4px}
-    .catBtn.active{
-      border-color:rgba(255,106,0,.55);
-      box-shadow:0 10px 18px rgba(255,106,0,.12);
-      background:rgba(255,106,0,.06);
-    }
 
-    /* SECTION */
-    .section{padding:0}
-    .sectionTop{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:10px;
-      padding:12px;
-      border-bottom:1px solid var(--line);
-    }
-    .sectionTop h3{
-      margin:0;
-      font-size:16px;
-      font-weight:1000;
-    }
-    .sectionTop .count{color:var(--muted);font-size:13px;font-weight:800}
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:12px;
-      padding:12px;
-    }
-    @media(max-width:1100px){ .grid{grid-template-columns:repeat(4,1fr)} }
-    @media(max-width:900px){ .grid{grid-template-columns:repeat(3,1fr)} }
-    @media(max-width:650px){ .grid{grid-template-columns:repeat(2,1fr)} }
-
-    /* força 2 colunas no mobile pequeno (igual seu print) */
-    @media(max-width:520px){
-      .grid{ grid-template-columns:repeat(2,1fr) !important; }
-      .porLine .value{ font-size:26px !important; }
-    }
-
-    /* CARD (Ultrafarma-like) */
-    .card{
+    /* Category blocks */
+    .categoryBlock{
+      background:#fff;
       border:1px solid var(--line);
       border-radius:14px;
-      background:#fff;
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-      min-height:370px;
-    }
-    .img{
-      height:170px;
-      background:#f8fafc;
-      border-bottom:1px solid var(--line);
-      position:relative;
-    }
-    .img img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      background:#fff;
-    }
-    .img .ph{
-      width:100%;height:100%;
-      display:grid;place-items:center;
-      color:var(--muted);
-      font-weight:1000;
-    }
-
-    .off{
-      position:absolute; right:10px; bottom:10px;
-      background:#e11d48;
-      color:#fff;
-      font-weight:1000;
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:10px;
-    }
-
-    .content{
-      padding:12px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      flex:1;
-    }
-    .title{
-      font-size:14px;
-      font-weight:900;
-      line-height:1.2;
-      min-height:34px;
-    }
-    .chipRow{display:flex;gap:6px;flex-wrap:wrap}
-    .chip{
-      font-size:11px;
-      font-weight:900;
-      padding:6px 8px;
-      border-radius:999px;
-      background:#f3f4f6;
-      border:1px solid var(--line);
-      color:var(--text);
-    }
-
-    .priceBlock{display:flex;flex-direction:column;gap:6px}
-    .deLine{color:var(--muted);font-size:13px}
-    .porLine{display:flex;align-items:baseline;gap:8px}
-    .porLine .label{color:var(--muted);font-weight:900;font-size:13px}
-    .porLine .value{font-size:30px;font-weight:1100;color:var(--navy);letter-spacing:-.5px}
-    .pixLine{
-      color:#c1121f;
-      font-weight:1100;
-      font-size:18px;
-    }
-    .pixLine small{
-      display:block;
-      font-size:12px;
-      color:var(--muted);
-      font-weight:800;
-      margin-top:2px;
-    }
-
-    .buyBar{margin-top:auto}
-    /* Botão comprar maior (igual print) */
-    .buyBtn{
-      display:block;
-      width:100%;
-      background:#3aa0ad;
-      color:#fff;
-      font-weight:1100;
-      letter-spacing:.6px;
-      text-transform:uppercase;
-      text-align:center;
-      padding:16px 12px;
-      border-radius:10px;
-      border:none;
-    }
-    .buyBtn:active{transform:scale(.99)}
-
-    footer{
+      box-shadow:var(--shadow);
       margin-top:16px;
-      background:#fff;
-      border-top:1px solid var(--line);
-      padding:20px 0 26px;
-      color:var(--muted);
-      font-size:13px;
+      overflow:hidden;
     }
-    .note{padding:0 14px}
-    <!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Drogaria Rocha | Farmácia Online</title>
-  <meta name="description" content="Drogaria Rocha: medicamentos, vitaminas, higiene, beleza e infantil com pedido rápido no WhatsApp."/>
-  <meta name="theme-color" content="#0b2a4a"/>
-
-  <style>
-    :root{
-      --brand:#ff6a00;
-      --navy:#0b2a4a;
-      --green1:#57d38d;
-      --green2:#2fbf76;
-
-      --bg:#f3f4f6;
-      --card:#ffffff;
-
-      --text:#0f172a;
-      --muted:#64748b;
-      --line:#e5e7eb;
-
-      --shadow:0 8px 18px rgba(2,6,23,.08);
-      --radius:14px;
-    }
-
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
-    a{color:inherit;text-decoration:none}
-    img{display:block}
-    .wrap{max-width:1200px;margin:0 auto;padding:0 14px}
-
-    /* HEADER */
-    header{
-      background:var(--navy);
-      position:sticky; top:0; z-index:60;
-      border-bottom:1px solid rgba(255,255,255,.12);
-    }
-    header::before{
-      content:"";
-      display:block;
-      height:10px;
-      background:linear-gradient(90deg,var(--brand),#ff8b2b);
-    }
-    .top{
+    .categoryHeader{
       display:flex;
       align-items:center;
+      justify-content:space-between;
       gap:12px;
-      padding:12px 0 10px;
+      padding:14px;
+      border-bottom:1px solid var(--line);
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      min-width:240px;
-    }
-    .logo{
-      width:46px;height:46px;border-radius:12px;
-      background:#fff;
-      border:1px solid rgba(255,255,255,.18);
-      overflow:hidden;
-    }
-    .logo img{width:100%;height:100%;object-fit:contain;padding:6px}
-
-    /* Texto ao lado da logo (PRETO, como você pediu) */
-    .brand-text h1{
+    .categoryHeader h3{
       margin:0;
       font-size:17px;
-      font-weight:900;
-      color:#000;
-      letter-spacing:-.2px;
-      line-height:1.1;
+      font-weight:1100;
     }
-    .brand-text p{
-      margin:3px 0 0;
-      font-size:12px;
-      color:#000;
-      opacity:.9;
-      line-height:1.1;
-    }
-
-    .searchBar{
-      flex:1;
+    .categoryHeader .meta{
       display:flex;
       align-items:center;
       gap:10px;
-      background:linear-gradient(90deg,var(--green1),var(--green2));
-      padding:12px;
-      border-radius:16px;
-      box-shadow:0 10px 22px rgba(0,0,0,.12);
-    }
-    .searchBar input{
-      width:100%;
-      border:0; outline:none;
-      font-size:16px;
-      padding:12px 14px;
-      border-radius:999px;
-      background:#fff;
-    }
-
-    .actions{
-      display:flex; gap:10px; align-items:center;
-    }
-    .btn{
-      padding:10px 14px;
-      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
       font-weight:900;
-      border:1px solid rgba(255,255,255,.22);
-      background:rgba(255,255,255,.10);
-      color:#fff;
-      cursor:pointer;
       white-space:nowrap;
     }
-    .btn.primary{
-      background:var(--brand);
-      border:none;
-      color:#fff;
-    }
-
-    @media(max-width:880px){
-      .top{flex-wrap:wrap}
-      .brand{min-width:auto}
-      .actions{width:100%; justify-content:flex-end}
-    }
-
-    /* “Vendo preços para: PI” */
-    .regionBar{
-      margin:0 0 12px;
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:12px;
-      padding:10px 12px;
-      color:rgba(255,255,255,.92);
-      display:flex;
-      align-items:center;
-      gap:8px;
-      font-weight:800;
-    }
-    .regionBar b{color:#fff}
-    .regionBar .caret{opacity:.9}
-
-    /* BLOCKS */
-    .block{
-      background:var(--card);
+    .miniBtn{
       border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      margin-top:14px;
-    }
-
-    /* CAROUSEL */
-    .carousel{overflow:hidden; position:relative}
-
-    .slides{display:flex; transition:transform .35s ease; will-change:transform}
-
-    /* Banner FULL (imagem ocupa o card todo) */
-    .carousel{ padding:0 !important; }
-    .slide{
-      min-width:100%;
-      padding:0 !important;
-      display:block !important;
-    }
-
-    .bannerFull{
-      position:relative;
-      display:block;
-      width:100%;
-      height:320px;
-      overflow:hidden;
-    }
-    .bannerFull img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
-    }
-    .bannerFull .ph{
-      width:100%;
-      height:100%;
-      display:grid;
-      place-items:center;
-      background:#f3f4f6;
-      color:#111827;
-      font-weight:1000;
-    }
-    .bannerOverlay{
-      position:absolute;
-      inset:0;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      gap:8px;
-      padding:18px;
-      background:linear-gradient(180deg, transparent 35%, rgba(0,0,0,.55) 100%);
-    }
-    .bannerTitle{
-      color:#fff;
-      font-weight:1100;
-      font-size:22px;
-      letter-spacing:-.3px;
-      line-height:1.1;
-    }
-    .bannerSub{
-      color:rgba(255,255,255,.90);
-      font-weight:800;
-      font-size:14px;
-      max-width:65ch;
-    }
-    .bannerCta{
-      align-self:flex-start;
-      margin-top:6px;
-      background:var(--brand);
-      color:#fff;
-      font-weight:1100;
-      padding:10px 14px;
+      background:#fff;
+      color:var(--text);
       border-radius:10px;
-    }
-
-    .navBtn{
-      position:absolute; top:50%; transform:translateY(-50%);
-      width:40px;height:40px;border-radius:12px;
-      background:#fff;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      display:grid;place-items:center;
-      cursor:pointer;
-      user-select:none;
-    }
-    .navBtn.left{left:10px}
-    .navBtn.right{right:10px}
-
-    .dots{
-      position:absolute; left:50%; transform:translateX(-50%);
-      bottom:10px;
-      display:flex; gap:8px;
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:7px 10px;
-      box-shadow:var(--shadow);
-    }
-    .dot{width:8px;height:8px;border-radius:999px;background:#cbd5e1;cursor:pointer}
-    .dot.on{background:var(--brand)}
-
-    @media(max-width:880px){
-      .bannerFull{ height:260px; }
-      .bannerTitle{ font-size:18px; }
-    }
-
-    /* CATEGORIES */
-    .catsWrap{padding:0}
-    .catsTop{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:10px;
-      padding:12px;
-      border-bottom:1px solid var(--line);
-    }
-    .catsTop h3{margin:0;font-size:16px;font-weight:1000}
-    .catsTop .hint{color:var(--muted);font-size:13px}
-    .cats{
-      display:grid;
-      grid-template-columns:repeat(6,1fr);
-      gap:10px;
-      padding:12px;
-    }
-    @media(max-width:980px){ .cats{grid-template-columns:repeat(3,1fr)} }
-    @media(max-width:560px){ .cats{grid-template-columns:repeat(2,1fr)} }
-
-    .catBtn{
-      border:1px solid var(--line);
-      background:#fff;
-      border-radius:14px;
-      padding:12px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .catBtn .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .catBtn .ico{
-      width:34px;height:34px;border-radius:12px;
-      display:grid;place-items:center;
-      background:rgba(255,106,0,.12);
-      border:1px solid rgba(255,106,0,.18);
+      padding:10px 12px;
       font-weight:1000;
-      color:var(--brand);
+      cursor:pointer;
     }
-    .catBtn strong{display:block;font-weight:1000;font-size:13px}
-    .catBtn small{display:block;color:var(--muted);font-weight:800;margin-top:4px}
-    .catBtn.active{
-      border-color:rgba(255,106,0,.55);
-      box-shadow:0 10px 18px rgba(255,106,0,.12);
-      background:rgba(255,106,0,.06);
+    .miniBtn.primary{
+      background:var(--brand);
+      border-color:var(--brand);
+      color:#fff;
     }
 
-    /* SECTION */
-    .section{padding:0}
-    .sectionTop{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:10px;
-      padding:12px;
-      border-bottom:1px solid var(--line);
-    }
-    .sectionTop h3{
-      margin:0;
-      font-size:16px;
-      font-weight:1000;
-    }
-    .sectionTop .count{color:var(--muted);font-size:13px;font-weight:800}
-    .grid{
+    .categoryGrid{
       display:grid;
       grid-template-columns:repeat(5,1fr);
       gap:12px;
       padding:12px;
     }
-    @media(max-width:1100px){ .grid{grid-template-columns:repeat(4,1fr)} }
-    @media(max-width:900px){ .grid{grid-template-columns:repeat(3,1fr)} }
-    @media(max-width:650px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:1100px){ .categoryGrid{grid-template-columns:repeat(4,1fr)} }
+    @media(max-width:900px){ .categoryGrid{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:650px){ .categoryGrid{grid-template-columns:repeat(2,1fr)} }
 
-    /* força 2 colunas no mobile pequeno (igual seu print) */
     @media(max-width:520px){
-      .grid{ grid-template-columns:repeat(2,1fr) !important; }
-      .porLine .value{ font-size:26px !important; }
+      .categoryGrid{grid-template-columns:repeat(2,1fr) !important;}
+      .porLine .value{font-size:26px !important;}
     }
 
-    /* CARD (Ultrafarma-like) */
+    /* Product card */
     .card{
       border:1px solid var(--line);
       border-radius:14px;
@@ -792,7 +376,7 @@
       position:absolute; right:10px; bottom:10px;
       background:#e11d48;
       color:#fff;
-      font-weight:1000;
+      font-weight:1100;
       font-size:12px;
       padding:6px 10px;
       border-radius:10px;
@@ -841,7 +425,6 @@
     }
 
     .buyBar{margin-top:auto}
-    /* Botão comprar maior (igual print) */
     .buyBtn{
       display:block;
       width:100%;
@@ -857,6 +440,13 @@
     }
     .buyBtn:active{transform:scale(.99)}
 
+    /* Empty state */
+    .empty{
+      padding:18px;
+      color:var(--muted);
+      font-weight:900;
+    }
+
     footer{
       margin-top:16px;
       background:#fff;
@@ -866,454 +456,6 @@
       font-size:13px;
     }
     .note{padding:0 14px}
-    /* ===== FORÇA TEXTO DO TOPO EM BRANCO (FIX DEFINITIVO) ===== */
-header .brand-text h1,
-header .brand h1{
-  color:#ffffff !important;
-}
-
-header .brand-text p,
-header .brand p{
-  color:rgba(255,255,255,.85) !important;
-}
-  </style>
-</head>
-
-<body>
-
-<header>
-  <div class="wrap top">
-    <div class="brand">
-      <div class="logo">
-        <img src="logo.png" alt="Drogaria Rocha">
-      </div>
-      <div class="brand-text">
-        <h1>Drogaria Rocha</h1>
-        <p>fortalecendo sua saúde e seu bem estar</p>
-      </div>
-    </div>
-
-    <div class="searchBar">
-      <input id="search" placeholder="Digite o nome, a marca ou o princípio ativo…">
-    </div>
-
-    <div class="actions">
-      <a class="btn primary" id="wppTop" target="_blank">WhatsApp</a>
-    </div>
-  </div>
-
-  <div class="wrap">
-    <div class="regionBar">
-     
-    </div>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <!-- CAROUSEL -->
-  <section class="block carousel">
-    <div class="slides" id="slides"></div>
-    <div class="navBtn left" id="prevBtn">‹</div>
-    <div class="navBtn right" id="nextBtn">›</div>
-    <div class="dots" id="dots"></div>
-  </section>
-
-  <!-- CATEGORIES -->
-  <section class="block catsWrap">
-    <div class="catsTop">
-      <h3>Categorias</h3>
-      <div class="hint">Toque para filtrar</div>
-    </div>
-    <div class="cats" id="cats"></div>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section class="block section" id="offersSection">
-    <div class="sectionTop">
-      <h3 id="sectionTitle">Produtos</h3>
-      <div class="count" id="countInfo">Carregando…</div>
-    </div>
-    <div class="grid" id="grid"></div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap note">
-    <div><strong>Drogaria Rocha</strong> — preços e disponibilidade podem variar. Confirme no WhatsApp.</div>
-  </div>
-</footer>
-
-<script>
-  /* ====== LINKS DA SUA PLANILHA ====== */
-  const PRODUCTS_CSV = "https://docs.google.com/spreadsheets/d/11yg8gqQw_Np_4xm1DuqsD8x9Z4W3YxC-F2NVv_dljAk/export?format=csv&gid=0";
-  const BANNERS_CSV  = "https://docs.google.com/spreadsheets/d/11yg8gqQw_Np_4xm1DuqsD8x9Z4W3YxC-F2NVv_dljAk/export?format=csv&gid=629527432";
-
-  const WPP = "5589981485863";
-  document.getElementById("wppTop").href = "https://wa.me/" + WPP;
-
-  const CATEGORY_ORDER = [
-    "TODAS",
-    "MEDICAMENTOS",
-    "VITAMINAS",
-    "HIGIENE",
-    "BELEZA",
-    "INFANTIL",
-    "DERMOCOSMETICOS"
-  ];
-
-  let allProducts = [];
-  let filtered = [];
-  let activeCat = "TODAS";
-  let banners = [];
-  let slideIndex = 0;
-  let autoTimer = null;
-
-  /* ====== CSV helpers ====== */
-  function detectDelimiter(text){
-    const line = text.split("\n").find(l => l.trim().length);
-    if(!line) return ",";
-    const commas = (line.match(/,/g)||[]).length;
-    const semis  = (line.match(/;/g)||[]).length;
-    return semis > commas ? ";" : ",";
-  }
-
-  function parseCSV(text){
-    const d = detectDelimiter(text);
-    const rows = [];
-    let cur = "", row = [], inQuotes = false;
-
-    for(let i=0;i<text.length;i++){
-      const ch = text[i];
-      const next = text[i+1];
-
-      if(ch === '"'){
-        if(inQuotes && next === '"'){ cur += '"'; i++; }
-        else inQuotes = !inQuotes;
-        continue;
-      }
-
-      if(!inQuotes && ch === d){
-        row.push(cur); cur = ""; continue;
-      }
-
-      if(!inQuotes && (ch === "\n" || ch === "\r")){
-        if(ch === "\r" && next === "\n") i++;
-        row.push(cur);
-        if(row.some(x => String(x).trim().length)) rows.push(row);
-        row = []; cur = "";
-        continue;
-      }
-
-      cur += ch;
-    }
-
-    row.push(cur);
-    if(row.some(x => String(x).trim().length)) rows.push(row);
-
-    return rows.map(r => r.map(c => (c ?? "").trim()));
-  }
-
-  function normalizeHeader(h){
-    return String(h||"")
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g,"_")
-      .normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-  }
-
-  function toNumber(v){
-    if(v==null) return NaN;
-    const s = String(v).replace(/\s/g,'').replace(/\./g,'').replace(',', '.');
-    const n = Number(s);
-    return isFinite(n) ? n : NaN;
-  }
-
-  function brMoney(v){
-    const n = toNumber(v);
-    if(!isFinite(n)) return String(v ?? "");
-    return n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  }
-
-  function calcOff(preco, antigo){
-    const p = toNumber(preco), a = toNumber(antigo);
-    if(!isFinite(p) || !isFinite(a) || a <= p) return "";
-    return Math.round((1 - (p/a)) * 100);
-  }
-
-  function calcPix(preco, preco_pix){
-    const pix = toNumber(preco_pix);
-    if(isFinite(pix)) return pix;
-    const p = toNumber(preco);
-    if(!isFinite(p)) return NaN;
-    return +(p * 0.97).toFixed(2); // 3% off
-  }
-
-  function getParam(name){
-    const url = new URL(window.location.href);
-    return url.searchParams.get(name);
-  }
-
-  function setParamCat(cat){
-    const url = new URL(window.location.href);
-    if(cat && cat !== "TODAS") url.searchParams.set("cat", cat);
-    else url.searchParams.delete("cat");
-    history.replaceState(null, "", url.toString());
-  }
-
-  function safeText(s){
-    return String(s ?? "").replace(/[<>&"]/g, m => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[m]));
-  }
-
-  /* ====== render ====== */
-  function renderCats(availableSet){
-    const box = document.getElementById("cats");
-    box.innerHTML = "";
-
-    CATEGORY_ORDER.forEach(cat => {
-      if(cat !== "TODAS" && !availableSet.has(cat)) return;
-      const label = cat === "TODAS" ? "Todas" : cat.replace(/_/g, " ");
-      const icon = cat === "TODAS" ? "≡" : "✓";
-
-      const el = document.createElement("div");
-      el.className = "catBtn" + (cat === activeCat ? " active" : "");
-      el.innerHTML = `
-        <div class="row">
-          <div class="ico">${icon}</div>
-          <div style="flex:1">
-            <strong>${label}</strong>
-            <small>${cat === "TODAS" ? "Ver tudo" : "Filtrar"}</small>
-          </div>
-        </div>
-      `;
-      el.onclick = () => {
-        activeCat = cat;
-        setParamCat(cat);
-        applyFilters();
-
-        document.querySelectorAll(".catBtn").forEach(b => b.classList.remove("active"));
-        el.classList.add("active");
-
-        document.getElementById("offersSection").scrollIntoView({behavior:"smooth", block:"start"});
-      };
-      box.appendChild(el);
-    });
-  }
-
-  function renderProducts(list){
-    const g = document.getElementById("grid");
-    const count = document.getElementById("countInfo");
-    const title = document.getElementById("sectionTitle");
-
-    title.textContent = (activeCat === "TODAS")
-      ? "Produtos"
-      : ("Produtos • " + activeCat.replace(/_/g," "));
-
-    count.textContent = `${list.length} item(ns)`;
-
-    g.innerHTML = "";
-    list.forEach(p => {
-      const off = calcOff(p.preco, p.preco_antigo);
-      const pix = calcPix(p.preco, p.preco_pix);
-
-      const msg = (p.mensagem && p.mensagem.trim())
-        ? p.mensagem.trim()
-        : `Oi! Quero comprar: ${p.nome}. Pode confirmar disponibilidade e entrega?`;
-
-      const card = document.createElement("div");
-      card.className = "card";
-
-      card.innerHTML = `
-        <div class="img">
-          ${p.imagem ? `<img src="${safeText(p.imagem)}" alt="${safeText(p.nome)}">` : `<div class="ph">Drogaria Rocha</div>`}
-          ${off ? `<div class="off">${off}% off</div>` : ``}
-        </div>
-
-        <div class="content">
-          <div class="title">${safeText(p.nome)}</div>
-
-          <div class="chipRow">
-            <span class="chip">${safeText(p.categoria)}</span>
-            ${p.tag ? `<span class="chip">${safeText(p.tag)}</span>` : ``}
-          </div>
-
-          <div class="priceBlock">
-            ${p.preco_antigo ? `<div class="deLine">De <s>R$ ${brMoney(p.preco_antigo)}</s></div>` : ``}
-
-            <div class="porLine">
-              <span class="label">Por</span>
-              <span class="value">R$ ${brMoney(p.preco)}</span>
-            </div>
-
-            ${isFinite(pix) ? `
-              <div class="pixLine">
-                Pix R$ ${brMoney(pix)}
-                <small>(No Pix 3% de desconto)</small>
-              </div>` : ``}
-          </div>
-
-          <div class="buyBar">
-            <a class="buyBtn" target="_blank"
-               href="https://wa.me/${WPP}?text=${encodeURIComponent(msg)}">COMPRAR</a>
-          </div>
-        </div>
-      `;
-      g.appendChild(card);
-    });
-  }
-
-  function renderBanners(){
-    const slides = document.getElementById("slides");
-    const dots = document.getElementById("dots");
-    slides.innerHTML = "";
-    dots.innerHTML = "";
-
-    if(!banners.length){
-      banners = [{
-        titulo:"Ofertas da semana",
-        subtitulo:"Escolha a categoria e peça no WhatsApp.",
-        imagem:"",
-        link:"#offersSection",
-        cta:"Ver ofertas"
-      }];
-    }
-
-    banners.forEach((b, idx) => {
-      const slide = document.createElement("div");
-      slide.className = "slide";
-
-      slide.innerHTML = `
-        <a class="bannerFull" href="${safeText(b.link || "#offersSection")}">
-          ${b.imagem
-            ? `<img src="${safeText(b.imagem)}" alt="${safeText(b.titulo||'Banner')}">`
-            : `<div class="ph">Drogaria Rocha</div>`}
-
-          <div class="bannerOverlay">
-            <div class="bannerTitle">${safeText(b.titulo || "Ofertas")}</div>
-            ${b.subtitulo ? `<div class="bannerSub">${safeText(b.subtitulo)}</div>` : ``}
-            <div class="bannerCta">${safeText(b.cta || "Ver ofertas")}</div>
-          </div>
-        </a>
-      `;
-
-      slides.appendChild(slide);
-
-      const dot = document.createElement("div");
-      dot.className = "dot" + (idx === 0 ? " on" : "");
-      dot.onclick = () => goToSlide(idx);
-      dots.appendChild(dot);
-    });
-
-    goToSlide(0, true);
-    startAuto();
-  }
-
-  function goToSlide(i, instant=false){
-    slideIndex = (i + banners.length) % banners.length;
-    const slides = document.getElementById("slides");
-    if(instant) slides.style.transition = "none";
-    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-    if(instant) requestAnimationFrame(() => slides.style.transition = "transform .35s ease");
-
-    document.querySelectorAll(".dot").forEach((d, idx) => {
-      d.classList.toggle("on", idx === slideIndex);
-    });
-  }
-
-  function startAuto(){
-    if(autoTimer) clearInterval(autoTimer);
-    autoTimer = setInterval(() => goToSlide(slideIndex + 1), 6000);
-  }
-
-  function applyFilters(){
-    const q = (document.getElementById("search").value || "").toLowerCase().trim();
-
-    filtered = allProducts.filter(p => {
-      const inCat = (activeCat === "TODAS") ? true : (p.categoria === activeCat);
-      if(!inCat) return false;
-      if(!q) return true;
-
-      const hay = `${p.nome||""} ${p.categoria||""} ${p.tag||""}`.toLowerCase();
-      return hay.includes(q);
-    });
-
-    renderProducts(filtered);
-  }
-
-  /* ====== load ====== */
-  async function loadAll(){
-    const [prodText, banText] = await Promise.all([
-      fetch(PRODUCTS_CSV, {cache:"no-store"}).then(r => r.text()),
-      fetch(BANNERS_CSV,  {cache:"no-store"}).then(r => r.text())
-    ]);
-
-    // produtos
-    const pr = parseCSV(prodText);
-    const headersRaw = pr.shift() || [];
-    const headers = headersRaw.map(normalizeHeader);
-
-    allProducts = pr.map(row => {
-      const o = {};
-      headers.forEach((h, i) => o[h] = row[i] ?? "");
-      return {
-        nome: o.nome || o.produto || "",
-        categoria: (o.categoria || "").toUpperCase(),
-        preco: o.preco || "",
-        preco_antigo: o.preco_antigo || "",
-        preco_pix: o.preco_pix || "",
-        imagem: o.imagem || "",
-        tag: o.tag || "",
-        mensagem: o.mensagem || ""
-      };
-    }).filter(p => p.nome && p.categoria);
-
-    const available = new Set(allProducts.map(p => p.categoria));
-
-    const catParam = (getParam("cat") || "").toUpperCase();
-    if(catParam && available.has(catParam)) activeCat = catParam;
-
-    renderCats(available);
-
-    // banners
-    const br = parseCSV(banText);
-    const bhRaw = br.shift() || [];
-    const bh = bhRaw.map(normalizeHeader);
-
-    banners = br.map(row => {
-      const o = {};
-      bh.forEach((h,i) => o[h] = row[i] ?? "");
-      return {
-        ordem: toNumber(o.ordem),
-        titulo: o.titulo || "",
-        subtitulo: o.subtitulo || "",
-        imagem: o.imagem || "",
-        link: o.link || "#offersSection",
-        cta: o.cta || "Ver ofertas"
-      };
-    })
-    .filter(b => b.titulo || b.imagem)
-    .sort((a,b) => (a.ordem||999) - (b.ordem||999));
-
-    renderBanners();
-
-    document.getElementById("search").addEventListener("input", () => applyFilters());
-
-    applyFilters();
-  }
-
-  document.getElementById("prevBtn").onclick = () => { goToSlide(slideIndex - 1); startAuto(); };
-  document.getElementById("nextBtn").onclick = () => { goToSlide(slideIndex + 1); startAuto(); };
-
-  loadAll().catch(err => {
-    console.error(err);
-    document.getElementById("countInfo").textContent = "Erro ao carregar a planilha. Verifique se está pública.";
-  });
-</script>
-
-</body>
-</html>
-```0
   </style>
 </head>
 
@@ -1360,23 +502,17 @@ header .brand p{
     <div class="dots" id="dots"></div>
   </section>
 
-  <!-- CATEGORIES -->
+  <!-- CATEGORIES (atalhos) -->
   <section class="block catsWrap">
     <div class="catsTop">
       <h3>Categorias</h3>
-      <div class="hint">Toque para filtrar</div>
+      <div class="hint">Toque para ir direto</div>
     </div>
     <div class="cats" id="cats"></div>
   </section>
 
-  <!-- PRODUCTS -->
-  <section class="block section" id="offersSection">
-    <div class="sectionTop">
-      <h3 id="sectionTitle">Produtos</h3>
-      <div class="count" id="countInfo">Carregando…</div>
-    </div>
-    <div class="grid" id="grid"></div>
-  </section>
+  <!-- CATEGORY SECTIONS -->
+  <div id="categorySections"></div>
 
 </main>
 
@@ -1391,11 +527,12 @@ header .brand p{
   const PRODUCTS_CSV = "https://docs.google.com/spreadsheets/d/11yg8gqQw_Np_4xm1DuqsD8x9Z4W3YxC-F2NVv_dljAk/export?format=csv&gid=0";
   const BANNERS_CSV  = "https://docs.google.com/spreadsheets/d/11yg8gqQw_Np_4xm1DuqsD8x9Z4W3YxC-F2NVv_dljAk/export?format=csv&gid=629527432";
 
+  /* WhatsApp */
   const WPP = "5589981485863";
   document.getElementById("wppTop").href = "https://wa.me/" + WPP;
 
+  /* Categorias (ordem fixa) */
   const CATEGORY_ORDER = [
-    "TODAS",
     "MEDICAMENTOS",
     "VITAMINAS",
     "HIGIENE",
@@ -1404,14 +541,18 @@ header .brand p{
     "DERMOCOSMETICOS"
   ];
 
+  const PER_CATEGORY_LIMIT = 6;
+
   let allProducts = [];
-  let filtered = [];
-  let activeCat = "TODAS";
   let banners = [];
+
   let slideIndex = 0;
   let autoTimer = null;
 
-  /* ====== CSV helpers ====== */
+  // categorias expandidas
+  const expanded = new Set();
+
+  /* ===== CSV helpers ===== */
   function detectDelimiter(text){
     const line = text.split("\n").find(l => l.trim().length);
     if(!line) return ",";
@@ -1477,6 +618,10 @@ header .brand p{
     return n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
+  function safeText(s){
+    return String(s ?? "").replace(/[<>&"]/g, m => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[m]));
+  }
+
   function calcOff(preco, antigo){
     const p = toNumber(preco), a = toNumber(antigo);
     if(!isFinite(p) || !isFinite(a) || a <= p) return "";
@@ -1491,81 +636,117 @@ header .brand p{
     return +(p * 0.97).toFixed(2); // 3% off
   }
 
-  function getParam(name){
-    const url = new URL(window.location.href);
-    return url.searchParams.get(name);
+  function getSearchQuery(){
+    return (document.getElementById("search").value || "").toLowerCase().trim();
   }
 
-  function setParamCat(cat){
-    const url = new URL(window.location.href);
-    if(cat && cat !== "TODAS") url.searchParams.set("cat", cat);
-    else url.searchParams.delete("cat");
-    history.replaceState(null, "", url.toString());
+  function matchesQuery(p, q){
+    if(!q) return true;
+    const hay = `${p.nome||""} ${p.categoria||""} ${p.tag||""}`.toLowerCase();
+    return hay.includes(q);
   }
 
-  function safeText(s){
-    return String(s ?? "").replace(/[<>&"]/g, m => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[m]));
+  /* ===== Banners ===== */
+  function renderBanners(){
+    const slides = document.getElementById("slides");
+    const dots = document.getElementById("dots");
+    slides.innerHTML = "";
+    dots.innerHTML = "";
+
+    if(!banners.length){
+      banners = [{
+        titulo:"Ofertas da Semana",
+        subtitulo:"Escolha a categoria e peça no WhatsApp.",
+        imagem:"",
+        link:"#",
+        cta:"Ver categorias"
+      }];
+    }
+
+    banners.forEach((b, idx) => {
+      const slide = document.createElement("div");
+      slide.className = "slide";
+
+      slide.innerHTML = `
+        <a class="bannerFull" href="${safeText(b.link || "#")}">
+          ${b.imagem
+            ? `<img src="${safeText(b.imagem)}" alt="${safeText(b.titulo||'Banner')}">`
+            : `<div class="ph">Drogaria Rocha</div>`}
+
+          <div class="bannerOverlay">
+            <div class="bannerTitle">${safeText(b.titulo || "Ofertas")}</div>
+            ${b.subtitulo ? `<div class="bannerSub">${safeText(b.subtitulo)}</div>` : ``}
+            <div class="bannerCta">${safeText(b.cta || "Ver mais")}</div>
+          </div>
+        </a>
+      `;
+      slides.appendChild(slide);
+
+      const dot = document.createElement("div");
+      dot.className = "dot" + (idx === 0 ? " on" : "");
+      dot.onclick = () => goToSlide(idx);
+      dots.appendChild(dot);
+    });
+
+    goToSlide(0, true);
+    startAuto();
   }
 
-  /* ====== render ====== */
-  function renderCats(availableSet){
+  function goToSlide(i, instant=false){
+    slideIndex = (i + banners.length) % banners.length;
+    const slides = document.getElementById("slides");
+    if(instant) slides.style.transition = "none";
+    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+    if(instant) requestAnimationFrame(() => slides.style.transition = "transform .35s ease");
+
+    document.querySelectorAll(".dot").forEach((d, idx) => {
+      d.classList.toggle("on", idx === slideIndex);
+    });
+  }
+
+  function startAuto(){
+    if(autoTimer) clearInterval(autoTimer);
+    autoTimer = setInterval(() => goToSlide(slideIndex + 1), 6000);
+  }
+
+  /* ===== Categories (atalhos) ===== */
+  function renderCatShortcuts(availableSet){
     const box = document.getElementById("cats");
     box.innerHTML = "";
 
     CATEGORY_ORDER.forEach(cat => {
-      if(cat !== "TODAS" && !availableSet.has(cat)) return;
-      const label = cat === "TODAS" ? "Todas" : cat.replace(/_/g, " ");
-      const icon = cat === "TODAS" ? "≡" : "✓";
+      if(!availableSet.has(cat)) return;
 
       const el = document.createElement("div");
-      el.className = "catBtn" + (cat === activeCat ? " active" : "");
+      el.className = "catBtn";
       el.innerHTML = `
         <div class="row">
-          <div class="ico">${icon}</div>
+          <div class="ico">✓</div>
           <div style="flex:1">
-            <strong>${label}</strong>
-            <small>${cat === "TODAS" ? "Ver tudo" : "Filtrar"}</small>
+            <strong>${cat.replace(/_/g," ")}</strong>
+            <small>Ir para seção</small>
           </div>
         </div>
       `;
       el.onclick = () => {
-        activeCat = cat;
-        setParamCat(cat);
-        applyFilters();
-
-        document.querySelectorAll(".catBtn").forEach(b => b.classList.remove("active"));
-        el.classList.add("active");
-
-        document.getElementById("offersSection").scrollIntoView({behavior:"smooth", block:"start"});
+        const target = document.getElementById("sec_" + cat);
+        if(target) target.scrollIntoView({behavior:"smooth", block:"start"});
       };
       box.appendChild(el);
     });
   }
 
-  function renderProducts(list){
-    const g = document.getElementById("grid");
-    const count = document.getElementById("countInfo");
-    const title = document.getElementById("sectionTitle");
+  /* ===== Cards ===== */
+  function productCardHTML(p){
+    const off = calcOff(p.preco, p.preco_antigo);
+    const pix = calcPix(p.preco, p.preco_pix);
 
-    title.textContent = (activeCat === "TODAS")
-      ? "Produtos"
-      : ("Produtos • " + activeCat.replace(/_/g," "));
+    const msg = (p.mensagem && p.mensagem.trim())
+      ? p.mensagem.trim()
+      : `Oi! Quero comprar: ${p.nome}. Pode confirmar disponibilidade e entrega?`;
 
-    count.textContent = `${list.length} item(ns)`;
-
-    g.innerHTML = "";
-    list.forEach(p => {
-      const off = calcOff(p.preco, p.preco_antigo);
-      const pix = calcPix(p.preco, p.preco_pix);
-
-      const msg = (p.mensagem && p.mensagem.trim())
-        ? p.mensagem.trim()
-        : `Oi! Quero comprar: ${p.nome}. Pode confirmar disponibilidade e entrega?`;
-
-      const card = document.createElement("div");
-      card.className = "card";
-
-      card.innerHTML = `
+    return `
+      <div class="card">
         <div class="img">
           ${p.imagem ? `<img src="${safeText(p.imagem)}" alt="${safeText(p.nome)}">` : `<div class="ph">Drogaria Rocha</div>`}
           ${off ? `<div class="off">${off}% off</div>` : ``}
@@ -1599,90 +780,84 @@ header .brand p{
                href="https://wa.me/${WPP}?text=${encodeURIComponent(msg)}">COMPRAR</a>
           </div>
         </div>
-      `;
-      g.appendChild(card);
-    });
+      </div>
+    `;
   }
 
-  function renderBanners(){
-    const slides = document.getElementById("slides");
-    const dots = document.getElementById("dots");
-    slides.innerHTML = "";
-    dots.innerHTML = "";
+  /* ===== Render: blocos por categoria (6 + ver mais) ===== */
+  function renderCategoryBlocks(){
+    const container = document.getElementById("categorySections");
+    const q = getSearchQuery();
 
-    if(!banners.length){
-      banners = [{
-        titulo:"Ofertas da semana",
-        subtitulo:"Escolha a categoria e peça no WhatsApp.",
-        imagem:"",
-        link:"#offersSection",
-        cta:"Ver ofertas"
-      }];
+    // categorias existentes
+    const available = new Set(allProducts.map(p => p.categoria));
+    renderCatShortcuts(available);
+
+    container.innerHTML = "";
+
+    let totalShownAny = 0;
+
+    CATEGORY_ORDER.forEach(cat => {
+      if(!available.has(cat)) return;
+
+      // filtra pela busca
+      const itemsAll = allProducts
+        .filter(p => p.categoria === cat)
+        .filter(p => matchesQuery(p, q));
+
+      if(itemsAll.length === 0) return;
+
+      const isExpanded = expanded.has(cat);
+      const itemsShown = isExpanded ? itemsAll : itemsAll.slice(0, PER_CATEGORY_LIMIT);
+
+      totalShownAny += itemsShown.length;
+
+      const sec = document.createElement("section");
+      sec.className = "categoryBlock";
+      sec.id = "sec_" + cat;
+
+      sec.innerHTML = `
+        <div class="categoryHeader">
+          <div>
+            <h3>${cat.replace(/_/g," ")}</h3>
+          </div>
+          <div class="meta">
+            <span>${itemsAll.length} item(ns)</span>
+            ${itemsAll.length > PER_CATEGORY_LIMIT ? `
+              <button class="miniBtn ${isExpanded ? "" : "primary"}" data-cat="${safeText(cat)}">
+                ${isExpanded ? "Ver menos" : "Ver mais"}
+              </button>
+            ` : ``}
+          </div>
+        </div>
+        <div class="categoryGrid"></div>
+      `;
+
+      const grid = sec.querySelector(".categoryGrid");
+      grid.innerHTML = itemsShown.map(productCardHTML).join("");
+
+      container.appendChild(sec);
+    });
+
+    if(totalShownAny === 0){
+      container.innerHTML = `<div class="block empty">Nenhum produto encontrado para sua busca.</div>`;
     }
 
-    banners.forEach((b, idx) => {
-      const slide = document.createElement("div");
-      slide.className = "slide";
-
-      slide.innerHTML = `
-        <a class="bannerFull" href="${safeText(b.link || "#offersSection")}">
-          ${b.imagem
-            ? `<img src="${safeText(b.imagem)}" alt="${safeText(b.titulo||'Banner')}">`
-            : `<div class="ph">Drogaria Rocha</div>`}
-
-          <div class="bannerOverlay">
-            <div class="bannerTitle">${safeText(b.titulo || "Ofertas")}</div>
-            ${b.subtitulo ? `<div class="bannerSub">${safeText(b.subtitulo)}</div>` : ``}
-            <div class="bannerCta">${safeText(b.cta || "Ver ofertas")}</div>
-          </div>
-        </a>
-      `;
-
-      slides.appendChild(slide);
-
-      const dot = document.createElement("div");
-      dot.className = "dot" + (idx === 0 ? " on" : "");
-      dot.onclick = () => goToSlide(idx);
-      dots.appendChild(dot);
-    });
-
-    goToSlide(0, true);
-    startAuto();
-  }
-
-  function goToSlide(i, instant=false){
-    slideIndex = (i + banners.length) % banners.length;
-    const slides = document.getElementById("slides");
-    if(instant) slides.style.transition = "none";
-    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-    if(instant) requestAnimationFrame(() => slides.style.transition = "transform .35s ease");
-
-    document.querySelectorAll(".dot").forEach((d, idx) => {
-      d.classList.toggle("on", idx === slideIndex);
+    // bind buttons (ver mais/ver menos)
+    container.querySelectorAll("button[data-cat]").forEach(btn => {
+      btn.onclick = () => {
+        const cat = btn.getAttribute("data-cat");
+        if(!cat) return;
+        if(expanded.has(cat)) expanded.delete(cat);
+        else expanded.add(cat);
+        renderCategoryBlocks();
+        const target = document.getElementById("sec_" + cat);
+        if(target) target.scrollIntoView({behavior:"smooth", block:"start"});
+      };
     });
   }
 
-  function startAuto(){
-    if(autoTimer) clearInterval(autoTimer);
-    autoTimer = setInterval(() => goToSlide(slideIndex + 1), 6000);
-  }
-
-  function applyFilters(){
-    const q = (document.getElementById("search").value || "").toLowerCase().trim();
-
-    filtered = allProducts.filter(p => {
-      const inCat = (activeCat === "TODAS") ? true : (p.categoria === activeCat);
-      if(!inCat) return false;
-      if(!q) return true;
-
-      const hay = `${p.nome||""} ${p.categoria||""} ${p.tag||""}`.toLowerCase();
-      return hay.includes(q);
-    });
-
-    renderProducts(filtered);
-  }
-
-  /* ====== load ====== */
+  /* ===== Load ===== */
   async function loadAll(){
     const [prodText, banText] = await Promise.all([
       fetch(PRODUCTS_CSV, {cache:"no-store"}).then(r => r.text()),
@@ -1697,24 +872,20 @@ header .brand p{
     allProducts = pr.map(row => {
       const o = {};
       headers.forEach((h, i) => o[h] = row[i] ?? "");
+
+      const categoria = (o.categoria || "").toUpperCase().trim();
+
       return {
-        nome: o.nome || o.produto || "",
-        categoria: (o.categoria || "").toUpperCase(),
-        preco: o.preco || "",
-        preco_antigo: o.preco_antigo || "",
-        preco_pix: o.preco_pix || "",
-        imagem: o.imagem || "",
-        tag: o.tag || "",
-        mensagem: o.mensagem || ""
+        nome: (o.nome || o.produto || "").trim(),
+        categoria,
+        preco: (o.preco || "").trim(),
+        preco_antigo: (o.preco_antigo || "").trim(),
+        preco_pix: (o.preco_pix || "").trim(),
+        imagem: (o.imagem || "").trim(),
+        tag: (o.tag || "").trim(),
+        mensagem: (o.mensagem || "").trim()
       };
     }).filter(p => p.nome && p.categoria);
-
-    const available = new Set(allProducts.map(p => p.categoria));
-
-    const catParam = (getParam("cat") || "").toUpperCase();
-    if(catParam && available.has(catParam)) activeCat = catParam;
-
-    renderCats(available);
 
     // banners
     const br = parseCSV(banText);
@@ -1726,36 +897,37 @@ header .brand p{
       bh.forEach((h,i) => o[h] = row[i] ?? "");
       return {
         ordem: toNumber(o.ordem),
-        titulo: o.titulo || "",
-        subtitulo: o.subtitulo || "",
-        imagem: o.imagem || "",
-        link: o.link || "#offersSection",
-        cta: o.cta || "Ver ofertas"
+        titulo: (o.titulo || "").trim(),
+        subtitulo: (o.subtitulo || "").trim(),
+        imagem: (o.imagem || "").trim(),
+        link: (o.link || "#").trim(),
+        cta: (o.cta || "Ver mais").trim()
       };
     })
     .filter(b => b.titulo || b.imagem)
     .sort((a,b) => (a.ordem||999) - (b.ordem||999));
 
     renderBanners();
+    renderCategoryBlocks();
 
-    document.getElementById("search").addEventListener("input", () => applyFilters());
-
-    applyFilters();
+    // busca
+    document.getElementById("search").addEventListener("input", () => {
+      // ao buscar, volta tudo para “compacto”
+      expanded.clear();
+      renderCategoryBlocks();
+    });
   }
 
+  // carrossel controls
   document.getElementById("prevBtn").onclick = () => { goToSlide(slideIndex - 1); startAuto(); };
   document.getElementById("nextBtn").onclick = () => { goToSlide(slideIndex + 1); startAuto(); };
 
   loadAll().catch(err => {
     console.error(err);
-    document.getElementById("countInfo").textContent = "Erro ao carregar a planilha. Verifique se está pública.";
+    const container = document.getElementById("categorySections");
+    container.innerHTML = `<div class="block empty">Erro ao carregar a planilha. Verifique se ela está pública.</div>`;
   });
 </script>
 
 </body>
 </html>
-```0
-
-
-
-
