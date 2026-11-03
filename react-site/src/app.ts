@@ -1,108 +1,97 @@
 // @ts-nocheck
-import React from "react";
-import { createRoot } from "react-dom/client";
-import "./styles.css";
-
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import './styles.css';
+/* Nova Drogaria Rocha: vitrine React original, inspirada na organização de e-commerce farmacêutico. */
 "use strict";
-const h=React.createElement, WA="5589981166747";
-const ADDRESS="Rua Raimundo Silva, 392, Centro, São Raimundo Nonato - PI, 64770-000";
-const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(ADDRESS);
-const wa=(text)=>"https://wa.me/"+WA+(text?"?text="+encodeURIComponent(text):"");
-const catalog=[
-["solar","Nivea","Protetor Solar Sun Protect & Hidrata FPS 50","125 ml","Pele","https://www.farmaciareal.com.br/uploads/farmaciareal/produtos_imagens/nive501406.jpg","Proteção solar"],
-["huggies","Huggies","Fralda Supreme Care M","80 unidades","Infantil","https://product-data.raiadrogasil.io/images/3447848.webp","Mamãe e bebê"],
-["babyshampoo","Johnson's Baby","Shampoo Baby Regular","400 ml","Infantil","https://product-data.raiadrogasil.io/images/9120880.webp","Banho do bebê"],
-["niveacreme","Nivea","Creme Hidratante Lata","56 g","Pele","https://product-data.raiadrogasil.io/images/18904514.webp","Hidratação"],
-["protex","Protex","Sabonete Líquido Erva Doce","250 ml","Higiene","https://drogariavenancio.vtexassets.com/arquivos/ids/1131611/20587_z.jpg?v=638463596570130000","Higiene"],
-["effaclar","La Roche-Posay","Gel de Limpeza Effaclar Alta Tolerância","300 g","Pele","https://www.laroche-posay.com.br/-/media/project/loreal/brand-sites/lrp/america/br/products/effaclar/2023/gel-alta-tolerencia/imagem-effaclar-alta-tolerencia-packshot-2.png","Dermocosméticos"],
-["pampers","Pampers","Fralda Confort Sec G","98 unidades","Infantil","https://img.drogasil.com.br/catalog/product/f/r/fraldas-pampers-confort-sec-g-98-unidades-513710-1.jpg?height=450&quality=85&type=resize&width=450","Mamãe e bebê"],
-["dove","Dove","Sabonete em Barra Original Cremoso","90 g","Higiene","https://dannycosmeticos.vtexassets.com/arquivos/ids/254207/sabonete-em-barra-dove-original-cremoso-90g-7898422746759-5842.jpg?v=637902993508570000","Banho"],
-["bepantol","Bepantol","Baby Creme Preventivo de Assaduras","30 g","Infantil","https://product-data.raiadrogasil.io/images/15585483.webp","Mamãe e bebê"],
-["niveadesodorante","Nivea","Desodorante Aerosol Black & White Authentic","150 ml","Higiene","https://product-data.raiadrogasil.io/images/19635681.webp","Higiene pessoal"],
-["colgate","Colgate","Creme Dental Total 12 Clean Mint","90 g","Higiene","https://static-webv8.jet.com.br/drogaosuper/produto/multifotos/hd/4016052019152015.jpg","Higiene bucal"]
+const R=React,E=React.createElement,PHONE="5589981166747";
+const wa=(s)=>"https://wa.me/"+PHONE+(s?"?text="+encodeURIComponent(s):"");
+const maps="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("Drogaria Rocha Rua Raimundo Silva 392 Centro São Raimundo Nonato PI");
+const assets="./assets/";
+const photos="https://drogariaglobo.vtexassets.com/arquivos/ids/";
+const image=(id)=>photos+id+"-300-300?width=300&height=300&aspect=true";
+const products=[
+["carmed","Carmed","Kit Carmed SOS Lábios 2x10g","Beleza","2 unidades",image("1168046")],
+["huggiesxg","Huggies","Fralda Proteção Acolchoada XG","Bebê","80 unidades",image("1149857")],
+["elmex","Elmex","Escova Sensitive Professional","Higiene","2 unidades",image("1169930")],
+["spray","Colgate","Spray Bucal Total 12","Higiene","60 ml",image("1169008")],
+["huggiesg","Huggies","Fralda Proteção Acolchoada G","Bebê","88 unidades",image("1149843")],
+["protex","Protex","Sabonete Líquido Cream","Higiene","650 ml",image("1169519")],
+["colgate","Colgate","Creme Dental Total Original Mint","Higiene","90 g",image("1170379")],
+["solar","Theraskin","Protetor Solar Facial UV-Less FPS 70","Pele","40 g",image("1188168")],
+["palmolive","Palmolive","Sabonete Líquido Luminous Oils","Higiene","650 ml",image("1170230")],
+["plenitud","Plenitud","Roupa Íntima Plus Man G/XG","Saúde","16 unidades",image("1179673")],
+["cetrilan","Cetrilan","Creme para Prevenção de Assaduras","Bebê","120 g",image("1188154")],
+["intimus","Intimus","Absorvente Noturno Suave","Beleza","24 unidades","https://drogariaglobo.vtexassets.com/arquivos/ids/1162380-300-300?v=639092832168600000&width=300&height=300&aspect=true"]
 ];
-const icons={
-plus:"M12 5v14M5 12h14",search:"M21 21l-4.4-4.4M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16",bag:"M6 8h12l1 13H5L6 8ZM9 8V5a3 3 0 0 1 6 0v3",arrow:"M5 12h14m-6-6 6 6-6 6",back:"M19 12H5m6 6-6-6 6-6",message:"M20 11a8 8 0 0 1-8 8 9 9 0 0 1-4-.9L3 20l1.9-5A8 8 0 1 1 20 11Z",map:"M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 0 1 16 0Zm-8 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6",clock:"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 4v5l4 2",baby:"M12 2a10 10 0 0 0-6 18M12 2a10 10 0 0 1 6 18M8 12h.01M16 12h.01M9 16c2 2 4 2 6 0",heart:"M20 4c-2-2-5-2-8 1-3-3-6-3-8-1s-2 5 0 8l8 8 8-8c2-3 2-6 0-8Z",sun:"M12 2v2M12 20v2M4 12H2m20 0h-2M5 5l2 2m12 12-2-2M19 5l-2 2M5 19l2-2M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10",drop:"M12 22a8 8 0 0 0 8-8c0-4-8-12-8-12S4 10 4 14a8 8 0 0 0 8 8",pill:"M10 3a7 7 0 0 1 10 10l-7 7A7 7 0 0 1 3 10l7-7ZM6 16 16 6",gift:"M20 12v9H4v-9M2 7h20v5H2V7Zm10 0v14M12 7S6 6 6 3s6-2 6 4Zm0 0s6-1 6-4-6-2-6 4Z",phone:"M22 17v3a2 2 0 0 1-2 2C10 21 3 14 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2l.5 2.5L7 9a16 16 0 0 0 8 8l2.5-2.5L20 15a2 2 0 0 1 2 2",shield:"M12 22s9-4 9-10V5l-9-3-9 3v7c0 6 9 10 9 10ZM8 12l3 3 5-6",x:"M18 6 6 18M6 6l12 12",menu:"M3 6h18M3 12h18M3 18h18",store:"M3 10l2-6h14l2 6v2H3v-2Zm2 2v8h14v-8M9 20v-6h6v6"
-};
-const Icon=({name,size=20})=>h("svg",{className:"icon",width:size,height:size,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:1.8,strokeLinecap:"round",strokeLinejoin:"round","aria-hidden":"true"},h("path",{d:icons[name]||icons.shield}));
-function Photo({src,alt}){
- const [failed,setFailed]=React.useState(false);
- return failed?h("div",{className:"image-failed"},h(Icon,{name:"bag",size:25}),h("span",null,alt)):h("img",{src,alt,loading:"lazy",decoding:"async",onError:()=>setFailed(true)});
-}
-const Logo=()=>h("a",{href:"#inicio",className:"logo","aria-label":"Drogaria Rocha"},h("span",{className:"logo-mark official-logo"},h("img",{src:"./assets/logo-rocha.webp",alt:"Logomarca oficial da Drogaria Rocha"})),h("span",{className:"logo-type"},"DROGARIA",h("b",null,"ROCHA."),h("small",null,"Fortalecendo sua saúde e seu bem estar")));
-const groups=[
-["Todos","store","Todos"],["Higiene e beleza","drop","Higiene"],["Cuidados com a pele","sun","Pele"],["Mamãe e bebê","baby","Infantil"],["Vitaminas","heart","Vitaminas"],["Medicamentos","pill","Medicamentos"]
+const icons={search:"M21 21l-4-4m1-6a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z",bag:"M5 8h14l-1 13H6L5 8ZM9 8V5a3 3 0 0 1 6 0v3",plus:"M12 5v14M5 12h14",arrow:"M5 12h14m-6-6 6 6-6 6",back:"M19 12H5m6 6-6-6 6-6",x:"M18 6 6 18M6 6l12 12",map:"M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 0 1 16 0Zm-8 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6",phone:"M22 16.5V20a2 2 0 0 1-2 2C10 21 3 14 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2l1 3-3 2a15 15 0 0 0 8 8l2-3 3 1a2 2 0 0 1 2 1.5",heart:"M20 4a5 5 0 0 0-8 0 5 5 0 0 0-8 0c-2 3-1 6 2 9l6 7 6-7c3-3 4-6 2-9",clock:"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 4v5l4 2",sun:"M12 2v2m0 16v2M4 12H2m20 0h-2M5 5l2 2m12 12-2-2M19 5l-2 2M5 19l2-2M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10",drop:"M12 22a8 8 0 0 0 8-8c0-4-8-12-8-12S4 10 4 14a8 8 0 0 0 8 8",baby:"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM8 12h.01M16 12h.01M9 16c2 2 4 2 6 0",pill:"M10 3a7 7 0 0 1 10 10l-7 7A7 7 0 0 1 3 10l7-7ZM6 16 16 6",gift:"M20 12v9H4v-9M2 7h20v5H2V7Zm10 0v14M12 7S6 6 6 3s6-2 6 4Zm0 0s6-1 6-4-6-2-6 4Z",store:"M3 10l2-6h14l2 6v2H3v-2Zm2 2v8h14v-8M9 20v-6h6v6",shield:"M12 22s9-4 9-10V5l-9-3-9 3v7c0 6 9 10 9 10M8 12l3 3 5-6",menu:"M3 6h18M3 12h18M3 18h18",message:"M21 11a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4.2-1L3 21l2-5.2A8.5 8.5 0 1 1 21 11"};
+const I=({n,s=20})=>E("svg",{className:"ico",width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:1.8,strokeLinecap:"round",strokeLinejoin:"round","aria-hidden":"true"},E("path",{d:icons[n]||icons.heart}));
+const categories=[["Medicamentos","pill","Medicamentos"],["Higiene e beleza","drop","Higiene"],["Dermocosméticos","sun","Pele"],["Mamãe e bebê","baby","Bebê"],["Saúde e bem-estar","heart","Saúde"],["Promoções","gift","Promoções"]];
+const slides=[
+{eyebrow:"SEU BEM-ESTAR É NOSSA PRIORIDADE",title:"Fortalecendo sua saúde",mark:"e seu bem estar.",desc:"A Drogaria Rocha está mais perto de você, também no digital.",button:"Explorar produtos",filter:"Todos",style:"orange",img:"banner-produtos.webp"},
+{eyebrow:"CUIDADOS PARA TODOS OS DIAS",title:"Tudo para sua",mark:"rotina de cuidado.",desc:"Uma seleção de produtos de higiene, beleza e bem-estar.",button:"Ver produtos",filter:"Higiene",style:"cream",sprite:2},
+{eyebrow:"NOVIDADES E ATENDIMENTO",title:"Sua drogaria.",mark:"Do seu jeito.",desc:"Escolha produtos e consulte preços com a nossa equipe pelo WhatsApp.",button:"Montar minha lista",filter:"Todos",style:"dark",sprite:1}
 ];
-function Product({p,add}){
- return h("article",{className:"product",key:p[0]},h("div",{className:"product-photo"},h("span",{className:"tag"},p[6]),h(Photo,{src:p[5],alt:"Embalagem de "+p[1]+" "+p[2]})),
- h("div",{className:"product-details"},h("span",{className:"product-brand"},p[1]),h("h3",null,p[2]),h("div",{className:"pack-info"},p[3]),h("div",{className:"status"},h("small",null,"Preço e disponibilidade"),"Sob consulta"),h("button",{className:"add",type:"button",onClick:()=>add(p[0])},h(Icon,{name:"plus",size:15}),"Adicionar à lista")));
-}
+function Logo(){return E("a",{href:"#inicio",className:"brand","aria-label":"Drogaria Rocha, início"},E("img",{src:assets+"logo-rocha.webp",alt:"Logomarca oficial da Drogaria Rocha"}),E("span",null,E("strong",null,"DROGARIA ",E("b",null,"ROCHA")),E("small",null,"Fortalecendo sua saúde e seu bem estar.")))}
+function Photo({p}){const[broken,setBroken]=R.useState(false);return broken?E("span",{className:"fallback"},E(I,{n:"bag",s:29}),p[1]):E("img",{src:p[5],alt:"Embalagem de "+p[2],loading:"lazy",decoding:"async",onError:()=>setBroken(true)})}
+function ProductCard({p,add}){return E("article",{className:"product-card"},E("div",{className:"product-visual"},E("span",{className:"chip-label"},"Consulte"),E(Photo,{p})),E("div",{className:"product-copy"},E("span",{className:"prod-brand"},p[1]),E("h3",null,p[2]),E("small",{className:"product-size"},p[4]),E("div",{className:"status-price"},"Preço sob consulta"),E("button",{type:"button",className:"add",onClick:()=>add(p[0])},E(I,{n:"plus",s:15}),"Adicionar à lista")))}
+function Shelf({title,sub,arr,add,onAll,id}){return E("section",{className:"shelf",id},E("div",{className:"section-head"},E("div",null,E("span",{className:"section-eyebrow"},"VITRINE DROGARIA ROCHA"),E("h2",null,title),E("p",null,sub)),E("button",{className:"see-all",onClick:onAll},"Ver todos",E(I,{n:"arrow",s:17}))),E("div",{className:"product-grid"},...arr.map(p=>E(ProductCard,{key:p[0],p,add}))))}
+function Sprite({index,className=""}){return E("span",{className:"sprite "+className,style:{backgroundPosition:"center "+(index*100/6)+"%"},"aria-hidden":"true"})}
 function App(){
- const [slide,setSlide]=React.useState(0),[cat,setCat]=React.useState("Todos"),[query,setQuery]=React.useState(""),[open,setOpen]=React.useState(false),[toast,setToast]=React.useState("");
- const [cart,setCart]=React.useState(()=>{try{const a=JSON.parse(localStorage.getItem("rocha-nova-cart")||"{}");return a&&typeof a==="object"&&!Array.isArray(a)?a:{}}catch(e){return {}}});
- const total=Object.values(cart).reduce((n,x)=>n+Number(x||0),0);
- React.useEffect(()=>{try{localStorage.setItem("rocha-nova-cart",JSON.stringify(cart))}catch(e){}},[cart]);
- React.useEffect(()=>{const i=setInterval(()=>{if(!document.hidden)setSlide(x=>(x+1)%3)},5000);return()=>clearInterval(i)},[]);
- React.useEffect(()=>{const key=e=>{if(e.key==="Escape")setOpen(false)};document.addEventListener("keydown",key);return()=>document.removeEventListener("keydown",key)},[]);
- React.useEffect(()=>{document.body.style.overflow=open?"hidden":"";return()=>{document.body.style.overflow=""}},[open]);
- React.useEffect(()=>{if(!toast)return;const t=setTimeout(()=>setToast(""),2300);return()=>clearTimeout(t)},[toast]);
- const norm=x=>x.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
- const shown=catalog.filter(p=>(cat==="Todos"||p[4]===cat)&&(!query||norm(p[1]+" "+p[2]+" "+p[3]).includes(norm(query))));
- const navTo=(c)=>{setCat(c);setQuery("");document.getElementById("produtos")?.scrollIntoView({behavior:"smooth"})};
- const add=(id)=>{setCart(old=>Object.assign({},old,{[id]:Math.min(99,(Number(old[id])||0)+1)}));setToast("Produto adicionado à lista")};
- const change=(id,n)=>setCart(old=>{const a=Object.assign({},old);a[id]=Math.max(0,Math.min(99,(Number(a[id])||0)+n));if(!a[id])delete a[id];return a});
- const send=()=>{const lines=Object.keys(cart).filter(k=>cart[k]>0).map(k=>{const p=catalog.find(x=>x[0]===k);return p?(cart[k]+"x "+p[1]+" "+p[2]+" — "+p[3]):null}).filter(Boolean);if(!lines.length)return;window.open(wa("Olá, Drogaria Rocha! Gostaria de consultar preço e disponibilidade:\n\n• "+lines.join("\n• ")+"\n\nAguardo confirmação, obrigado(a)!"),"_blank","noopener")};
- const form=()=>h("form",{className:"search",role:"search",onSubmit:e=>{e.preventDefault();document.getElementById("produtos")?.scrollIntoView({behavior:"smooth"})}},h("span",{className:"search-icon"},h(Icon,{name:"search"})),h("input",{type:"search","aria-label":"Pesquisar produtos",value:query,placeholder:"O que você procura hoje?",onChange:e=>setQuery(e.target.value)}),h("button",{type:"submit"},"Buscar"));
- const slides=[
- ["DROGARIA ROCHA • SUA SAÚDE EM PRIMEIRO LUGAR","Fortalecendo sua saúde","e seu bem estar.","Uma drogaria perto de você, com cuidado e atenção à sua família.","Ver produtos","Todos","slide-brands",0,"Seleção de produtos da Drogaria Rocha"],
- ["CUIDADOS PESSOAIS","Cuidados para","seu dia a dia.","Conheça nossa vitrine de higiene e cuidados pessoais.","Ver higiene e beleza","Higiene","slide-cream",2,"Gel fixador Bozzano"],
- ["CONSULTE NOSSAS CAMPANHAS","Ofertas e novidades","para você.","Confira com nossa equipe quais promoções estão disponíveis na loja.","Consultar ofertas","Ofertas","slide-orange",1,"Arte de oferta especial"]
- ];
- const campaigns=[
-  {name:"Bozzano",type:"Higiene e beleza",desc:"Linha de cuidados masculinos. Consulte apresentações e disponibilidade.",frame:2,message:"Olá! Quero consultar a linha Bozzano."},
-  {name:"Flanax XR",type:"Informações sobre medicamentos",desc:"Material publicitário do fabricante. Consulte o farmacêutico.",frame:3,message:"Olá! Gostaria de informações sobre Flanax XR."},
-  {name:"Novalgina Flash",type:"Informações sobre medicamentos",desc:"Material do fabricante. Procure orientação profissional para o uso.",frame:5,message:"Olá! Gostaria de informações sobre Novalgina Flash."},
-  {name:"Centrum Gender",type:"Material promocional",desc:"O valor que aparece na arte não foi confirmado pela Drogaria Rocha.",frame:4,flag:"Preço não confirmado",message:"Olá! Quais são os preços atuais de Centrum Gender?"},
-  {name:"Neo Química — Vale por Dois",type:"Campanha anterior",desc:"O material enviado indica encerramento em 31 de outubro de 2026.",frame:6,flag:"Campanha encerrada",closed:true},
-  {name:"Oferta especial",type:"Consulte as condições",desc:"Pergunte à nossa equipe quais ofertas estão disponíveis hoje.",frame:1,message:"Olá! Quais ofertas estão disponíveis na Drogaria Rocha?"}
- ];
- let touchX=0;
- return h(React.Fragment,null,
-  h("div",{className:"micro"},h("div",{className:"container"},h("strong",null,"DROGARIA ROCHA • SÃO RAIMUNDO NONATO - PI"),h("span",{className:"micro-right"},"Fortalecendo sua saúde e seu bem estar",h("i",null,"•"),h("a",{href:"tel:+5589981166747"},"(89) 98116-6747")))),
-  h("header",{className:"header"},h("div",{className:"container header-main"},h(Logo),form(),h("div",{className:"header-actions"},h("a",{className:"contact",href:wa(),target:"_blank",rel:"noopener noreferrer"},h(Icon,{name:"message"}),h("span",null,"Fale com a equipe",h("small",null,"Atendimento WhatsApp"))),h("button",{className:"cart-trigger",onClick:()=>setOpen(true)},h(Icon,{name:"bag"}),h("span",null,"Minha lista"),h("span",{className:"counter"},total))))),
-  h("nav",{className:"nav"},h("div",{className:"container nav-scroll"},h("button",{className:"nav-link featured",onClick:()=>document.getElementById("categorias")?.scrollIntoView({behavior:"smooth"})},h(Icon,{name:"menu",size:16}),"Categorias"),...groups.slice(1).map(g=>h("button",{className:"nav-link",key:g[2],onClick:()=>navTo(g[2])},g[0])),h("a",{href:"#localizacao",className:"nav-end"},"Nossa loja"))),
-  h("main",{id:"inicio"},h("div",{className:"container"},h("div",{className:"crumb"},"Início",h("span",null,"/"),h("b",null,"Drogaria Rocha")),
-  h("div",{className:"hero",role:"region","aria-roledescription":"carrossel","aria-label":"Campanhas da Drogaria Rocha",onTouchStart:e=>{touchX=e.changedTouches[0].clientX},onTouchEnd:e=>{const dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>55)setSlide(v=>(v+(dx<0?1:2))%3)}},
-    h("div",{className:"hero-track"},...slides.map((item,i)=>h("section",{key:i,className:"slide "+item[6]+(slide===i?" active":""),"aria-hidden":slide!==i,inert:slide!==i},
-      h("div",{className:"slide-copy"},h("div",{className:"slide-label"},item[0]),h(i===0?"h1":"h2",{className:"slide-title"},item[1],h("strong",null,item[2])),h("p",{className:"slide-desc"},item[3]),h("button",{className:"hero-btn",onClick:()=>item[5]==="Ofertas"?window.open(wa("Olá, gostaria de conhecer as ofertas disponíveis na Drogaria Rocha."),"_blank","noopener"):navTo(item[5])},item[4],h(Icon,{name:"arrow",size:15}))),
-      i===0?h("div",{className:"hero-art hero-art-brands"},h("img",{className:"brand-montage",src:"./assets/banner-produtos.webp",alt:item[8]})):
-        h("div",{className:"hero-art campaign-visual"},h("div",{className:"campaign-sprite-art",style:{backgroundPosition:"center "+(item[7]*100/6)+"%"},role:"img","aria-label":item[8]}))
-    ))),
-    h("div",{className:"hero-bottom"},h("div",{className:"hero-dots"},...slides.map((s,i)=>h("button",{key:i,type:"button",className:"dot-btn"+(slide===i?" selected":""),"aria-label":"Ir para o banner "+(i+1),"aria-current":slide===i?"true":undefined,onClick:()=>setSlide(i)},h("span",null)))),h("div",{className:"hero-arrows"},h("button",{onClick:()=>setSlide(x=>(x+2)%3),"aria-label":"Banner anterior"},h(Icon,{name:"back",size:14})),h("small",null,String(slide+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0")),h("button",{onClick:()=>setSlide(x=>(x+1)%3),"aria-label":"Próximo banner"},h(Icon,{name:"arrow",size:14}))))),
-  h("div",{className:"trust"},...[["store","Nossa loja","No Centro da cidade"],["message","Atendimento","Consulte no WhatsApp"],["bag","Monte sua lista","Vários produtos de uma vez"],["shield","Sem surpresas","Preço sob consulta"]].map(x=>h("div",{className:"trust-item",key:x[1]},h(Icon,{name:x[0],size:24}),h("span",null,h("b",null,x[1]),h("small",null,x[2]))))),
-  h("section",{className:"section",id:"categorias"},h("div",{className:"section-header"},h("div",null,h("span",{className:"label"},"COMPRAR POR CATEGORIA"),h("h2",null,"O que você procura hoje?"))),h("div",{className:"categories"},...groups.map(g=>h("button",{className:"category",key:g[2],onClick:()=>navTo(g[2])},h("span",{className:"category-icon"},h(Icon,{name:g[1],size:23})),h("b",null,g[0]))))))),
-  h("section",{className:"catalog-area",id:"produtos"},h("div",{className:"container"},h("div",{className:"catalog-head"},h("div",null,h("span",{style:{fontSize:10,color:"#d95908",letterSpacing:2,fontWeight:800}},"VITRINE DA ROCHA"),h("h2",null,"Produtos para a sua rotina"),h("p",null,"Consulte preços e disponibilidade com a equipe da Drogaria Rocha."))),h("div",{className:"catalog-controls"},...groups.map(g=>h("button",{key:g[2],className:cat===g[2]?"active":"",onClick:()=>{setCat(g[2]);setQuery("")}},g[0]))),
-  h("div",{className:"product-grid"},shown.length?shown.map(p=>h(Product,{key:p[0],p,add})):h("div",{className:"empty"},h("b",null,query?"Nenhum produto encontrado na vitrine.":"Ainda não cadastramos produtos dessa categoria na vitrine."),h("span",null,"Você pode perguntar diretamente ao nosso atendimento."),h("br"),h("a",{href:wa("Olá! Gostaria de consultar produtos na Drogaria Rocha."),target:"_blank",rel:"noopener noreferrer"},"Consultar no WhatsApp →"))),
-  h("p",{className:"note"},"Imagens ilustrativas das embalagens reais. Produtos, preço e estoque sujeitos à confirmação. Esta página não realiza vendas online."),
-  h("div",{className:"quote-strip"},h("div",null,h("h3",null,"Encontrou o que procura?"),h("p",null,"Adicione produtos à lista e envie sua consulta em uma só mensagem.")),h("button",{onClick:()=>setOpen(true)},"Ver minha lista (",total,") →")))),
-  h("div",{className:"container"},
-   h("section",{className:"campaign-section",id:"campanhas"},
-    h("div",{className:"section-header"},h("div",null,h("span",{className:"label"},"CAMPANHAS E NOVIDADES"),h("h2",null,"Marcas em destaque"),h("p",null,"Materiais das marcas para você conhecer. Consulte condições, preços e disponibilidade na loja."))),
-    h("div",{className:"campaign-grid"},...campaigns.map((c,i)=>h("article",{className:"campaign-card"+(c.closed?" is-closed":""),key:c.name},
-      h("div",{className:"campaign-copy"},h("span",{className:"campaign-type"},c.type),h("h3",null,c.name),h("p",null,c.desc),
-        c.closed?h("span",{className:"campaign-closed"},"Não é promoção vigente"):
-        h("button",{type:"button",onClick:()=>window.open(wa(c.message),"_blank","noopener")},"Consultar na loja ",h(Icon,{name:"arrow",size:14}))),
-      h("div",{className:"campaign-sprite-art campaign-card-art",role:"img","aria-label":"Material visual enviado: "+c.name,style:{backgroundPosition:"center "+(c.frame*100/6)+"%"}}),
-      c.flag?h("span",{className:"campaign-flag"+(c.closed?" expired":"")},c.flag):null
-    ))),
-    h("p",{className:"campaign-disclaimer"},"A Drogaria Rocha não confirmou os preços impressos nas artes. A campanha Neo Química Vale por Dois terminou em outubro de 2026 e não está anunciada como vigente. Materiais sobre medicamentos não substituem orientação farmacêutica.")
-   ),
-   h("section",{className:"about",id:"localizacao"},h("div",{className:"about-panel"},h("div",{className:"label"},"DROGARIA ROCHA • SÃO RAIMUNDO NONATO"),h("h2",null,"A sua drogaria está pertinho."),h("p",null,"Consulte a nossa equipe pelo WhatsApp e encontre a Drogaria Rocha no Centro de São Raimundo Nonato."),h("div",{className:"details"},h("span",null,h(Icon,{name:"map",size:18}),"Rua Raimundo Silva, 392 — Centro"),h("span",null,h(Icon,{name:"phone",size:18}),"(89) 98116-6747"),h("span",null,h(Icon,{name:"clock",size:18}),"Seg. a sex. 7h–21h • Sáb. 7h–18h")),h("div",{className:"buttons"},h("a",{href:mapUrl,target:"_blank",rel:"noopener noreferrer"},"Como chegar"),h("a",{href:wa(),className:"outline",target:"_blank",rel:"noopener noreferrer"},"WhatsApp"))),
-  h("div",{className:"about-map"},h("iframe",{title:"Localização Drogaria Rocha",src:"https://www.google.com/maps?q="+encodeURIComponent(ADDRESS)+"&output=embed",loading:"lazy",referrerPolicy:"no-referrer-when-downgrade"})))),
-  h("footer",{className:"footer"},h("div",{className:"container"},h("div",{className:"footer-cols"},h("div",null,h(Logo),h("p",null,"Fortalecendo sua saúde e seu bem estar. Sua drogaria em São Raimundo Nonato, agora com uma vitrine digital.")),h("div",null,h("h4",null,"Navegação"),h("nav",null,h("a",{href:"#inicio"},"Início"),h("a",{href:"#categorias"},"Categorias"),h("a",{href:"#produtos"},"Produtos"),h("a",{href:"#localizacao"},"Nossa loja"))),h("div",null,h("h4",null,"Atendimento"),h("nav",null,h("a",{href:wa(),target:"_blank",rel:"noopener noreferrer"},"WhatsApp: (89) 98116-6747"),h("a",{href:mapUrl,target:"_blank",rel:"noopener noreferrer"},"Rua Raimundo Silva, 392 — Centro")))),h("div",{className:"footer-legal"},h("span",null,"© "+new Date().getFullYear()+" Drogaria Rocha. Todos os direitos reservados."),h("span",null,"Vitrine informativa. Não realiza compras, pagamentos ou reservas online.")))),
-  h("a",{className:"float-chat",href:wa(),target:"_blank",rel:"noopener noreferrer","aria-label":"Falar pelo WhatsApp"},h(Icon,{name:"message",size:26})),
-  open?h("div",{className:"overlay",onClick:()=>setOpen(false)},h("aside",{className:"drawer",role:"dialog","aria-modal":"true","aria-label":"Minha lista de consulta",onClick:e=>e.stopPropagation()},h("div",{className:"drawer-top"},h("div",null,h("h2",null,"Minha lista de consulta"),h("small",null,total+" produto(s) • sem compromisso")),h("button",{className:"drawer-close",onClick:()=>setOpen(false),"aria-label":"Fechar lista"},h(Icon,{name:"x",size:17}))),h("div",{className:"drawer-items"},total?Object.keys(cart).filter(id=>cart[id]>0).map(id=>{const p=catalog.find(x=>x[0]===id);return p?h("div",{className:"cart-row",key:id},h(Photo,{src:p[5],alt:p[1]}),h("div",{className:"info"},h("b",null,p[1]+" "+p[2]),h("small",null,p[3])),h("div",{className:"qty"},h("button",{onClick:()=>change(id,-1),"aria-label":"Remover uma unidade"},"−"),h("span",null,cart[id]),h("button",{onClick:()=>change(id,1),"aria-label":"Adicionar uma unidade"},"+"))):null}):h("div",{className:"drawer-empty"},h(Icon,{name:"bag",size:32}),h("b",null,"Sua lista está vazia"),h("p",null,"Adicione produtos para enviar uma consulta."))),h("div",{className:"drawer-footer"},h("p",null,"O WhatsApp será aberto com sua lista. A loja confirmará preço e disponibilidade."),h("button",{disabled:!total,onClick:send},h(Icon,{name:"message",size:18}),"Consultar pelo WhatsApp")))):null,
-  toast?h("div",{className:"toast",role:"status"},toast):null
+ const [slide,setSlide]=R.useState(0),[cat,setCat]=R.useState("Todos"),[q,setQ]=R.useState(""),[drawer,setDrawer]=R.useState(false),[toast,setToast]=R.useState("");
+ const [cart,setCart]=R.useState(()=>{try{const a=JSON.parse(localStorage.getItem("rocha-vtex-inspired")||"{}");return a&&typeof a==="object"&&!Array.isArray(a)?a:{}}catch(e){return {}}});
+ const count=Object.values(cart).reduce((n,v)=>n+Number(v||0),0);
+ const shown=products.filter(p=>(cat==="Todos"||p[3]===cat)&&(!q||((p[1]+" "+p[2]+" "+p[4]).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().includes(q.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()))));
+ R.useEffect(()=>{try{localStorage.setItem("rocha-vtex-inspired",JSON.stringify(cart))}catch(e){}},[cart]);
+ R.useEffect(()=>{const t=setInterval(()=>{if(!document.hidden)setSlide(s=>(s+1)%3)},5000);return()=>clearInterval(t)},[]);
+ R.useEffect(()=>{document.body.style.overflow=drawer?"hidden":"";return()=>document.body.style.overflow=""},[drawer]);
+ R.useEffect(()=>{const fn=e=>{if(e.key==="Escape")setDrawer(false)};document.addEventListener("keydown",fn);return()=>document.removeEventListener("keydown",fn)},[]);
+ R.useEffect(()=>{if(toast){const t=setTimeout(()=>setToast(""),2300);return()=>clearTimeout(t)}},[toast]);
+ const jump=()=>document.getElementById("catalogo")?.scrollIntoView({behavior:"smooth"});
+ function select(value){if(value==="Medicamentos"||value==="Promoções"){window.open(wa(value==="Medicamentos"?"Olá, gostaria de consultar medicamentos.":"Olá, quais promoções estão disponíveis na Drogaria Rocha?"),"_blank","noopener");return}setCat(value);setQ("");jump()}
+ function add(id){setCart(a=>({...a,[id]:Math.min(99,(a[id]||0)+1)}));setToast("Produto adicionado à lista")}
+ function qty(id,d){setCart(a=>{const b={...a};b[id]=Math.max(0,Math.min(99,(b[id]||0)+d));if(!b[id])delete b[id];return b})}
+ function send(){const lines=Object.keys(cart).map(k=>{const p=products.find(x=>x[0]===k);return p&&cart[k]>0?cart[k]+"x "+p[1]+" "+p[2]+" — "+p[4]:null}).filter(Boolean);if(lines.length)window.open(wa("Olá! Gostaria de consultar preço e disponibilidade na Drogaria Rocha:\n\n• "+lines.join("\n• ")+"\n\nAguardo confirmação. Obrigado(a)!"),"_blank","noopener")}
+ function search(e){e.preventDefault();setCat("Todos");jump()}
+ const filters=(cat!=="Todos"||q.length>0);
+ let touch=0;
+ return E(R.Fragment,null,
+ E("div",{className:"topline"},E("div",{className:"wrap top-inner"},E("span",null,E(I,{n:"map",s:13})," São Raimundo Nonato – PI"),E("span",{className:"top-slogan"},"Fortalecendo sua saúde e seu bem estar."),E("a",{href:wa(),target:"_blank",rel:"noopener noreferrer"},"Atendimento WhatsApp ",E(I,{n:"arrow",s:13})))),
+ E("header",{className:"header"},E("div",{className:"wrap header-row"},E(Logo),
+ E("form",{className:"search",onSubmit:search,role:"search"},E(I,{n:"search",s:21}),E("input",{type:"search",value:q,onChange:e=>setQ(e.target.value),placeholder:"O que você está procurando hoje?","aria-label":"Buscar produto"}),E("button",{type:"submit"},"Buscar")),
+ E("a",{className:"support",href:wa(),target:"_blank",rel:"noopener noreferrer"},E(I,{n:"phone",s:21}),E("span",null,E("strong",null,"Precisa de ajuda?"),E("small",null,"Fale com nossa equipe"))),
+ E("button",{className:"cart-top",onClick:()=>setDrawer(true)},E(I,{n:"bag",s:22}),E("span",null,"Minha lista"),E("b",null,count))),
+ E("nav",{className:"nav","aria-label":"Categorias da loja"},E("div",{className:"wrap nav-row"},E("a",{href:"#categorias",className:"nav-first"},E(I,{n:"menu",s:18}),"Todas as categorias"),...categories.map(c=>E("button",{key:c[2],onClick:()=>select(c[2])},c[0])),E("a",{className:"nav-location",href:"#localizacao"},"Nossa loja")))),
+ E("main",{id:"inicio"},E("div",{className:"wrap"},E("div",{className:"breadcrumb"},"Início  /  ",E("b",null,"Drogaria Rocha")),
+ E("div",{className:"hero-layout"},E("section",{className:"hero","aria-label":"Campanhas","aria-roledescription":"carrossel",onTouchStart:e=>touch=e.changedTouches[0].clientX,onTouchEnd:e=>{const dx=e.changedTouches[0].clientX-touch;if(Math.abs(dx)>50)setSlide(s=>(s+(dx<0?1:2))%3)}},
+ E("div",{className:"slide-stage"},...slides.map((b,i)=>E("div",{key:i,className:"slide "+b.style+(slide===i?" active":""),"aria-hidden":i!==slide,inert:i!==slide},E("div",{className:"slide-text"},E("span",{className:"slide-label"},b.eyebrow),E(i===0?"h1":"h2",null,b.title,E("em",null,b.mark)),E("p",null,b.desc),E("button",{onClick:()=>select(b.filter)},b.button,E(I,{n:"arrow",s:15}))),E("div",{className:"slide-media"},b.img?E("img",{src:assets+b.img,alt:"Embalagens de produtos enviadas pela Drogaria Rocha"}):E(Sprite,{index:b.sprite,className:"hero-sprite"}))))),
+ E("div",{className:"hero-controls"},E("div",{className:"dots"},...slides.map((b,i)=>E("button",{key:i,"aria-label":"Mostrar banner "+(i+1),"aria-current":slide===i?"true":undefined,onClick:()=>setSlide(i)},E("span",{className:slide===i?"current":""})))),E("div",{className:"hero-arrows"},E("button",{onClick:()=>setSlide(s=>(s+2)%3),"aria-label":"Banner anterior"},E(I,{n:"back",s:16})),E("small",null,String(slide+1).padStart(2,"0")+" / 03"),E("button",{onClick:()=>setSlide(s=>(s+1)%3),"aria-label":"Próximo banner"},E(I,{n:"arrow",s:16}))))),
+ E("aside",{className:"hero-aside"},E("button",{className:"side-banner warm",onClick:()=>select("Promoções")},E("div",null,E("small",null,"OFERTAS DA LOJA"),E("strong",null,"Confira as novidades"),E("span",null,"Consultar promoções ",E(I,{n:"arrow",s:14}))),E(Sprite,{index:1,className:"side-image"})),E("button",{className:"side-banner cool",onClick:()=>select("Higiene")},E("div",null,E("small",null,"HIGIENE E BELEZA"),E("strong",null,"Cuidados para você"),E("span",null,"Ver produtos ",E(I,{n:"arrow",s:14}))),E(Sprite,{index:2,className:"side-image"})))),
+ E("div",{className:"benefits"},...[
+ ["store","Loja física","No Centro da cidade"],["message","Atendimento rápido","Consultas pelo WhatsApp"],["bag","Monte sua lista","Vários itens de uma vez"],["shield","Preço transparente","Confirmado com a equipe"]
+ ].map(x=>E("div",{className:"benefit",key:x[1]},E("span",null,E(I,{n:x[0],s:24})),E("div",null,E("strong",null,x[1]),E("small",null,x[2]))))),
+ E("section",{id:"categorias",className:"cats-section"},E("div",{className:"section-head"},E("div",null,E("span",{className:"section-eyebrow"},"NAVEGUE PELA LOJA"),E("h2",null,"O que você procura?"))),E("div",{className:"categories"},...categories.map(c=>E("button",{key:c[2],className:"cat",onClick:()=>select(c[2])},E("span",{className:"cat-icon"},E(I,{n:c[1],s:25})),E("strong",null,c[0])))))),
+ E("div",{className:"wrap",id:"catalogo"},
+ filters?E("section",{className:"shelf"},E("div",{className:"section-head"},E("div",null,E("span",{className:"section-eyebrow"},"VITRINE DA ROCHA"),E("h2",null,q?"Resultados para: "+q:cat)),E("button",{className:"see-all",onClick:()=>{setCat("Todos");setQ("")}},"Limpar filtro",E(I,{n:"x",s:16}))),shown.length?E("div",{className:"product-grid"},...shown.map(p=>E(ProductCard,{key:p[0],p,add}))):E("div",{className:"empty"},E("strong",null,"Nenhum produto encontrado nesta vitrine."),E("p",null,"Entre em contato para consultar outros itens."),E("a",{href:wa(),target:"_blank",rel:"noopener noreferrer"},"Falar no WhatsApp"))):E(R.Fragment,null,
+ E(Shelf,{title:"Destaques da Drogaria Rocha",sub:"Produtos para sua rotina. Consulte valores e disponibilidade.",arr:products.slice(0,5),add,onAll:()=>select("Todos")}),
+ E("div",{className:"promo-row"},E("button",{className:"promo-tile tile-blue",onClick:()=>select("Higiene")},E("div",null,E("span",null,"HIGIENE E BELEZA"),E("strong",null,"Cuide de você todos os dias"),E("small",null,"Ver produtos ",E(I,{n:"arrow",s:14}))),E(Sprite,{index:2})),E("button",{className:"promo-tile tile-cream",onClick:()=>select("Saúde")},E("div",null,E("span",null,"SAÚDE E BEM-ESTAR"),E("strong",null,"Mais cuidado para sua família"),E("small",null,"Conhecer a vitrine ",E(I,{n:"arrow",s:14}))),E(Sprite,{index:0}))),
+ E(Shelf,{title:"Cuidados para toda a família",sub:"Higiene, cuidados com a pele e muito mais.",arr:products.slice(5,10),add,onAll:()=>select("Todos")}),
+ E("div",{className:"loyalty"},E("span",{className:"loyalty-icon"},E(I,{n:"gift",s:31})),E("div",null,E("strong",null,"Vale + Drogaria Rocha"),E("small",null,"Nosso programa de relacionamento está em preparação.")),E("a",{href:wa("Olá! Quero conhecer o Vale + Drogaria Rocha."),target:"_blank",rel:"noopener noreferrer"},"Quero saber mais ",E(I,{n:"arrow",s:16}))),
+ E(Shelf,{title:"Mais opções para você",sub:"Adicione produtos à sua lista e consulte tudo de uma vez.",arr:products.slice(10).concat(products.slice(0,3)),add,onAll:()=>select("Todos")})
+ )),
+ E("div",{className:"wrap"},E("p",{className:"catalog-warning"},"Vitrine de consulta: não há compra ou reserva automática. As imagens mostram embalagens reais; preços, estoque e condições de venda serão informados pela Drogaria Rocha."),
+ E("section",{className:"campaigns-section"},E("div",{className:"section-head"},E("div",null,E("span",{className:"section-eyebrow"},"NOVIDADES DAS MARCAS"),E("h2",null,"Campanhas e lançamentos"),E("p",null,"Materiais enviados para referência. Consulte condições atuais com nossa equipe."))),E("div",{className:"campaigns"},...[
+ ["Bozzano","Linha de cuidados masculinos",2],
+ ["Flanax XR","Material informativo do fabricante",3],
+ ["Novalgina Flash","Consulte o farmacêutico",5],
+ ["Centrum Gender","Preço impresso não confirmado pela loja",4],
+ ["Neo Química","Campanha encerrada em outubro/2026",6]
+ ].map((a,i)=>E("div",{className:"campaign"+(i===4?" expired":""),key:i},E(Sprite,{index:a[2]}),E("strong",null,a[0]),E("small",null,a[1]),i===4?E("em",null,"Campanha encerrada"):null)))),
+ E("section",{className:"local",id:"localizacao"},E("div",{className:"local-content"},E("span",{className:"section-eyebrow"},"NOSSA LOJA"),E("h2",null,"Drogaria Rocha. Sempre perto de você."),E("p",null,"Estamos no Centro de São Raimundo Nonato. Consulte nossa equipe e encontre os produtos que você procura."),E("div",{className:"local-lines"},E("span",null,E(I,{n:"map",s:18}),"Rua Raimundo Silva, 392 — Centro, São Raimundo Nonato – PI"),E("span",null,E(I,{n:"phone",s:18}),"(89) 98116-6747"),E("span",null,E(I,{n:"clock",s:18}),"Seg. a sex.: 7h às 21h • Sáb.: 7h às 18h (confirme em feriados)")),E("div",{className:"local-actions"},E("a",{href:wa(),target:"_blank",rel:"noopener noreferrer"},"Falar pelo WhatsApp"),E("a",{href:maps,target:"_blank",rel:"noopener noreferrer"},"Como chegar"))),E("iframe",{title:"Localização Drogaria Rocha",src:"https://www.google.com/maps?q="+encodeURIComponent("Rua Raimundo Silva 392 Sao Raimundo Nonato PI")+"&output=embed",loading:"lazy",referrerPolicy:"no-referrer-when-downgrade"})))),
+ E("footer",{className:"footer"},E("div",{className:"wrap foot-grid"},E("div",null,E(Logo),E("p",null,"Fortalecendo sua saúde e seu bem estar. Uma drogaria com atendimento próximo e humano.")),E("div",null,E("h3",null,"Navegação"),E("a",{href:"#inicio"},"Início"),E("a",{href:"#categorias"},"Categorias"),E("a",{href:"#catalogo"},"Produtos em destaque")),E("div",null,E("h3",null,"Atendimento"),E("a",{href:wa(),target:"_blank",rel:"noopener noreferrer"},"WhatsApp (89) 98116-6747"),E("a",{href:maps,target:"_blank",rel:"noopener noreferrer"},"São Raimundo Nonato – PI"))),E("div",{className:"wrap foot-bottom"},"© "+new Date().getFullYear()+" Drogaria Rocha • Vitrine informativa, sem pagamento ou reserva online.")),
+ E("a",{className:"floating-whatsapp",href:wa(),target:"_blank",rel:"noopener noreferrer","aria-label":"Conversar pelo WhatsApp"},E(I,{n:"message",s:26})),
+ drawer?E("div",{className:"drawer-backdrop",onClick:()=>setDrawer(false)},E("aside",{className:"drawer",role:"dialog","aria-modal":"true","aria-label":"Minha lista de consulta",onClick:e=>e.stopPropagation()},E("div",{className:"drawer-title"},E("div",null,E("h2",null,"Minha lista"),E("small",null,count+" item(ns) • sem compromisso")),E("button",{onClick:()=>setDrawer(false),"aria-label":"Fechar"},E(I,{n:"x",s:20}))),E("div",{className:"drawer-items"},count?Object.keys(cart).filter(id=>cart[id]>0).map(id=>{const p=products.find(p=>p[0]===id);return p?E("div",{className:"cart-item",key:id},E("img",{src:p[5],alt:p[1]}),E("div",null,E("strong",null,p[2]),E("small",null,p[4])),E("div",{className:"quantity"},E("button",{onClick:()=>qty(id,-1)},"−"),E("b",null,cart[id]),E("button",{onClick:()=>qty(id,1)},"+"))):null}):E("div",{className:"empty-list"},E(I,{n:"bag",s:34}),E("strong",null,"Sua lista está vazia"),E("p",null,"Adicione produtos para consultar todos de uma vez."))),E("div",{className:"drawer-bottom"},E("p",null,"A equipe confirmará preços e disponibilidade."),E("button",{disabled:!count,onClick:send},E(I,{n:"message",s:18}),"Consultar no WhatsApp")))):null,
+ toast?E("div",{className:"toast",role:"status"},toast):null
  );
 }
-createRoot(document.getElementById("root")).render(h(App));
+createRoot(document.getElementById('root')!).render(E(App));
