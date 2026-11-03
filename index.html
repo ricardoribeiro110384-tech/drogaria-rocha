@@ -194,6 +194,56 @@ footer{border-top:1px solid #303138;margin-top:80px;padding:50px 0 25px;backgrou
 @media(max-width:690px){.container{width:min(100% - 28px,1290px)}.topbar .container{font-size:9px}.topbar .right{display:none}.header-content{min-height:73px}.brand{flex-basis:auto;width:auto}.brand-mark{height:42px;width:42px;border-width:2px;border-radius:12px}.brand-name{font-size:20px}.brand-name small{font-size:7px;letter-spacing:1.7px}.header-content .search{display:none}.cart-head{font-size:0;gap:6px;padding:11px}.cart-head b{font-size:10px}.nav-inner{gap:22px;min-height:47px}.nav-inner .all{padding:0 14px}.nav-inner a{font-size:11px}.nav-inner .local{display:none}.mobile-search{display:flex;margin-top:14px;background:white;height:46px;border-radius:9px;overflow:hidden;padding:4px}.mobile-search input{min-width:0;flex:1;border:0;outline:0;padding:0 12px}.mobile-search button{background:var(--orange);border:0;border-radius:6px;width:44px;display:grid;place-items:center}.intro{padding-top:12px}.kicker{margin-bottom:10px}.kicker span:last-child{display:none}.hero{min-height:475px;align-items:flex-start}.hero-copy{max-width:100%;margin:30px 24px}.hero h1{max-width:340px;font-size:36px;margin:13px 0}.hero p{font-size:12px;max-width:285px}.hero-showcase{height:42%;width:70%;bottom:0;right:3%}.hero-showcase .big-product{height:90%;width:53%;bottom:-25px;right:4%}.hero-showcase .small-product{height:67%;width:37%;top:5px;left:11%}.hero-corner{display:none}.side-hero{gap:10px}.promo-card{min-height:195px;padding:18px}.promo-card h2{font-size:18px}.promo-card img{right:-10px;width:43%}.promo-card p{font-size:10px}.benefits{padding:11px 7px}.benefit{gap:8px}.benefit svg{width:23px;height:23px}.benefit strong{font-size:10px}.benefit small{font-size:9px}.section{padding-top:45px}.section h2{font-size:25px}.section-head{align-items:flex-start}.section .see-link{font-size:10px}.cat-grid{grid-template-columns:repeat(3,1fr);gap:9px}.cat{min-height:126px;padding:9px;gap:10px}.cat svg{width:25px;height:25px;padding:10px}.cat strong{font-size:10px}.cat small{font-size:9px}.shop-section{margin-top:48px;padding:42px 0 48px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.product-visual{height:168px;padding:12px}.product-visual img{max-height:138px}.product-body{padding:13px}.product h3{font-size:12px;min-height:72px}.product-brand{font-size:9px}.product-status{font-size:10px}.product-status b{font-size:11px}.add-btn{font-size:10px;padding:11px 4px}.banner-strip{padding:24px;flex-direction:column;align-items:flex-start}.banner-strip h3{font-size:20px}.brand-row{grid-template-columns:repeat(3,1fr)}.brand-tile{padding:16px 5px;font-size:13px}.campaigns{grid-template-columns:1fr;gap:12px}.campaign{min-height:230px;padding:25px}.campaign h3{font-size:25px}.about-grid{grid-template-columns:1fr;margin-top:45px;gap:36px}.location-card{padding:29px}.location-card h3{font-size:25px}.footer-grid{grid-template-columns:1fr 1fr;gap:34px}.footer-grid>div:first-child{grid-column:1/-1}.legal{flex-direction:column;gap:6px}.floating-whatsapp{bottom:12px;right:12px;width:52px;height:52px}.toast{width:max-content;max-width:calc(100% - 30px)}}
 @media(max-width:385px){.hero h1{font-size:32px}.promo-card h2{font-size:16px}.cat-grid{grid-template-columns:repeat(2,1fr)}.side-hero{grid-template-columns:1fr}.promo-card{min-height:150px}.promo-card img{width:28%}.brand-row{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Carrossel principal de campanhas */
+.campaign-carousel{position:relative;border-radius:19px;overflow:hidden;background:#f77825;isolation:isolate}
+.carousel-stage{position:relative;height:432px}
+.carousel-slide{position:absolute;inset:0;display:flex;align-items:center;overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .55s ease,visibility .55s ease;z-index:0}
+.carousel-slide.active{opacity:1;visibility:visible;pointer-events:auto;z-index:1}
+.carousel-slide:before{content:"";position:absolute;width:490px;height:490px;right:-70px;top:-100px;border-radius:50%;background:#fff1}
+.carousel-slide .hero-copy{margin-left:clamp(34px,5vw,80px);max-width:52%;position:relative;z-index:3}
+.carousel-slide h1,.carousel-slide h2{font:800 clamp(37px,4.5vw,66px)/1.08 Manrope,sans-serif;letter-spacing:-2.9px;margin:18px 0 19px}
+.carousel-slide h1 span,.carousel-slide h2 span{display:block}
+.carousel-slide p{max-width:415px;font-size:14px;line-height:1.7;margin:0 0 23px}
+.slide-orange{background:linear-gradient(120deg,#ff721c 20%,#ff963d);color:#161515}
+.slide-orange h1 span{color:#fff}
+.slide-orange .hero-label{color:#613411}
+.slide-orange p{color:#50321e}
+.carousel-slide .hero-showcase{width:40%;right:6%;bottom:-2%;height:100%}
+.carousel-slide .hero-showcase .big-product{right:9%;width:59%;height:70%;bottom:1%}
+.carousel-slide .hero-showcase .small-product{left:3%;width:36%;height:51%;top:11%}
+.slide-baby{background:linear-gradient(120deg,#eeebe4,#faf7f1);color:#171819}
+.slide-baby .hero-label{color:#ce5b19}
+.slide-baby h2 span{color:#dd641f}
+.slide-baby p{color:#595655}
+.carousel-baby-images{position:absolute;inset:0 0 0 auto;width:45%;height:100%;z-index:1}
+.baby-glow{position:absolute;right:7%;top:6%;width:350px;height:350px;border-radius:50%;background:#f8ddbc}
+.baby-image{position:absolute;display:grid;place-items:center;background:#fff;border-radius:25px;box-shadow:0 24px 60px #66503a25}
+.baby-image img{object-fit:contain;width:86%;height:88%}
+.baby-one{width:45%;height:71%;right:11%;bottom:-7%;transform:rotate(7deg)}
+.baby-two{width:37%;height:53%;left:5%;top:7%;transform:rotate(-10deg)}
+.slide-loyalty{background:radial-gradient(circle at 78% 45%,#383b44,#202229 47%,#17191e 100%);color:white}
+.slide-loyalty .hero-label{color:#ff9d5b}
+.slide-loyalty h2 span{color:var(--orange)}
+.slide-loyalty p{color:#bec0c8}
+.slide-loyalty .primary-button{background:var(--orange);color:#191919;border-color:var(--orange)}
+.loyalty-art{position:absolute;right:5%;top:3%;width:40%;height:98%;display:grid;place-items:center;color:#ff8a38;transform:rotate(-10deg)}
+.loyalty-circle{position:absolute;width:290px;height:290px;border-radius:50%;background:#ff802618;border:1px solid #ff86254d}
+.loyalty-art>svg{position:relative;filter:drop-shadow(0 20px 25px #0005)}
+.loyalty-letter{position:absolute;right:11%;top:17%;font:800 130px Manrope,sans-serif;color:#ff8a3818}
+.carousel-controls{height:58px;background:#121317;display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:relative;z-index:4}
+.carousel-dots{display:flex;align-items:center;gap:9px}
+.carousel-dot{border:0;background:transparent;width:46px;height:25px;display:flex;align-items:center;padding:0;justify-content:center}
+.carousel-dot span{width:34px;height:4px;background:#66686e;border-radius:8px;position:relative;overflow:hidden}
+.carousel-dot.current span{background:var(--orange)}
+.carousel-arrows{display:flex;align-items:center;gap:14px}
+.carousel-arrows button{display:grid;place-items:center;border:1px solid #45474e;border-radius:8px;width:32px;height:32px;background:#25262d;color:#fff}
+.carousel-arrows button:hover{background:var(--orange);color:#121212}
+.carousel-arrows span{font-size:11px;font-weight:800;color:#bfc1c8;letter-spacing:1.5px}
+@media(max-width:920px){.carousel-stage{height:395px}.carousel-slide .hero-copy{max-width:56%}.carousel-slide h1,.carousel-slide h2{font-size:43px}.carousel-baby-images{width:45%}}
+@media(max-width:690px){.carousel-stage{height:495px}.carousel-slide{align-items:flex-start}.carousel-slide .hero-copy{margin:32px 25px 0;max-width:calc(100% - 50px)}.carousel-slide h1,.carousel-slide h2{font-size:clamp(31px,8.5vw,42px);letter-spacing:-1.5px;max-width:355px;margin:14px 0 13px}.carousel-slide p{font-size:12px;line-height:1.55;max-width:325px}.carousel-slide .primary-button{padding:12px 15px}.carousel-slide .hero-showcase{width:69%;height:43%;right:3%;bottom:0}.carousel-slide .hero-showcase .big-product{height:88%;width:47%;bottom:-13%;right:10%}.carousel-slide .hero-showcase .small-product{height:66%;width:33%;top:5%;left:13%}.carousel-baby-images{width:78%;height:44%;top:auto;bottom:0;right:0}.baby-glow{width:190px;height:190px;right:12%;top:7%}.baby-one{height:91%;width:42%;right:14%;bottom:-17%}.baby-two{height:68%;width:33%;top:0;left:13%}.loyalty-art{width:85%;height:47%;top:auto;bottom:-2%;right:0}.loyalty-circle{width:200px;height:200px}.loyalty-art>svg{width:170px;height:170px}.loyalty-letter{font-size:90px}.carousel-controls{padding:0 17px;height:54px}.carousel-dot{width:38px}.carousel-dot span{width:29px}}
+@media(max-width:385px){.carousel-stage{height:515px}.carousel-slide h1,.carousel-slide h2{font-size:30px}}
+@media(prefers-reduced-motion:reduce){.carousel-slide{transition:none}}
 </style>
 </head>
 <body>
@@ -210,12 +260,22 @@ footer{border-top:1px solid #303138;margin-top:80px;padding:50px 0 25px;backgrou
 <div class="container">
  <form class="mobile-search" role="search" onsubmit="searchNow(event,'searchMobile')"><input id="searchMobile" type="search" placeholder="O que você procura?" aria-label="Pesquisar produtos"><button type="submit" aria-label="Pesquisar"><i data-lucide="search"></i></button></form>
  <div class="intro"><div class="kicker"><span>Início / <strong>Drogaria Rocha</strong></span><span class="location"><i data-lucide="map-pin" width="14"></i> São Raimundo Nonato – PI</span></div>
- <div class="hero-grid">
-  <section class="hero" aria-labelledby="heroTitle"><div class="hero-copy"><span class="hero-label">Sua drogaria, mais perto de você</span><h1 id="heroTitle">Cuidar bem <span>faz toda a diferença.</span></h1><p>Encontre produtos para o dia a dia e consulte tudo diretamente com a equipe da Drogaria Rocha.</p><a class="primary-button" href="#vitrine">Explorar produtos <i data-lucide="arrow-up-right" width="17"></i></a></div><div class="hero-showcase" aria-hidden="true"><div class="small-product"><img src="https://bemolfarma.vtexassets.com/arquivos/ids/212447/6033831-8.jpg?v=638918113221000000" alt=""></div><div class="big-product"><img src="https://www.farmaciareal.com.br/uploads/farmaciareal/produtos_imagens/nive501406.jpg" alt=""></div></div></section>
-  <div class="side-hero">
-   <article class="promo-card"><div class="promo-text"><span class="over">Linha infantil</span><h2>Cuidado que acompanha cada fase.</h2><p>Veja itens selecionados para o dia a dia dos pequenos.</p><a href="#vitrine" onclick="changeFilter('Infantil')">Ver produtos <i data-lucide="arrow-up-right" width="15"></i></a></div><img src="https://mamaepechincha.com.br/wp-content/uploads/2020/06/6911602SZ.jpg" alt="Shampoo Johnson's Baby 400ml"></article>
-   <article class="promo-card dark" id="vale"><div class="promo-text"><span class="over">Novidade em preparação</span><h2>Vem aí o Vale + Drogaria Rocha.</h2><p>Um novo programa de relacionamento com nossos clientes.</p><a href="https://wa.me/5589981166747?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20Vale%20%2B%20Drogaria%20Rocha" target="_blank" rel="noopener">Saiba mais <i data-lucide="arrow-up-right" width="15"></i></a></div><i data-lucide="gift" class="watermark"></i></article>
+ <div class="campaign-carousel" id="campaignCarousel" aria-label="Campanhas da Drogaria Rocha" aria-roledescription="carrossel">
+  <div class="carousel-stage">
+   <section class="carousel-slide slide-orange active" data-slide="0" aria-roledescription="slide" aria-label="1 de 3: Cuidar bem faz toda a diferença">
+    <div class="hero-copy"><span class="hero-label">Sua drogaria, mais perto de você</span><h1>Cuidar bem <span>faz toda a diferença.</span></h1><p>Encontre produtos para o dia a dia e consulte tudo diretamente com a equipe da Drogaria Rocha.</p><a class="primary-button" href="#vitrine">Explorar produtos <i data-lucide="arrow-up-right" width="17"></i></a></div>
+    <div class="hero-showcase" aria-hidden="true"><div class="small-product"><img src="https://bemolfarma.vtexassets.com/arquivos/ids/212447/6033831-8.jpg?v=638918113221000000" alt=""></div><div class="big-product"><img src="https://www.farmaciareal.com.br/uploads/farmaciareal/produtos_imagens/nive501406.jpg" alt=""></div></div>
+   </section>
+   <section class="carousel-slide slide-baby" data-slide="1" aria-roledescription="slide" aria-label="2 de 3: Linha infantil" aria-hidden="true" inert>
+    <div class="hero-copy"><span class="hero-label">Linha infantil • cuidado e carinho</span><h2>Pequenos cuidados, <span>grandes momentos.</span></h2><p>Produtos para o banho, higiene e a rotina dos pequenos. Confira nossa seleção e consulte a disponibilidade.</p><a class="primary-button" href="#vitrine" onclick="changeFilter('Infantil')">Conhecer linha infantil <i data-lucide="arrow-up-right" width="17"></i></a></div>
+    <div class="carousel-baby-images" aria-hidden="true"><span class="baby-glow"></span><div class="baby-image baby-one"><img src="https://mamaepechincha.com.br/wp-content/uploads/2020/06/6911602SZ.jpg" alt=""></div><div class="baby-image baby-two"><img src="https://bemolfarma.vtexassets.com/arquivos/ids/212447/6033831-8.jpg?v=638918113221000000" alt=""></div></div>
+   </section>
+   <section class="carousel-slide slide-loyalty" id="vale" data-slide="2" aria-roledescription="slide" aria-label="3 de 3: Vale mais Drogaria Rocha" aria-hidden="true" inert>
+    <div class="hero-copy"><span class="hero-label">Novidade em preparação</span><h2>Vem aí o <span>Vale + Drogaria Rocha.</span></h2><p>Estamos preparando uma nova experiência de relacionamento para valorizar quem escolhe a Drogaria Rocha.</p><a class="primary-button" href="https://wa.me/5589981166747?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20Vale%20%2B%20Drogaria%20Rocha" target="_blank" rel="noopener">Quero saber mais <i data-lucide="arrow-up-right" width="17"></i></a></div>
+    <div class="loyalty-art" aria-hidden="true"><span class="loyalty-circle"></span><i data-lucide="gift" width="230" height="230" stroke-width="1.2"></i><span class="loyalty-letter">+</span></div>
+   </section>
   </div>
+  <div class="carousel-controls"><div class="carousel-dots" role="group" aria-label="Escolher banner"><button class="carousel-dot current" type="button" data-go="0" aria-label="Mostrar banner 1: Cuidar bem" aria-current="true"><span></span></button><button class="carousel-dot" type="button" data-go="1" aria-label="Mostrar banner 2: Linha infantil"><span></span></button><button class="carousel-dot" type="button" data-go="2" aria-label="Mostrar banner 3: Vale mais"><span></span></button></div><div class="carousel-arrows"><button type="button" id="bannerPrevious" aria-label="Banner anterior"><i data-lucide="arrow-left" width="18"></i></button><span id="bannerNumber">01 / 03</span><button type="button" id="bannerNext" aria-label="Próximo banner"><i data-lucide="arrow-right" width="18"></i></button></div></div>
  </div></div>
  <div class="benefits"><div class="benefit"><i data-lucide="map-pin" width="27"></i><span><strong>Loja no Centro</strong><small>São Raimundo Nonato – PI</small></span></div><div class="benefit"><i data-lucide="messages-square" width="27"></i><span><strong>Consulta pelo WhatsApp</strong><small>Fale com a equipe</small></span></div><div class="benefit"><i data-lucide="shopping-bag" width="27"></i><span><strong>Monte sua lista</strong><small>Envie vários itens de uma vez</small></span></div><div class="benefit"><i data-lucide="heart-handshake" width="27"></i><span><strong>Cuidado e proximidade</strong><small>Atendimento da sua região</small></span></div></div>
  <section class="section" id="categorias"><div class="section-head"><div><span class="eyebrow">Explore a drogaria</span><h2>O que você procura hoje?</h2><p class="subtitle">Uma seleção organizada para você encontrar com mais facilidade.</p></div><a href="#vitrine" class="see-link" onclick="changeFilter('Todos')">Ver todos <i data-lucide="arrow-right" width="16"></i></a></div>
@@ -278,6 +338,36 @@ function closeCart(){document.getElementById("overlay").classList.remove("open")
 function renderCart(){let entries=Object.entries(cart).filter(([id,q])=>products.some(p=>p.id===Number(id))&&Number(q)>0);document.getElementById("cartItems").innerHTML=entries.length?entries.map(([id,q])=>{let p=products.find(x=>x.id===Number(id));return '<div class="cart-item"><div><strong>'+safe(p.name)+'</strong><small>'+safe(p.brand)+' · Preço sob consulta</small></div><div class="qty"><button aria-label="Diminuir quantidade" onclick="updateQty('+p.id+',-1)">−</button><b>'+Number(q)+'</b><button aria-label="Aumentar quantidade" onclick="updateQty('+p.id+',1)">+</button></div></div>'}).join(""):'<div style="text-align:center;padding:50px 10px;color:#777"><div style="font-size:38px">🛍️</div><h3 style="color:#222">Sua lista está vazia</h3><p>Adicione os produtos da vitrine para consultar tudo de uma vez.</p></div>';document.getElementById("sendList").disabled=!entries.length;refreshIcons()}
 function sendQuote(){let entries=Object.entries(cart).filter(([id,q])=>products.some(p=>p.id===Number(id))&&Number(q)>0);if(!entries.length)return;let msg="Olá! Gostaria de consultar preço e disponibilidade destes produtos na Drogaria Rocha:\n\n"+entries.map(([id,q])=>{let p=products.find(x=>x.id===Number(id));return "• "+q+"x "+p.name}).join("\n");let extra=document.getElementById("customerNote").value.trim();if(extra)msg+="\n\nObservações: "+extra;msg+="\n\nAguardo a confirmação. Obrigado(a)!";window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank","noopener")}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart()});document.getElementById("year").textContent=new Date().getFullYear();save();render();window.addEventListener("load",refreshIcons);
+
+/* Navegação do carrossel de campanhas */
+(function(){
+ const root=document.getElementById("campaignCarousel"); if(!root)return;
+ const slides=Array.from(root.querySelectorAll(".carousel-slide"));
+ const dots=Array.from(root.querySelectorAll(".carousel-dot"));
+ const counter=document.getElementById("bannerNumber");
+ let active=0, interval=null, downX=null;
+ const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ function show(n){
+  active=(n+slides.length)%slides.length;
+  slides.forEach((slide,i)=>{
+   const shown=i===active;slide.classList.toggle("active",shown);slide.setAttribute("aria-hidden",String(!shown));slide.inert=!shown;
+  });
+  dots.forEach((dot,i)=>{dot.classList.toggle("current",i===active);if(i===active){dot.setAttribute("aria-current","true")}else{dot.removeAttribute("aria-current")}});
+  counter.textContent=String(active+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");
+ }
+ function stop(){if(interval){clearInterval(interval);interval=null}}
+ function start(){stop();if(!reduce&&!document.hidden)interval=setInterval(()=>show(active+1),6000)}
+ function go(n){show(n);start()}
+ dots.forEach((dot,i)=>dot.addEventListener("click",()=>go(i)));
+ document.getElementById("bannerPrevious").addEventListener("click",()=>go(active-1));
+ document.getElementById("bannerNext").addEventListener("click",()=>go(active+1));
+ root.addEventListener("mouseenter",stop);root.addEventListener("mouseleave",start);
+ root.addEventListener("focusin",stop);root.addEventListener("focusout",e=>{if(!root.contains(e.relatedTarget))start()});
+ document.addEventListener("visibilitychange",()=>document.hidden?stop():start());
+ root.addEventListener("touchstart",e=>{downX=e.changedTouches[0].clientX},{passive:true});
+ root.addEventListener("touchend",e=>{if(downX===null)return;const dx=e.changedTouches[0].clientX-downX;downX=null;if(Math.abs(dx)>55)go(active+(dx<0?1:-1))},{passive:true});
+ show(0);start();
+})();
 </script>
 </body>
 </html>
