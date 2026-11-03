@@ -74,3 +74,53 @@ main{padding:22px 0 0}.crumb{display:flex;gap:7px;color:#9b9ea6;font-size:11px;m
  .slide-brands .slide-copy{width:70%}
  .slide-brands .slide-title{font-size:23px;line-height:1.08}
 }
+
+
+/* Campanhas fornecidas pela Drogaria Rocha — visual compacto e responsivo */
+.logo-type small{letter-spacing:0;font-size:7.2px;white-space:normal;max-width:176px;line-height:1.25}
+.slide-orange .slide-title strong{color:#fff}
+.campaign-visual{display:flex;justify-content:center;align-items:center}
+.campaign-sprite-art{display:block;flex:none;background-image:url("./assets/campaigns-sprite.webp");background-repeat:no-repeat;background-size:100% 700%;aspect-ratio:120/92;width:100%;border-radius:9px;background-color:white}
+.campaign-visual .campaign-sprite-art{width:min(76%,275px);box-shadow:0 10px 34px #00000017}
+.campaign-section{margin:51px 0 10px}
+.campaign-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.campaign-card{position:relative;min-height:200px;padding:24px 17px 19px 22px;border:1px solid #e6e7e9;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:8px;overflow:hidden;box-shadow:0 3px 10px #17191e04}
+.campaign-card:nth-child(1){background:#edf7fc}
+.campaign-card:nth-child(2){background:#fff9dc}
+.campaign-card:nth-child(3){background:#e7f3e6}
+.campaign-card:nth-child(4){background:#f6f3f9}
+.campaign-card:nth-child(5){background:#eeeef1}
+.campaign-card:nth-child(6){background:#edf3ff}
+.campaign-copy{width:57%;min-width:0;position:relative;z-index:2}
+.campaign-type{color:#b9571c;font-size:9px;letter-spacing:.6px;font-weight:800;text-transform:uppercase}
+.campaign-card h3{font:800 18px/1.18 Manrope,Arial,sans-serif;letter-spacing:-.5px;margin:9px 0}
+.campaign-card p{font-size:10.5px;line-height:1.5;color:#60646c;margin:0 0 13px}
+.campaign-card button{border:0;background:none;color:#de5d13;font-weight:800;font-size:10px;padding:0;text-align:left;display:inline-flex;align-items:center;gap:4px}
+.campaign-card button:hover{text-decoration:underline}
+.campaign-card-art{width:39%;max-width:154px;box-shadow:0 4px 12px #10141b0c;border-radius:6px}
+.campaign-flag{position:absolute;right:10px;top:10px;padding:5px 7px;border-radius:5px;background:#fff5e6;color:#a04e16;font-size:9px;font-weight:800;z-index:3;box-shadow:0 2px 8px #0001}
+.campaign-flag.expired{color:#7b3030;background:#fff}
+.campaign-closed{font-weight:800;color:#7b3030;font-size:10px}
+.campaign-card.is-closed{filter:saturate(.7)}
+.campaign-card.is-closed .campaign-card-art{opacity:.72}
+.campaign-disclaimer{color:#7b7e86;font-size:10px;line-height:1.7;margin:14px 0 0;max-width:1160px}
+@media(max-width:1030px){.campaign-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.campaign-card{min-height:190px}.campaign-card-art{width:39%}}
+@media(max-width:760px){
+ .logo-type small{max-width:151px;letter-spacing:0;font-size:6.9px}
+ .slide .slide-title{font-size:clamp(24px,4.2vw,34px)}
+ .slide .slide-copy{width:65%}
+ .campaign-visual .campaign-sprite-art{width:91%;max-width:168px;border-radius:6px}
+ .campaign-section{margin-top:35px}
+ .campaign-grid{grid-template-columns:1fr;gap:10px}
+ .campaign-card{min-height:161px;padding:19px 18px}
+ .campaign-copy{width:56%}
+ .campaign-card h3{font-size:17px;margin:6px 0}
+ .campaign-card p{font-size:10px;margin-bottom:10px}
+ .campaign-card-art{width:37%;max-width:150px}
+ .campaign-flag{font-size:8px}
+ .campaign-disclaimer{font-size:9.5px}
+}
+@media(max-width:400px){.slide .slide-title{font-size:23px}.campaign-visual .campaign-sprite-art{max-width:135px}.campaign-card{min-height:157px}.campaign-card-art{width:38%}}
+
+/* Carrossel horizontal de campanhas em telas pequenas */
+@media(max-width:760px){.campaign-grid{display:flex;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-left:2px;padding-bottom:9px;scrollbar-width:thin}.campaign-card{flex:0 0 min(83vw,315px);scroll-snap-align:start}.campaign-card-art{max-width:132px}}
