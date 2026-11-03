@@ -346,7 +346,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart()});docume
  const dots=Array.from(root.querySelectorAll(".carousel-dot"));
  const counter=document.getElementById("bannerNumber");
  let active=0, interval=null, downX=null;
- const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ // Avanço automático contínuo; interrompe apenas quando a aba está oculta.
  function show(n){
   active=(n+slides.length)%slides.length;
   slides.forEach((slide,i)=>{
@@ -356,13 +356,11 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart()});docume
   counter.textContent=String(active+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");
  }
  function stop(){if(interval){clearInterval(interval);interval=null}}
- function start(){stop();if(!reduce&&!document.hidden)interval=setInterval(()=>show(active+1),6000)}
+ function start(){stop();if(!document.hidden)interval=setInterval(()=>show(active+1),4500)}
  function go(n){show(n);start()}
  dots.forEach((dot,i)=>dot.addEventListener("click",()=>go(i)));
  document.getElementById("bannerPrevious").addEventListener("click",()=>go(active-1));
  document.getElementById("bannerNext").addEventListener("click",()=>go(active+1));
- root.addEventListener("mouseenter",stop);root.addEventListener("mouseleave",start);
- root.addEventListener("focusin",stop);root.addEventListener("focusout",e=>{if(!root.contains(e.relatedTarget))start()});
  document.addEventListener("visibilitychange",()=>document.hidden?stop():start());
  root.addEventListener("touchstart",e=>{downX=e.changedTouches[0].clientX},{passive:true});
  root.addEventListener("touchend",e=>{if(downX===null)return;const dx=e.changedTouches[0].clientX-downX;downX=null;if(Math.abs(dx)>55)go(active+(dx<0?1:-1))},{passive:true});
