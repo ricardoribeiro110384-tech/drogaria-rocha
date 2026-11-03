@@ -244,6 +244,53 @@ footer{border-top:1px solid #303138;margin-top:80px;padding:50px 0 25px;backgrou
 @media(max-width:690px){.carousel-stage{height:495px}.carousel-slide{align-items:flex-start}.carousel-slide .hero-copy{margin:32px 25px 0;max-width:calc(100% - 50px)}.carousel-slide h1,.carousel-slide h2{font-size:clamp(31px,8.5vw,42px);letter-spacing:-1.5px;max-width:355px;margin:14px 0 13px}.carousel-slide p{font-size:12px;line-height:1.55;max-width:325px}.carousel-slide .primary-button{padding:12px 15px}.carousel-slide .hero-showcase{width:69%;height:43%;right:3%;bottom:0}.carousel-slide .hero-showcase .big-product{height:88%;width:47%;bottom:-13%;right:10%}.carousel-slide .hero-showcase .small-product{height:66%;width:33%;top:5%;left:13%}.carousel-baby-images{width:78%;height:44%;top:auto;bottom:0;right:0}.baby-glow{width:190px;height:190px;right:12%;top:7%}.baby-one{height:91%;width:42%;right:14%;bottom:-17%}.baby-two{height:68%;width:33%;top:0;left:13%}.loyalty-art{width:85%;height:47%;top:auto;bottom:-2%;right:0}.loyalty-circle{width:200px;height:200px}.loyalty-art>svg{width:170px;height:170px}.loyalty-letter{font-size:90px}.carousel-controls{padding:0 17px;height:54px}.carousel-dot{width:38px}.carousel-dot span{width:29px}}
 @media(max-width:385px){.carousel-stage{height:515px}.carousel-slide h1,.carousel-slide h2{font-size:30px}}
 @media(prefers-reduced-motion:reduce){.carousel-slide{transition:none}}
+
+/* Ajuste refinado do carrossel no celular — versão compacta */
+@media (max-width: 690px) {
+ .campaign-carousel{border-radius:15px}
+ .carousel-stage{height:350px}
+ .carousel-slide{align-items:flex-start}
+ .carousel-slide .hero-copy{margin:24px 22px 0;max-width:calc(100% - 44px)}
+ .carousel-slide .hero-label{display:block;font-size:9px;letter-spacing:1.35px;line-height:1.5;max-width:310px}
+ .carousel-slide h1,.carousel-slide h2{font-size:clamp(26px,7.5vw,34px);line-height:1.09;letter-spacing:-1.15px;max-width:295px;margin:11px 0 12px}
+ .carousel-slide p{display:none}
+ .carousel-slide .primary-button{padding:11px 14px;min-height:41px;font-size:11px;gap:8px;margin-top:3px}
+ .carousel-slide .primary-button svg{width:15px;height:15px}
+ .carousel-slide .hero-showcase{left:auto;right:3%;bottom:0;top:auto;width:58%;height:133px}
+ .carousel-slide .hero-showcase .big-product{width:48%;height:112px;bottom:-4px;right:5%;border-radius:14px}
+ .carousel-slide .hero-showcase .small-product{width:37%;height:89px;top:4px;left:12%;border-radius:13px}
+ .carousel-baby-images{left:auto;right:3%;bottom:0;top:auto;width:61%;height:137px}
+ .baby-glow{width:145px;height:145px;top:-10px;right:12%}
+ .baby-one{width:45%;height:121px;right:11%;bottom:-5px;border-radius:14px}
+ .baby-two{width:36%;height:94px;left:12%;top:5px;border-radius:14px}
+ .loyalty-art{left:auto;right:3%;top:auto;bottom:-7px;width:53%;height:158px}
+ .loyalty-art>svg{width:128px;height:128px}
+ .loyalty-circle{width:153px;height:153px}
+ .loyalty-letter{font-size:66px;top:2px;right:5%}
+ .carousel-controls{height:45px;padding:0 15px}
+ .carousel-dot{width:35px;height:35px}
+ .carousel-dot span{width:26px}
+ .carousel-arrows{gap:9px}
+ .carousel-arrows button{width:29px;height:29px}
+ .carousel-arrows span{font-size:10px;letter-spacing:.8px}
+ .floating-whatsapp{width:46px;height:46px}
+}
+@media (max-width:385px) {
+ .carousel-stage{height:345px}
+ .carousel-slide .hero-copy{margin:22px 20px 0;max-width:calc(100% - 40px)}
+ .carousel-slide h1,.carousel-slide h2{font-size:clamp(25px,7.6vw,29px);max-width:285px}
+ .carousel-slide .hero-showcase{height:127px}
+ .carousel-baby-images{height:130px}
+}
+@media (max-width:330px) {
+ .carousel-stage{height:330px}
+ .carousel-slide h1,.carousel-slide h2{font-size:24px;max-width:265px}
+ .carousel-slide .hero-label{font-size:8px}
+ .carousel-slide .hero-showcase,.carousel-baby-images{height:110px}
+ .carousel-slide .hero-showcase .big-product,.baby-one{height:100px}
+ .carousel-slide .hero-showcase .small-product,.baby-two{height:80px}
+ .loyalty-art{height:124px}
+}
 </style>
 </head>
 <body>
