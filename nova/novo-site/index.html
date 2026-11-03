@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#16171b">
+<meta name="description" content="Drogaria Rocha em São Raimundo Nonato – PI. Fortalecendo sua saúde e seu bem estar. Consulte produtos e disponibilidade pelo WhatsApp.">
+<meta property="og:title" content="Drogaria Rocha | Fortalecendo sua saúde e seu bem estar">
+<title>Drogaria Rocha | Saúde e bem-estar</title>
+<link rel="icon" type="image/webp" href="./assets/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site.css?v=20261103-publish2">
+<script defer src="./data.js?v=20261103-publish2"></script>
+<script defer src="./site.js?v=20261103-publish2"></script>
+</head>
+<body>
+<div class="topline"><div class="wrap topflex"><span>São Raimundo Nonato – PI</span><strong>FORTALECENDO SUA SAÚDE E SEU BEM ESTAR</strong><a href="https://wa.me/5589981166747" target="_blank" rel="noopener noreferrer">Atendimento pelo WhatsApp <span aria-hidden="true">↗</span></a></div></div>
+<header class="header"><div class="wrap head-row">
+ <a href="#inicio" class="brand" aria-label="Drogaria Rocha — início"><img src="./assets/logo.webp" alt="Logomarca oficial Drogaria Rocha"><span><strong>DROGARIA <em>ROCHA</em></strong><small>Fortalecendo sua saúde e seu bem estar</small></span></a>
+ <form id="searchForm" class="search" role="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input type="search" id="searchInput" aria-label="Pesquisar produtos" placeholder="O que você procura hoje?"><button type="submit">Buscar</button></form>
+ <a href="https://wa.me/5589981166747" class="contact" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◉</span><div><strong>Precisa de ajuda?</strong><small>Fale com nossa equipe</small></div></a>
+ <button id="openCart" class="bag" aria-label="Minha lista de consulta"><span aria-hidden="true">▣</span><span>Minha lista</span><b id="bagCount">0</b></button>
+</div></header>
+<nav class="menu" aria-label="Categorias da drogaria"><div class="wrap menu-scroller">
+ <a class="menu-all" href="#categorias">☷ &nbsp; Todas as categorias</a><button data-category="higiene">Higiene e beleza</button><button data-category="dermo">Dermocosméticos</button><button data-category="bebe">Mamãe e bebê</button><button data-category="saude">Saúde e bem-estar</button><a href="#campanhas">Campanhas</a><a href="#loja">Nossa loja</a>
+</div></nav>
+<main id="inicio"><div class="wrap">
+ <div class="breadcrumb">Início <span>/</span> <b>Drogaria Rocha</b></div>
+ <section class="hero"><div class="hero-copy"><span class="hero-tag">DROGARIA ROCHA • SÃO RAIMUNDO NONATO</span><h1>Saúde e bem-estar <span>para toda a família.</span></h1><p>Produtos para sua rotina, atendimento próximo e a praticidade de consultar pelo WhatsApp.</p><a class="hero-cta" href="#destaques">Ver produtos em destaque <span aria-hidden="true">↗</span></a></div><img src="./assets/produtos.webp" alt="Seleção de embalagens de produtos da drogaria" class="hero-products"></section>
+ <div class="benefits">
+  <div><span class="benefit-icon">✚</span><span><strong>Cuidado em primeiro lugar</strong><small>Fortalecendo sua saúde</small></span></div>
+  <div><span class="benefit-icon">☏</span><span><strong>Atendimento pelo WhatsApp</strong><small>Consulte nossa equipe</small></span></div>
+  <div><span class="benefit-icon">▣</span><span><strong>Lista de produtos</strong><small>Envie vários itens de uma vez</small></span></div>
+  <div><span class="benefit-icon">⌖</span><span><strong>Loja física</strong><small>São Raimundo Nonato – PI</small></span></div>
+ </div>
+ <section class="categories-section" id="categorias"><div class="section-heading"><div><span class="eyebrow">NAVEGUE POR DEPARTAMENTO</span><h2>Encontre o que precisa</h2></div></div><div id="categoryGrid" class="categories"></div></section>
+ <div id="destaques" class="anchor"></div><section id="resultSection" class="results hidden"></section>
+ <section class="shelf"><div class="section-heading"><div><span class="eyebrow">VITRINE DA ROCHA</span><h2>Produtos em destaque</h2><p>Conheça nossos produtos e consulte a disponibilidade com a equipe.</p></div><button class="view-all" data-show-all>Ver todos os produtos <span aria-hidden="true">→</span></button></div><div id="featuredProducts" class="product-grid"></div></section>
+ <div class="offer-band"><div class="offer-copy"><span>OFERTAS E NOVIDADES</span><h2>Mais cuidado, <strong>mais possibilidades.</strong></h2><p>Consulte as campanhas e promoções disponíveis na loja.</p><a href="https://wa.me/5589981166747?text=Ol%C3%A1%21%20Quais%20ofertas%20est%C3%A3o%20dispon%C3%ADveis%20na%20Drogaria%20Rocha%3F" target="_blank" rel="noopener noreferrer">Consultar ofertas ↗</a></div><div class="campaign-image frame-1" role="img" aria-label="Arte Oferta Especial"></div></div>
+ <section class="shelf"><div class="section-heading"><div><span class="eyebrow">CUIDADOS TODOS OS DIAS</span><h2>Higiene e beleza</h2><p>Para você e toda a sua família.</p></div><button class="view-all" data-filter="higiene">Ver categoria →</button></div><div id="hygieneProducts" class="product-grid"></div></section>
+ <div class="promo-pair">
+  <div class="mini-promo blue"><div><span>LINHA MASCULINA</span><h3>Cuidados que fazem parte da rotina.</h3><button data-filter="higiene">Ver produtos ↗</button></div><div class="campaign-image frame-2" role="img" aria-label="Embalagens de produtos Bozzano"></div></div>
+  <div class="mini-promo cream"><div><span>CUIDADO PARA A FAMÍLIA</span><h3>Encontre o que faz parte do seu dia a dia.</h3><a href="https://wa.me/5589981166747" target="_blank" rel="noopener noreferrer">Falar com a equipe ↗</a></div><img src="./assets/produtos.webp" alt="Seleção de produtos de farmácia"></div></div>
+ </div>
+ <section class="shelf"><div class="section-heading"><div><span class="eyebrow">CUIDANDO DE QUEM VOCÊ AMA</span><h2>Mamãe, bebê e família</h2><p>Produtos para diferentes fases da vida.</p></div><button class="view-all" data-filter="bebe">Ver categoria →</button></div><div id="familyProducts" class="product-grid"></div></section>
+ <div class="loyalty"><span class="loyalty-mark">✚</span><div><small>EM PREPARAÇÃO</small><h3>Vale + Drogaria Rocha</h3><p>Um novo programa de relacionamento com nossos clientes.</p></div><a href="https://wa.me/5589981166747?text=Ol%C3%A1%21%20Quero%20saber%20sobre%20o%20Vale%20%2B%20Drogaria%20Rocha." target="_blank" rel="noopener noreferrer">Quero saber mais ↗</a></div>
+ <section class="shelf"><div class="section-heading"><div><span class="eyebrow">PARA O SEU DIA A DIA</span><h2>Mais opções para cuidar de você</h2><p>Monte uma lista e consulte vários produtos de uma só vez.</p></div><button class="view-all" data-show-all>Ver todos →</button></div><div id="wellnessProducts" class="product-grid"></div></section>
+ <section class="campaigns-section" id="campanhas"><div class="section-heading"><div><span class="eyebrow">MATERIAIS DOS FABRICANTES</span><h2>Campanhas e lançamentos</h2><p>Materiais informativos, não representam ofertas vigentes da Drogaria Rocha.</p></div></div>
+  <div class="campaign-grid">
+   <article><div class="campaign-image frame-2" role="img" aria-label="Produtos da linha Bozzano"></div><b>Bozzano</b><small>Cuidados masculinos</small></article>
+   <article><div class="campaign-image frame-3" role="img" aria-label="Material publicitário Flanax XR"></div><b>Flanax XR</b><small>Material do fabricante</small></article>
+   <article><div class="campaign-image frame-5" role="img" aria-label="Material publicitário Novalgina Flash"></div><b>Novalgina Flash</b><small>Procure orientação farmacêutica</small></article>
+   <article><div class="campaign-image frame-4" role="img" aria-label="Peça promocional Centrum Gender"></div><b>Centrum</b><small>Preço impresso não confirmado</small></article>
+   <article class="archived"><span class="archive-flag">ENCERRADA</span><div class="campaign-image frame-6" role="img" aria-label="Campanha encerrada Neo Química"></div><b>Neo Química</b><small>Campanha encerrada em outubro de 2026</small></article>
+  </div>
+  <p class="legal-note">As artes dos fabricantes são ilustrativas e não confirmam disponibilidade, preço nem promoções. A campanha Neo Química enviada terminou em outubro de 2026. Para medicamentos, procure orientação de um profissional habilitado.</p>
+ </section>
+ <section class="our-store" id="loja"><div class="store-copy"><span class="eyebrow">ONDE ESTAMOS</span><h2>A Drogaria Rocha está perto de você.</h2><p>Estamos no Centro de São Raimundo Nonato. Consulte nossa equipe sobre os produtos que procura.</p><span>⌖ &nbsp; Rua Raimundo Silva, 392 — Centro, São Raimundo Nonato – PI</span><span>☏ &nbsp; (89) 98116-6747</span><div class="store-actions"><a href="https://wa.me/5589981166747" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp</a><a href="https://www.google.com/maps/search/?api=1&query=Drogaria%20Rocha%20Rua%20Raimundo%20Silva%20392%20S%C3%A3o%20Raimundo%20Nonato" target="_blank" rel="noopener noreferrer">Como chegar</a></div></div><iframe src="https://www.google.com/maps?q=Rua%20Raimundo%20Silva%20392%20S%C3%A3o%20Raimundo%20Nonato%20PI&output=embed" title="Localização da Drogaria Rocha" loading="lazy"></iframe></section>
+</div></main>
+<footer><div class="wrap footer-grid"><div><a class="footer-brand" href="#inicio"><img src="./assets/logo.webp" alt="Logo Drogaria Rocha"><span><strong>DROGARIA <em>ROCHA</em></strong><small>Fortalecendo sua saúde e seu bem estar</small></span></a><p>Vitrine digital da Drogaria Rocha. Atendimento direto pelo WhatsApp.</p></div><div><h4>Navegação</h4><a href="#inicio">Início</a><a href="#categorias">Categorias</a><a href="#campanhas">Campanhas</a><a href="#loja">Nossa loja</a></div><div><h4>Atendimento</h4><a href="https://wa.me/5589981166747" target="_blank" rel="noopener noreferrer">WhatsApp: (89) 98116-6747</a><span>São Raimundo Nonato – PI</span></div></div><div class="wrap footer-end">© <span id="year"></span> Drogaria Rocha. Catálogo para consulta: não processa pagamentos ou reservas online.</div></footer>
+<a href="https://wa.me/5589981166747" target="_blank" rel="noopener noreferrer" class="float-whatsapp" aria-label="Falar com a Drogaria Rocha no WhatsApp">☏</a>
+<div id="cartShade" class="cart-overlay" hidden><aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle"><header><div><h2 id="cartTitle">Minha lista de consulta</h2><small>Preços e disponibilidade sujeitos à confirmação</small></div><button id="closeCart" aria-label="Fechar lista">×</button></header><div id="cartItems" class="cart-items"></div><footer><button id="sendCart">Enviar lista pelo WhatsApp ↗</button></footer></aside></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
