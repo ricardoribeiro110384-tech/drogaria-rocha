@@ -49,3 +49,28 @@ main{padding:22px 0 0}.crumb{display:flex;gap:7px;color:#9b9ea6;font-size:11px;m
 
 /* A busca aparece somente no cabeçalho; impede formulário duplicado de versões antigas. */
 .mobile-search{display:none!important}
+
+
+/* Identidade oficial enviada pela Drogaria Rocha */
+.logo-mark.official-logo{width:55px;height:55px;border-radius:50%;background:#fff;border:1px solid #eeeeef;box-shadow:0 2px 12px #20212a12;transform:none;overflow:hidden;flex:none}
+.logo-mark.official-logo img{width:100%;height:100%;display:block;object-fit:contain;transform:none;border-radius:50%}
+.slide-brands{background:linear-gradient(112deg,#fff 10%,#fff5ea 100%);color:#191b20}
+.slide-brands .slide-label{color:#d45a0a}
+.slide-brands .slide-title strong{color:#ed6b17}
+.slide-brands .slide-desc{color:#666971}
+.hero-art.hero-art-brands{width:44%;right:2%;top:0;height:100%;display:flex;align-items:center;justify-content:center}
+.brand-montage{display:block;width:100%;max-width:515px;height:auto;max-height:205px;object-fit:contain;border-radius:12px;padding:10px;background:white;box-shadow:0 12px 33px #26190e13}
+@media(max-width:760px){
+ .logo-mark.official-logo{width:48px;height:48px}
+ .hero-art.hero-art-brands{width:57%;right:1%;left:auto;top:auto;bottom:1%;height:122px}
+ .brand-montage{width:100%;max-height:111px;padding:4px;border-radius:8px;box-shadow:none}
+ .slide-brands .slide-copy{width:68%;max-width:310px}
+ .slide-brands .slide-title{max-width:300px}
+}
+@media(max-width:400px){
+ .logo-mark.official-logo{width:44px;height:44px}
+ .hero-art.hero-art-brands{width:68%;height:103px;bottom:1%;right:0}
+ .brand-montage{max-height:95px}
+ .slide-brands .slide-copy{width:70%}
+ .slide-brands .slide-title{font-size:23px;line-height:1.08}
+}
