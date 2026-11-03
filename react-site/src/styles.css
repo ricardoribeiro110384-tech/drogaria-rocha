@@ -80,7 +80,7 @@ main{padding:22px 0 0}.crumb{display:flex;gap:7px;color:#9b9ea6;font-size:11px;m
 .logo-type small{letter-spacing:0;font-size:7.2px;white-space:normal;max-width:176px;line-height:1.25}
 .slide-orange .slide-title strong{color:#fff}
 .campaign-visual{display:flex;justify-content:center;align-items:center}
-.campaign-sprite-art{display:block;flex:none;background-image:url("./assets/campaigns-sprite.webp");background-repeat:no-repeat;background-size:100% 700%;aspect-ratio:120/92;width:100%;border-radius:9px;background-color:white}
+.campaign-sprite-art{display:block;flex:none;background-image:url("/drogaria-rocha/nova/assets/campaigns-sprite.webp");background-repeat:no-repeat;background-size:100% 700%;aspect-ratio:120/92;width:100%;border-radius:9px;background-color:white}
 .campaign-visual .campaign-sprite-art{width:min(76%,275px);box-shadow:0 10px 34px #00000017}
 .campaign-section{margin:51px 0 10px}
 .campaign-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
