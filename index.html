@@ -381,21 +381,373 @@ footer{border-top:1px solid #303138;margin-top:80px;padding:50px 0 25px;backgrou
 "use strict";
 const WA="5589981166747";
 const products=[
-{id:1,category:"Pele",brand:"NIVEA",name:"Protetor Solar Nivea Sun Protect & Hidrata FPS 50 125ml",img:"https://www.farmaciareal.com.br/uploads/farmaciareal/produtos_imagens/nive501406.jpg",tag:"Proteção solar"},
-{id:2,category:"Infantil",brand:"Huggies",name:"Fralda Huggies Pants Proteção Acolchoada XG 80 unidades",img:"https://bemolfarma.vtexassets.com/arquivos/ids/212447/6033831-8.jpg?v=638918113221000000",tag:"Mamãe e bebê"},
-{id:3,category:"Higiene",brand:"Protex",name:"Sabonete Líquido Protex Erva Doce 250ml",img:"https://drogariavenancio.vtexassets.com/arquivos/ids/1131611/20587_z.jpg?v=638463596570130000",tag:"Higiene pessoal"},
-{id:4,category:"Infantil",brand:"Johnson's",name:"Shampoo Johnson's Baby Regular 400ml",img:"https://mamaepechincha.com.br/wp-content/uploads/2020/06/6911602SZ.jpg",tag:"Banho do bebê"},
-{id:5,category:"Pele",brand:"La Roche-Posay",name:"Gel de Limpeza Effaclar Alta Tolerância 300g",img:"https://down-br.img.susercontent.com/file/sg-11134201-824gz-me613mqqups63a",tag:"Cuidados faciais"},
-{id:6,category:"Higiene",brand:"Listerine",name:"Enxaguante Bucal Listerine Cool Mint Leve 500ml Pague 350ml",img:"https://d2kh0jmrbw4y83.cloudfront.net/Custom/Content/Products/80/85/8085_enxaguante-bucal-listerine-cool-mint-leve-500ml-pague-350ml-117907_z2_638253756916130697.jpg",tag:"Saúde bucal"},
-{id:7,category:"Pele",brand:"NIVEA",name:"Nivea Creme Hidratante Lata 56g",img:"https://images.tcdn.com.br/img/img_prod/1208831/nivea_creme_hidratante_lata_56g_3198_1_d3f2335ca0dba2fb5221bc54f90fced0.jpg",tag:"Hidratação"},
-{id:8,category:"Infantil",brand:"Pampers",name:"Fralda Pampers Confort Sec G 98 unidades",img:"https://drogariavenancio.vtexassets.com/arquivos/ids/7422913/84606_z.JPG.jpg?v=639180002189930000",tag:"Mamãe e bebê"}
+  {
+    "id": 18,
+    "sku": "000018",
+    "category": "Pele",
+    "brand": "Sundown",
+    "name": "Protetor solar Sundown FPS 50 120 ml",
+    "img": "./assets/produtos/000018.webp",
+    "tag": "Proteção solar"
+  },
+  {
+    "id": 110,
+    "sku": "000110",
+    "category": "Higiene",
+    "brand": "Leite de Rosas",
+    "name": "Desodorante Leite de Rosas Tradicional 100 ml",
+    "img": "./assets/produtos/000110.webp",
+    "tag": "Cuidados pessoais"
+  },
+  {
+    "id": 111,
+    "sku": "000111",
+    "category": "Higiene",
+    "brand": "Leite de Rosas",
+    "name": "Desodorante Leite de Rosas Tradicional 170 ml",
+    "img": "./assets/produtos/000111.webp",
+    "tag": "Cuidados pessoais"
+  },
+  {
+    "id": 272,
+    "sku": "000272",
+    "category": "Pele",
+    "brand": "NIVEA",
+    "name": "Creme hidratante Nivea lata 97 g",
+    "img": "./assets/produtos/000272.webp",
+    "tag": "Hidratação"
+  },
+  {
+    "id": 401,
+    "sku": "000401",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Colônia Johnson’s Baby Lavanda 200 ml",
+    "img": "./assets/produtos/000401.webp",
+    "tag": "Cuidados infantis"
+  },
+  {
+    "id": 852,
+    "sku": "000852",
+    "category": "Higiene",
+    "brand": "Gillette",
+    "name": "Refil Gillette Mach3 com 2 unidades",
+    "img": "./assets/produtos/000852.webp",
+    "tag": "Barbear"
+  },
+  {
+    "id": 1006,
+    "sku": "001006",
+    "category": "Higiene",
+    "brand": "Colgate",
+    "name": "Creme dental Colgate Máxima Proteção Anticáries 90 g",
+    "img": "./assets/produtos/001006.webp",
+    "tag": "Saúde bucal"
+  },
+  {
+    "id": 1100,
+    "sku": "001100",
+    "category": "Higiene",
+    "brand": "Sensodyne",
+    "name": "Creme dental Sensodyne Original 50 g",
+    "img": "./assets/produtos/001100.webp",
+    "tag": "Saúde bucal"
+  },
+  {
+    "id": 1236,
+    "sku": "001236",
+    "category": "Higiene",
+    "brand": "Granado",
+    "name": "Sabonete em barra Granado Coco 100 g",
+    "img": "./assets/produtos/001236.webp",
+    "tag": "Banho"
+  },
+  {
+    "id": 1237,
+    "sku": "001237",
+    "category": "Higiene",
+    "brand": "Granado",
+    "name": "Sabonete Granado Sulfuroso 90 g",
+    "img": "./assets/produtos/001237.webp",
+    "tag": "Banho"
+  },
+  {
+    "id": 1302,
+    "sku": "001302",
+    "category": "Higiene",
+    "brand": "Granado",
+    "name": "Sabonete Granado Enxofre 90 g",
+    "img": "./assets/produtos/001302.webp",
+    "tag": "Banho"
+  },
+  {
+    "id": 4,
+    "sku": "019517",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Shampoo Johnson’s Baby Regular 400 ml",
+    "img": "./assets/produtos/019517.webp",
+    "tag": "Banho do bebê"
+  },
+  {
+    "id": 5,
+    "sku": "086241",
+    "category": "Pele",
+    "brand": "La Roche-Posay",
+    "name": "Gel de limpeza Effaclar Alta Tolerância 300 g",
+    "img": "./assets/produtos/086241.webp",
+    "tag": "Cuidados faciais"
+  },
+  {
+    "id": 87717,
+    "sku": "087717",
+    "category": "Higiene",
+    "brand": "Listerine",
+    "name": "Enxaguante bucal Listerine Cool Mint 500 ml",
+    "img": "./assets/produtos/087717.webp",
+    "tag": "Saúde bucal"
+  },
+  {
+    "id": 7,
+    "sku": "088139",
+    "category": "Pele",
+    "brand": "NIVEA",
+    "name": "Creme hidratante Nivea lata 56 g",
+    "img": "./assets/produtos/088139.webp",
+    "tag": "Hidratação"
+  },
+  {
+    "id": 89697,
+    "sku": "089697",
+    "category": "Higiene",
+    "brand": "Palmolive",
+    "name": "Sabonete líquido Palmolive Melancia e Lichia 250 ml",
+    "img": "./assets/produtos/089697.webp",
+    "tag": "Banho"
+  },
+  {
+    "id": 226,
+    "sku": "000226",
+    "category": "Higiene",
+    "brand": "Men’s Club",
+    "name": "Desodorante Men’s Club Original 90 ml",
+    "img": "./assets/produtos/000226.webp",
+    "tag": "Desodorante"
+  },
+  {
+    "id": 670,
+    "sku": "000670",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Condicionador Johnson’s Baby Cabelos Claros 200 ml",
+    "img": "./assets/produtos/000670.webp",
+    "tag": "Cuidados infantis"
+  },
+  {
+    "id": 1191,
+    "sku": "001191",
+    "category": "Higiene",
+    "brand": "Wilkinson Sword",
+    "name": "Lâmina de barbear Wilkinson Sword com 3 unidades",
+    "img": "./assets/produtos/001191.webp",
+    "tag": "Barbear"
+  },
+  {
+    "id": 14064,
+    "sku": "014064",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Shampoo Johnson’s Baby Cabelos Claros 200 ml",
+    "img": "./assets/produtos/014064.webp",
+    "tag": "Cuidados infantis"
+  },
+  {
+    "id": 14583,
+    "sku": "014583",
+    "category": "Infantil",
+    "brand": "Granado",
+    "name": "Sabonete de glicerina Granado Bebê Tradicional 90 g",
+    "img": "./assets/produtos/014583.webp",
+    "tag": "Banho do bebê"
+  },
+  {
+    "id": 15111,
+    "sku": "015111",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Shampoo Johnson’s Baby Cachos dos Sonhos 200 ml",
+    "img": "./assets/produtos/015111.webp",
+    "tag": "Cuidados infantis"
+  },
+  {
+    "id": 15623,
+    "sku": "015623",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Shampoo Johnson’s Baby Regular 200 ml",
+    "img": "./assets/produtos/015623.webp",
+    "tag": "Cuidados infantis"
+  },
+  {
+    "id": 16232,
+    "sku": "016232",
+    "category": "Higiene",
+    "brand": "Colgate",
+    "name": "Creme dental Colgate Tripla Ação Menta Original 90 g",
+    "img": "./assets/produtos/016232.webp",
+    "tag": "Saúde bucal"
+  },
+  {
+    "id": 16745,
+    "sku": "016745",
+    "category": "Higiene",
+    "brand": "Granado",
+    "name": "Sabonete de glicerina Granado Tradicional 90 g",
+    "img": "./assets/produtos/016745.webp",
+    "tag": "Banho"
+  },
+  {
+    "id": 23680,
+    "sku": "023680",
+    "category": "Higiene",
+    "brand": "Protex",
+    "name": "Sabonete líquido Protex Vitamina E 250 ml",
+    "img": "./assets/produtos/023680.webp",
+    "tag": "Banho"
+  },
+  {
+    "id": 24688,
+    "sku": "024688",
+    "category": "Infantil",
+    "brand": "Baby Dove",
+    "name": "Sabonete Baby Dove Hidratação Enriquecida 75 g",
+    "img": "./assets/produtos/024688.webp",
+    "tag": "Banho do bebê"
+  },
+  {
+    "id": 24718,
+    "sku": "024718",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Shampoo Johnson’s Baby Cheirinho Prolongado 200 ml",
+    "img": "./assets/produtos/024718.webp",
+    "tag": "Cuidados infantis"
+  },
+  {
+    "id": 28546,
+    "sku": "028546",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Sabonete líquido Johnson’s Baby Recém-Nascido 200 ml",
+    "img": "./assets/produtos/028546.webp",
+    "tag": "Cuidados infantis"
+  },
+  {
+    "id": 81018,
+    "sku": "081018",
+    "category": "Infantil",
+    "brand": "Baby Dove",
+    "name": "Sabonete Baby Dove Hidratação Balanceada 75 g",
+    "img": "./assets/produtos/081018.webp",
+    "tag": "Banho do bebê"
+  },
+  {
+    "id": 84712,
+    "sku": "084712",
+    "category": "Higiene",
+    "brand": "Protex",
+    "name": "Sabonete líquido Protex Limpeza Profunda 250 ml",
+    "img": "./assets/produtos/084712.webp",
+    "tag": "Banho"
+  },
+  {
+    "id": 87634,
+    "sku": "087634",
+    "category": "Higiene",
+    "brand": "Granado",
+    "name": "Refil de sabonete líquido Granado Tradicional 300 ml",
+    "img": "./assets/produtos/087634.webp",
+    "tag": "Banho"
+  },
+  {
+    "id": 88243,
+    "sku": "088243",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Sabonete líquido Johnson’s Baby Camomila 400 ml",
+    "img": "./assets/produtos/088243.webp",
+    "tag": "Cuidados infantis"
+  },
+  {
+    "id": 89068,
+    "sku": "089068",
+    "category": "Higiene",
+    "brand": "Granado",
+    "name": "Sabonete de glicerina Granado Erva-doce 90 g",
+    "img": "./assets/produtos/089068.webp",
+    "tag": "Banho"
+  },
+  {
+    "id": 89069,
+    "sku": "089069",
+    "category": "Higiene",
+    "brand": "Granado",
+    "name": "Sabonete de glicerina Granado Hortelã 90 g",
+    "img": "./assets/produtos/089069.webp",
+    "tag": "Banho"
+  },
+  {
+    "id": 89281,
+    "sku": "089281",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Sabonete líquido Johnson’s Baby Baunilha 400 ml",
+    "img": "./assets/produtos/089281.webp",
+    "tag": "Cuidados infantis"
+  },
+  {
+    "id": 89282,
+    "sku": "089282",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Sabonete líquido Johnson’s Baby Baunilha 200 ml",
+    "img": "./assets/produtos/089282.webp",
+    "tag": "Cuidados infantis"
+  },
+  {
+    "id": 89344,
+    "sku": "089344",
+    "category": "Pele",
+    "brand": "L’Oréal Paris",
+    "name": "Creme facial L’Oréal Paris Revitalift Hialurônico Diurno FPS 20 25 g",
+    "img": "./assets/produtos/089344.webp",
+    "tag": "Cuidados faciais"
+  },
+  {
+    "id": 89689,
+    "sku": "089689",
+    "category": "Higiene",
+    "brand": "Corpo Dourado",
+    "name": "Amolecedor de cutículas Corpo Dourado 100 ml",
+    "img": "./assets/produtos/089689.webp",
+    "tag": "Cuidados com as unhas"
+  },
+  {
+    "id": 89692,
+    "sku": "089692",
+    "category": "Infantil",
+    "brand": "Johnson’s Baby",
+    "name": "Sabonete líquido Johnson’s Baby Frutas Vermelhas 200 ml",
+    "img": "./assets/produtos/089692.webp",
+    "tag": "Cuidados infantis"
+  }
 ];
 let filter="Todos",term="";
 let cart={};try{let saved=JSON.parse(localStorage.getItem("rochaConsulta")||"{}");if(saved&&typeof saved==="object"&&!Array.isArray(saved))cart=saved}catch(e){}
 const safe=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function refreshIcons(){if(window.lucide&&typeof lucide.createIcons==="function")lucide.createIcons()}
-function save(){try{localStorage.setItem("rochaConsulta",JSON.stringify(cart))}catch(e){}const n=Object.values(cart).reduce((a,b)=>a+Number(b||0),0);document.getElementById("cartCount").textContent=n;document.getElementById("cartCount2").textContent="("+n+")"}
-function render(){document.querySelectorAll(".filter-btn").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.filter===filter)));let list=products.filter(p=>(filter==="Todos"||p.category===filter)&&(!term||(p.name+" "+p.brand+" "+p.category).toLocaleLowerCase("pt-BR").includes(term.toLocaleLowerCase("pt-BR"))));document.getElementById("products").innerHTML=list.length?list.map(p=>'<article class="product"><div class="product-visual"><span class="category-tag">'+safe(p.tag)+'</span><img src="'+safe(p.img)+'" loading="lazy" alt="Foto da embalagem de '+safe(p.name)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="image-fallback"><i data-lucide="image-off" width="28"></i><span>Imagem indisponível</span></div></div><div class="product-body"><span class="product-brand">'+safe(p.brand)+'</span><h3>'+safe(p.name)+'</h3><div class="product-status">Preço e disponibilidade<b>Sob consulta</b></div><button class="add-btn" type="button" onclick="addItem('+p.id+')"><i data-lucide="plus" width="16"></i> Adicionar à lista</button></div></article>').join(""):'<div class="no-results"><b>Nenhum produto encontrado nesta vitrine.</b><p>Você pode perguntar pelo produto diretamente no WhatsApp.</p><a style="color:#e86b20" href="https://wa.me/5589981166747" target="_blank" rel="noopener">Falar com a drogaria →</a></div>';refreshIcons()}
+function save(){try{localStorage.setItem("rochaConsulta",JSON.stringify(cart))}catch(e){}const n=products.reduce((total, product) => total + (Number(cart[product.id]) || 0), 0);document.getElementById("cartCount").textContent=n;document.getElementById("cartCount2").textContent="("+n+")"}
+function render(){document.querySelectorAll(".filter-btn").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.filter===filter)));let list=products.filter(p=>(filter==="Todos"||p.category===filter)&&(!term||(p.name+" "+p.brand+" "+p.category+" "+p.sku).toLocaleLowerCase("pt-BR").includes(term.toLocaleLowerCase("pt-BR"))));document.getElementById("products").innerHTML=list.length?list.map(p=>'<article class="product"><div class="product-visual"><span class="category-tag">'+safe(p.tag)+'</span><img src="'+safe(p.img)+'" loading="lazy" alt="Foto da embalagem de '+safe(p.name)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="image-fallback"><i data-lucide="image-off" width="28"></i><span>Imagem indisponível</span></div></div><div class="product-body"><span class="product-brand">'+safe(p.brand)+'</span><h3>'+safe(p.name)+'</h3><div class="product-status">Preço e disponibilidade<b>Sob consulta</b></div><button class="add-btn" type="button" onclick="addItem('+p.id+')"><i data-lucide="plus" width="16"></i> Adicionar à lista</button></div></article>').join(""):'<div class="no-results"><b>Nenhum produto encontrado nesta vitrine.</b><p>Você pode perguntar pelo produto diretamente no WhatsApp.</p><a style="color:#e86b20" href="https://wa.me/5589981166747" target="_blank" rel="noopener">Falar com a drogaria →</a></div>';refreshIcons()}
 function changeFilter(f){filter=f;term="";render();setTimeout(()=>document.getElementById("vitrine").scrollIntoView({behavior:"smooth",block:"start"}),20)}
 function searchNow(e,id){e.preventDefault();term=document.getElementById(id).value.trim();filter="Todos";render();document.getElementById("vitrine").scrollIntoView({behavior:"smooth",block:"start"})}
 function consultCategory(c){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Olá, gostaria de consultar "+c+" na Drogaria Rocha."),"_blank","noopener")}
