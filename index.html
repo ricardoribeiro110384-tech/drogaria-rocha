@@ -110,6 +110,30 @@ header{position:sticky;top:0;z-index:30;background:#141519;box-shadow:0 12px 35p
 .filters{display:flex;gap:9px;flex-wrap:wrap;margin:25px 0 23px}
 .filter-btn{background:white;color:#55565b;border:1px solid #dddfe4;padding:10px 17px;font-size:11px;font-weight:800;border-radius:30px}
 .filter-btn[aria-pressed="true"]{background:#18191e;color:#fff;border-color:#18191e}
+
+.catalog-sections{display:grid;gap:30px}
+.catalog-section{min-width:0}
+.catalog-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px}
+.catalog-heading h3,.catalog-title{margin:0;font-size:clamp(19px,2.3vw,26px);letter-spacing:-.025em;line-height:1.2}
+.catalog-title{margin-bottom:16px}
+.catalog-card-link{flex:none;border:0;background:transparent;color:#a94307;font:inherit;font-size:13px;font-weight:800;min-height:44px;padding:6px 2px;cursor:pointer}
+.catalog-card-link:hover{text-decoration:underline;text-underline-offset:3px}
+.catalog-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/4);gap:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;padding-bottom:7px;scrollbar-width:thin;scrollbar-color:#bcbcc1 transparent}
+.catalog-track .product{scroll-snap-align:start;min-width:0}
+.catalog-controls{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}
+.catalog-controls button{display:grid;place-items:center;min-width:44px;min-height:44px;border:1px solid #d9d9dd;border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:19px;cursor:pointer}
+.catalog-controls button:hover:not(:disabled){border-color:#c45b16;color:#a94307}
+.catalog-controls button:disabled{opacity:.4;cursor:default}
+.catalog-track:focus-visible,.catalog-card-link:focus-visible,.catalog-controls button:focus-visible{outline:2px solid #a94307;outline-offset:2px}
+.catalog-offers-empty{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 20px;border:1px solid #e6e6e9;border-radius:12px;background:#fff}
+.catalog-offers-empty p{margin:0;color:#555860;font-size:14px;line-height:1.4}
+.catalog-offers-empty a{display:inline-flex;align-items:center;min-height:44px;flex:none}
+@media(max-width:540px){.catalog-offers-empty{align-items:flex-start;flex-direction:column;gap:4px;padding:12px 16px}}
+.catalog-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:920px){.catalog-track{grid-auto-columns:calc((100% - 32px)/3)}}
+@media(max-width:690px){.catalog-track{gap:12px;grid-auto-columns:calc((100% - 28px)/2)}.catalog-sections{gap:22px}}
+@media(max-width:345px){.catalog-track{grid-auto-columns:75%}}
+
 .product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .product{background:#fff;border-radius:15px;border:1px solid #e9e9ec;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 5px #12121205;transition:.2s}
 .product:hover{transform:translateY(-4px);box-shadow:0 20px 25px #1616160c}
@@ -323,7 +347,7 @@ footer{border-top:1px solid #303138;margin-top:80px;padding:50px 0 25px;backgrou
   <form class="search" role="search" onsubmit="searchNow(event,'searchDesktop')"><input id="searchDesktop" type="search" placeholder="Busque por nome, marca ou categoria" aria-label="Pesquisar produtos"><button type="submit" aria-label="Pesquisar"><i data-lucide="search"></i></button></form>
   <div class="header-side"><a class="header-contact" href="https://wa.me/5589981166747" target="_blank" rel="noopener"><i data-lucide="message-circle" width="23"></i><span>Fale com nossa equipe<small>(89) 98116-6747</small></span></a><button class="cart-head" onclick="openCart()" aria-label="Abrir lista de consulta"><i data-lucide="shopping-bag" width="19"></i> Minha lista <b id="cartCount">0</b></button></div>
  </div>
- <nav class="desktop-nav" aria-label="Categorias principais"><div class="container nav-inner"><a class="all" href="#categorias"><i data-lucide="layout-grid" width="17"></i> Todas as categorias</a><a href="#vitrine" onclick="changeFilter('Todos')">Destaques</a><a href="#vitrine" onclick="changeFilter('Higiene')">Higiene e beleza</a><a href="#vitrine" onclick="changeFilter('Pele')">Cuidados com a pele</a><a href="#vitrine" onclick="changeFilter('Infantil')">Mamãe e bebê</a><a href="#vale">Vale + Rocha</a><a class="local" href="#localizacao"><i data-lucide="map-pin" width="16"></i> Nossa loja</a></div></nav>
+ <nav class="desktop-nav" aria-label="Categorias principais"><div class="container nav-inner"><a class="all" href="#categorias"><i data-lucide="layout-grid" width="17"></i> Todas as categorias</a><a href="#vitrine" onclick="changeFilter('Destaques')">Destaques</a><a href="#vitrine" onclick="changeFilter('Higiene')">Higiene e beleza</a><a href="#vitrine" onclick="changeFilter('Pele')">Cuidados com a pele</a><a href="#vitrine" onclick="changeFilter('Infantil')">Mamãe e bebê</a><a href="#vale">Vale + Rocha</a><a class="local" href="#localizacao"><i data-lucide="map-pin" width="16"></i> Nossa loja</a></div></nav>
 </header>
 <main id="inicio">
 <div class="container">
@@ -349,7 +373,7 @@ footer{border-top:1px solid #303138;margin-top:80px;padding:50px 0 25px;backgrou
  <div class="benefits"><div class="benefit"><i data-lucide="map-pin" width="27"></i><span><strong>Loja no Centro</strong><small>São Raimundo Nonato – PI</small></span></div><div class="benefit"><i data-lucide="messages-square" width="27"></i><span><strong>Consulta pelo WhatsApp</strong><small>Fale com a equipe</small></span></div><div class="benefit"><i data-lucide="shopping-bag" width="27"></i><span><strong>Monte sua lista</strong><small>Envie vários itens de uma vez</small></span></div><div class="benefit"><i data-lucide="heart-handshake" width="27"></i><span><strong>Cuidado e proximidade</strong><small>Atendimento da sua região</small></span></div></div>
  <section class="section" id="categorias"><div class="section-head"><div><span class="eyebrow">Explore a drogaria</span><h2>O que você procura hoje?</h2><p class="subtitle">Uma seleção organizada para você encontrar com mais facilidade.</p></div><a href="#vitrine" class="see-link" onclick="changeFilter('Todos')">Ver todos <i data-lucide="arrow-right" width="16"></i></a></div>
   <div class="cat-grid">
-   <button class="cat" onclick="changeFilter('Todos')"><i data-lucide="layout-grid" width="27"></i><strong>Todos os itens</strong><small>Vitrine completa</small></button>
+   <button class="cat" onclick="changeFilter('Todos')"><i data-lucide="layout-grid" width="27"></i><strong>Vitrine</strong><small>Veja por categoria</small></button>
    <button class="cat" onclick="changeFilter('Higiene')"><i data-lucide="droplets" width="27"></i><strong>Higiene pessoal</strong><small>Cuidados diários</small></button>
    <button class="cat" onclick="changeFilter('Pele')"><i data-lucide="sun" width="27"></i><strong>Cuidados da pele</strong><small>Proteção e limpeza</small></button>
    <button class="cat" onclick="changeFilter('Infantil')"><i data-lucide="baby" width="27"></i><strong>Mamãe e bebê</strong><small>Família toda</small></button>
@@ -360,8 +384,9 @@ footer{border-top:1px solid #303138;margin-top:80px;padding:50px 0 25px;backgrou
 </div>
 <section class="shop-section" id="vitrine"><div class="container">
  <div class="section-head section"><div><span class="eyebrow">Vitrine de produtos</span><h2>Marcas e cuidados para o seu dia</h2><p class="subtitle">Seleção ilustrativa de produtos reais. Consulte preço e disponibilidade antes de sair de casa.</p></div><a class="see-link" href="https://wa.me/5589981166747" target="_blank" rel="noopener">Fale com a loja <i data-lucide="arrow-up-right" width="17"></i></a></div>
- <div class="filters" aria-label="Filtrar produtos"><button class="filter-btn" data-filter="Todos" aria-pressed="true" onclick="changeFilter('Todos')">Todos os produtos</button><button class="filter-btn" data-filter="Higiene" aria-pressed="false" onclick="changeFilter('Higiene')">Higiene</button><button class="filter-btn" data-filter="Pele" aria-pressed="false" onclick="changeFilter('Pele')">Pele e proteção</button><button class="filter-btn" data-filter="Infantil" aria-pressed="false" onclick="changeFilter('Infantil')">Infantil</button></div>
- <div class="product-grid" id="products" aria-live="polite"></div>
+ <div class="filters" id="catalogFilters" role="group" aria-label="Seções da vitrine"></div>
+ <p class="catalog-status" id="catalogStatus" role="status"></p>
+ <div id="products"></div>
  <p class="product-note">As fotos ilustram as embalagens dos produtos. A exibição não confirma estoque, preço, promoção ou entrega. Consulta sem compromisso.</p>
  <div class="banner-strip"><div><h3>Quer consultar vários produtos?</h3><p>Adicione à sua lista e envie tudo em uma única mensagem para a Drogaria Rocha.</p></div><button onclick="openCart()">Abrir minha lista <span id="cartCount2">(0)</span></button></div>
 </div></section>
@@ -2169,9 +2194,163 @@ let cart={};try{let saved=JSON.parse(localStorage.getItem("rochaConsulta")||"{}"
 const safe=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function refreshIcons(){if(window.lucide&&typeof lucide.createIcons==="function")lucide.createIcons()}
 function save(){try{localStorage.setItem("rochaConsulta",JSON.stringify(cart))}catch(e){}const n=products.reduce((total, product) => total + (Number(cart[product.id]) || 0), 0);document.getElementById("cartCount").textContent=n;document.getElementById("cartCount2").textContent="("+n+")"}
-function render(){document.querySelectorAll(".filter-btn").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.filter===filter)));let list=products.filter(p=>(filter==="Todos"||p.category===filter)&&(!term||(p.name+" "+p.brand+" "+p.category+" "+p.sku).toLocaleLowerCase("pt-BR").includes(term.toLocaleLowerCase("pt-BR"))));document.getElementById("products").innerHTML=list.length?list.map(p=>'<article class="product"><div class="product-visual"><img src="'+safe(p.img)+'" loading="lazy" alt="Foto da embalagem de '+safe(p.name)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="image-fallback"><i data-lucide="image-off" width="28"></i><span>Imagem indisponível</span></div></div><div class="product-body"><span class="product-brand">'+safe(p.brand)+'</span><h3>'+safe(p.name)+'</h3><span class="category-tag">'+safe(p.tag)+'</span><div class="product-status">Preço e disponibilidade<b>Sob consulta</b></div><button class="add-btn" type="button" onclick="addItem('+p.id+')"><i data-lucide="plus" width="16"></i> Adicionar à lista</button></div></article>').join(""):'<div class="no-results"><b>Nenhum produto encontrado nesta vitrine.</b><p>Você pode perguntar pelo produto diretamente no WhatsApp.</p><a style="color:#e86b20" href="https://wa.me/5589981166747" target="_blank" rel="noopener">Falar com a drogaria →</a></div>';refreshIcons()}
-function changeFilter(f){filter=f;term="";render();setTimeout(()=>document.getElementById("vitrine").scrollIntoView({behavior:"smooth",block:"start"}),20)}
-function searchNow(e,id){e.preventDefault();term=document.getElementById(id).value.trim();filter="Todos";render();document.getElementById("vitrine").scrollIntoView({behavior:"smooth",block:"start"})}
+const featuredLimit = 8;
+const dermocosmeticTag = "Dermocosméticos";
+const sunscreenTag = "Proteção solar";
+const catalogSections = [
+  { id: "Destaques", label: "Destaques", select: () => featuredProducts(products) },
+  { id: "Dermo", label: dermocosmeticTag, select: () => products.filter(p => p.tag === dermocosmeticTag) },
+  { id: "Solar", label: sunscreenTag, select: () => products.filter(p => p.tag === sunscreenTag) },
+  { id: "Higiene", label: "Higiene e beleza", select: () => products.filter(p => p.category === "Higiene") },
+  { id: "Pele", label: "Cuidados com a pele", select: () => products.filter(p => p.category === "Pele") },
+  { id: "Infantil", label: "Mamãe e bebê", select: () => products.filter(p => p.category === "Infantil") },
+  { id: "Promocoes", label: "Promoções", select: () => products.filter(p => p.onPromotion === true) }
+];
+
+const catalogFilters = document.getElementById("catalogFilters");
+catalogFilters.innerHTML = [{ id: "Todos", label: "Visão geral" }, ...catalogSections].map(section =>
+  `<button type="button" class="filter-btn" data-filter="${section.id}" aria-controls="products" aria-pressed="false">${section.label}</button>`
+).join("");
+catalogFilters.addEventListener("click", event => {
+  const button = event.target.closest("[data-filter]");
+  if (button) changeFilter(button.dataset.filter);
+});
+
+function productCard(product) {
+  return `<article class="product">
+    <div class="product-visual">
+      <img src="${safe(product.img)}" loading="lazy" alt="Foto da embalagem de ${safe(product.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="image-fallback"><i data-lucide="image-off" width="28"></i><span>Imagem indisponível</span></div>
+    </div>
+    <div class="product-body">
+      <span class="product-brand">${safe(product.brand)}</span>
+      <h3>${safe(product.name)}</h3>
+      <span class="category-tag">${safe(product.tag)}</span>
+      <div class="product-status">Preço e disponibilidade<b>Sob consulta</b></div>
+      <button class="add-btn" type="button" onclick="addItem(${product.id})"><i data-lucide="plus" width="16"></i> Adicionar à lista</button>
+    </div>
+  </article>`;
+}
+
+function featuredProducts(list) {
+  const seen = new Set();
+  const ordered = [...list].reverse();
+  const featured = ordered.filter(product => {
+    if (seen.has(product.tag)) return false;
+    seen.add(product.tag);
+    return true;
+  }).slice(0, featuredLimit);
+  return featured.concat(ordered.filter(product => !featured.includes(product))).slice(0, featuredLimit);
+}
+
+function emptyOffers() {
+  return `<div class="catalog-offers-empty">
+    <p>Nenhuma promoção listada no momento.</p>
+    <a class="catalog-card-link" href="https://wa.me/${WA}?text=${encodeURIComponent("Olá, gostaria de saber quais promoções estão disponíveis na Drogaria Rocha.")}" target="_blank" rel="noopener">Consultar ofertas no WhatsApp ↗</a>
+  </div>`;
+}
+
+function catalogSection(section) {
+  const trackId = "track-" + section.id;
+  const titleId = "section-" + section.id;
+  let items = section.select();
+  if (section.id === "Pele") {
+    items = items.filter(p => p.tag !== dermocosmeticTag && p.tag !== sunscreenTag);
+  }
+  const cards = section.id === "Destaques" ? items : featuredProducts(items);
+  if (!cards.length && section.id !== "Promocoes") return "";
+  const content = cards.length ? `
+    <div class="catalog-track" id="${trackId}" role="region" aria-labelledby="${titleId}" tabindex="0">${cards.map(productCard).join("")}</div>
+    <div class="catalog-controls">
+      <button type="button" data-direction="-1" aria-controls="${trackId}" aria-label="Produtos anteriores em ${section.label}" disabled>←</button>
+      <button type="button" data-direction="1" aria-controls="${trackId}" aria-label="Próximos produtos em ${section.label}">→</button>
+    </div>` : emptyOffers();
+  return `<section class="catalog-section" aria-labelledby="${titleId}">
+    <div class="catalog-heading">
+      <h3 id="${titleId}">${section.label}</h3>
+      ${cards.length && section.id !== "Destaques" ? `<button type="button" class="catalog-card-link" data-category="${section.id}" aria-label="Ver todos os produtos em ${section.label}">Ver todos →</button>` : ""}
+    </div>
+    ${content}
+  </section>`;
+}
+
+const catalog = document.getElementById("products");
+catalog.addEventListener("click", event => {
+  const categoryButton = event.target.closest("button[data-category]");
+  if (categoryButton) {
+    changeFilter(categoryButton.dataset.category);
+    document.getElementById("catalogTitle").focus({ preventScroll: true });
+    return;
+  }
+  const arrow = event.target.closest("button[data-direction]");
+  if (!arrow) return;
+  const track = document.getElementById(arrow.getAttribute("aria-controls"));
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  track.scrollBy({ left: Number(arrow.dataset.direction) * track.clientWidth, behavior: reducedMotion ? "instant" : "smooth" });
+});
+
+function updateCatalogArrows(track) {
+  const controls = track.nextElementSibling;
+  controls.firstElementChild.disabled = track.scrollLeft <= 2;
+  controls.lastElementChild.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+}
+
+catalog.addEventListener("scroll", event => {
+  if (event.target.classList.contains("catalog-track")) updateCatalogArrows(event.target);
+}, true);
+window.addEventListener("resize", () => catalog.querySelectorAll(".catalog-track").forEach(updateCatalogArrows));
+
+function render() {
+  const status = document.getElementById("catalogStatus");
+  document.querySelectorAll(".filter-btn").forEach(button => {
+    button.setAttribute("aria-pressed", String(!term && button.dataset.filter === filter));
+  });
+
+  if (filter === "Todos" && !term) {
+    catalog.innerHTML = '<div class="catalog-sections">' + catalogSections.map(catalogSection).join("") + '</div>';
+    catalog.querySelectorAll(".catalog-track").forEach(updateCatalogArrows);
+    status.textContent = "Visão geral da vitrine";
+  } else {
+    const section = catalogSections.find(item => item.id === filter);
+    const title = term ? "Resultados da busca" : section.label;
+    const query = term.toLocaleLowerCase("pt-BR");
+    const list = term
+      ? products.filter(p => (p.name + " " + p.brand + " " + p.category + " " + p.tag + " " + p.sku).toLocaleLowerCase("pt-BR").includes(query))
+      : section.select();
+    const heading = '<h3 class="catalog-title" id="catalogTitle" tabindex="-1">' + title + '</h3>';
+    const emptyResults = '<div class="no-results"><b>Nenhum produto encontrado nesta vitrine.</b><p>Você pode perguntar pelo produto diretamente no WhatsApp.</p><a style="color:#e86b20" href="https://wa.me/5589981166747" target="_blank" rel="noopener">Falar com a drogaria →</a></div>';
+    const results = list.length ? list.map(productCard).join("") : emptyResults;
+    catalog.innerHTML = heading + (filter === "Promocoes" && !list.length
+      ? emptyOffers()
+      : '<div class="product-grid">' + results + '</div>');
+    status.textContent = title + ". " + (list.length === 1 ? "1 produto encontrado" : list.length + " produtos encontrados");
+  }
+  refreshIcons();
+}
+
+function showCatalog() {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.getElementById("vitrine").scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth", block: "start" });
+}
+
+function changeFilter(category) {
+  filter = category;
+  term = "";
+  document.getElementById("searchDesktop").value = "";
+  document.getElementById("searchMobile").value = "";
+  render();
+  showCatalog();
+}
+
+function searchNow(event, id) {
+  event.preventDefault();
+  term = document.getElementById(id).value.trim();
+  document.getElementById("searchDesktop").value = term;
+  document.getElementById("searchMobile").value = term;
+  filter = "Todos";
+  render();
+  showCatalog();
+}
 function consultCategory(c){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Olá, gostaria de consultar "+c+" na Drogaria Rocha."),"_blank","noopener")}
 let toastTimer;function notify(msg){let t=document.getElementById("toast");t.textContent=msg;t.classList.add("visible");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("visible"),2600)}
 function addItem(id){cart[id]=Math.min(99,(Number(cart[id])||0)+1);save();notify("Produto adicionado à sua lista!")}
