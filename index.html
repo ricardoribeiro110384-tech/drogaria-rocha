@@ -118,13 +118,25 @@ header{position:sticky;top:0;z-index:30;background:#141519;box-shadow:0 12px 35p
 .catalog-title{margin-bottom:16px}
 .catalog-card-link{flex:none;border:0;background:transparent;color:#a94307;font:inherit;font-size:13px;font-weight:800;min-height:44px;padding:6px 2px;cursor:pointer}
 .catalog-card-link:hover{text-decoration:underline;text-underline-offset:3px}
+.catalog-carousel{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:10px}
 .catalog-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/4);gap:16px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;padding-bottom:7px;scrollbar-width:thin;scrollbar-color:#bcbcc1 transparent}
 .catalog-track .product{scroll-snap-align:start;min-width:0}
-.catalog-controls{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}
-.catalog-controls button{display:grid;place-items:center;min-width:44px;min-height:44px;border:1px solid #d9d9dd;border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:19px;cursor:pointer}
-.catalog-controls button:hover:not(:disabled){border-color:#c45b16;color:#a94307}
-.catalog-controls button:disabled{opacity:.4;cursor:default}
-.catalog-track:focus-visible,.catalog-card-link:focus-visible,.catalog-controls button:focus-visible{outline:2px solid #a94307;outline-offset:2px}
+.catalog-arrow{
+  display:grid;place-items:center;width:44px;height:44px;padding:0;
+  border:1px solid #dedee3;border-radius:50%;background:#fff;color:#25262b;
+  box-shadow:0 2px 5px #15161b12;cursor:pointer;
+  transition:background-color .16s,border-color .16s,color .16s,box-shadow .16s;
+}
+.catalog-arrow::before{
+  content:"";width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor;
+  transform:translateX(-1px) rotate(45deg);
+}
+.catalog-arrow[data-direction="-1"]::before{transform:translateX(1px) rotate(-135deg)}
+@media(hover:hover){.catalog-arrow:hover:not(:disabled){border-color:#f27623;background:#fff3e9;color:#a94307}}
+.catalog-arrow:active:not(:disabled){border-color:#f27623;background:#ffe5d2;color:#a94307;box-shadow:none}
+.catalog-arrow:disabled{background:transparent;border-color:#e1e1e5;color:#8a8b92;box-shadow:none;cursor:default}
+@media(prefers-reduced-motion:reduce){.catalog-arrow{transition:none}}
+.catalog-track:focus-visible,.catalog-card-link:focus-visible,.catalog-arrow:focus-visible{outline:2px solid #a94307;outline-offset:2px}
 .catalog-offers-empty{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 20px;border:1px solid #e6e6e9;border-radius:12px;background:#fff}
 .catalog-offers-empty p{margin:0;color:#555860;font-size:14px;line-height:1.4}
 .catalog-offers-empty a{display:inline-flex;align-items:center;min-height:44px;flex:none}
@@ -132,7 +144,7 @@ header{position:sticky;top:0;z-index:30;background:#141519;box-shadow:0 12px 35p
 .catalog-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media(max-width:920px){.catalog-track{grid-auto-columns:calc((100% - 32px)/3)}}
 @media(max-width:690px){.catalog-track{gap:12px;grid-auto-columns:calc((100% - 28px)/2)}.catalog-sections{gap:22px}}
-@media(max-width:345px){.catalog-track{grid-auto-columns:75%}}
+@media(max-width:480px){.catalog-carousel{gap:5px}.catalog-track{grid-auto-columns:78%}}
 
 .product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .product{background:#fff;border-radius:15px;border:1px solid #e9e9ec;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 5px #12121205;transition:.2s}
@@ -2260,10 +2272,10 @@ function catalogSection(section) {
   const cards = section.id === "Destaques" ? items : featuredProducts(items);
   if (!cards.length && section.id !== "Promocoes") return "";
   const content = cards.length ? `
-    <div class="catalog-track" id="${trackId}" role="region" aria-labelledby="${titleId}" tabindex="0">${cards.map(productCard).join("")}</div>
-    <div class="catalog-controls">
-      <button type="button" data-direction="-1" aria-controls="${trackId}" aria-label="Produtos anteriores em ${section.label}" disabled>←</button>
-      <button type="button" data-direction="1" aria-controls="${trackId}" aria-label="Próximos produtos em ${section.label}">→</button>
+    <div class="catalog-carousel">
+      <button class="catalog-arrow" type="button" data-direction="-1" aria-controls="${trackId}" aria-label="Produtos anteriores em ${section.label}" disabled></button>
+      <div class="catalog-track" id="${trackId}" role="region" aria-labelledby="${titleId}" tabindex="0">${cards.map(productCard).join("")}</div>
+      <button class="catalog-arrow" type="button" data-direction="1" aria-controls="${trackId}" aria-label="Próximos produtos em ${section.label}"></button>
     </div>` : emptyOffers();
   return `<section class="catalog-section" aria-labelledby="${titleId}">
     <div class="catalog-heading">
@@ -2290,9 +2302,8 @@ catalog.addEventListener("click", event => {
 });
 
 function updateCatalogArrows(track) {
-  const controls = track.nextElementSibling;
-  controls.firstElementChild.disabled = track.scrollLeft <= 2;
-  controls.lastElementChild.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+  track.previousElementSibling.disabled = track.scrollLeft <= 2;
+  track.nextElementSibling.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
 }
 
 catalog.addEventListener("scroll", event => {
