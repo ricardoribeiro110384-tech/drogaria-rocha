@@ -291,6 +291,28 @@ footer{border-top:1px solid #303138;margin-top:80px;padding:50px 0 25px;backgrou
  .carousel-slide .hero-showcase .small-product,.baby-two{height:80px}
  .loyalty-art{height:124px}
 }
+/* Fotos dos produtos dos banners. */
+.carousel-slide .baby-image{grid-template: minmax(0,1fr) / minmax(0,1fr)}
+.carousel-slide .hero-showcase .big-product img,
+.carousel-slide .hero-showcase .small-product img,
+.carousel-slide .baby-image img{width:94%;height:94%;object-fit:contain}
+@media (min-width:691px){
+ .carousel-slide .hero-showcase .big-product{bottom:4%}
+ .carousel-slide .baby-one{bottom:2%}
+}
+@media (max-width:690px){
+ .carousel-slide .hero-showcase,.carousel-slide .carousel-baby-images{width:84%;height:174px;right:7%}
+ .carousel-slide .hero-showcase .big-product,.carousel-slide .baby-one{width:48%;height:148px;right:2%;bottom:12px}
+ .carousel-slide .hero-showcase .small-product,.carousel-slide .baby-two{width:48%;height:115px;left:1%;top:13px}
+}
+@media (min-width:425px) and (max-width:690px){
+ .carousel-slide .hero-showcase,.carousel-slide .carousel-baby-images{width:min(62%,calc(100% - 210px));right:4%}
+}
+@media (max-width:330px){
+ .carousel-slide .hero-showcase,.carousel-slide .carousel-baby-images{height:153px}
+ .carousel-slide .hero-showcase .big-product,.carousel-slide .baby-one{height:130px}
+ .carousel-slide .hero-showcase .small-product,.carousel-slide .baby-two{height:103px}
+}
 </style>
 </head>
 <body>
@@ -311,11 +333,11 @@ footer{border-top:1px solid #303138;margin-top:80px;padding:50px 0 25px;backgrou
   <div class="carousel-stage">
    <section class="carousel-slide slide-orange active" data-slide="0" aria-roledescription="slide" aria-label="1 de 3: Cuidar bem faz toda a diferença">
     <div class="hero-copy"><span class="hero-label">Sua drogaria, mais perto de você</span><h1>Cuidar bem <span>faz toda a diferença.</span></h1><p>Encontre produtos para o dia a dia e consulte tudo diretamente com a equipe da Drogaria Rocha.</p><a class="primary-button" href="#vitrine">Explorar produtos <i data-lucide="arrow-up-right" width="17"></i></a></div>
-    <div class="hero-showcase" aria-hidden="true"><div class="small-product"><img src="https://bemolfarma.vtexassets.com/arquivos/ids/212447/6033831-8.jpg?v=638918113221000000" alt=""></div><div class="big-product"><img src="https://www.farmaciareal.com.br/uploads/farmaciareal/produtos_imagens/nive501406.jpg" alt=""></div></div>
+    <div class="hero-showcase" aria-hidden="true"><div class="small-product"><img src="./assets/banners/huggies-pants.webp" alt=""></div><div class="big-product"><img src="./assets/banners/nivea-solar.webp" alt=""></div></div>
    </section>
    <section class="carousel-slide slide-baby" data-slide="1" aria-roledescription="slide" aria-label="2 de 3: Linha infantil" aria-hidden="true" inert>
     <div class="hero-copy"><span class="hero-label">Linha infantil • cuidado e carinho</span><h2>Pequenos cuidados, <span>grandes momentos.</span></h2><p>Produtos para o banho, higiene e a rotina dos pequenos. Confira nossa seleção e consulte a disponibilidade.</p><a class="primary-button" href="#vitrine" onclick="changeFilter('Infantil')">Conhecer linha infantil <i data-lucide="arrow-up-right" width="17"></i></a></div>
-    <div class="carousel-baby-images" aria-hidden="true"><span class="baby-glow"></span><div class="baby-image baby-one"><img src="https://mamaepechincha.com.br/wp-content/uploads/2020/06/6911602SZ.jpg" alt=""></div><div class="baby-image baby-two"><img src="https://bemolfarma.vtexassets.com/arquivos/ids/212447/6033831-8.jpg?v=638918113221000000" alt=""></div></div>
+    <div class="carousel-baby-images" aria-hidden="true"><span class="baby-glow"></span><div class="baby-image baby-one"><img src="./assets/banners/johnsons-baby.webp" alt=""></div><div class="baby-image baby-two"><img src="./assets/banners/huggies-pants.webp" alt=""></div></div>
    </section>
    <section class="carousel-slide slide-loyalty" id="vale" data-slide="2" aria-roledescription="slide" aria-label="3 de 3: Vale mais Drogaria Rocha" aria-hidden="true" inert>
     <div class="hero-copy"><span class="hero-label">Novidade em preparação</span><h2>Vem aí o <span>Vale + Drogaria Rocha.</span></h2><p>Estamos preparando uma nova experiência de relacionamento para valorizar quem escolhe a Drogaria Rocha.</p><a class="primary-button" href="https://wa.me/5589981166747?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20Vale%20%2B%20Drogaria%20Rocha" target="_blank" rel="noopener">Quero saber mais <i data-lucide="arrow-up-right" width="17"></i></a></div>
